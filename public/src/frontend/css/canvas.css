@@ -34,24 +34,35 @@ h1 {font-weight: 900;}
 .fa-plus {
      color: #999;
 }
+
 .fa-plus:hover {
      color: #777;
      cursor: pointer;
 }
-
-.activities, #Values, #relations{
+ .fa-close {
+      cursor: pointer;
+}
+.activities, #Values, #relations, #resources, #chaneels, #costs, #revs{
      display: none;
 }
 .keyInfo,
 .valueInfo,
-#relations{
+.RelationInfo,
+.ResourceInfo,
+.ChaneelInfo,
+.CostInfo,
+.RevInfo {
      background-color: #f1f1f1;
 }
 
 
 .keyInfo .keyTitle h6,
 .valueInfo .valueTitle h6,
-.RelationInfo .RelationTitle h6{
+.RelationInfo .RelationTitle h6,
+.ResourceInfo .ResourceTitle h6,
+.ChaneelInfo .ChaneelTitle h6,
+.CostInfo .CostTitle h6,
+.RevInfo .RevTitle h6 {
      font-size: 15px;
      font-weight: bold;
      color: #434A48;
@@ -60,7 +71,11 @@ h1 {font-weight: 900;}
 
 .keyInfo span,
 .valueInfo span,
-.RelationInfo span {
+.RelationInfo span,
+.ResourceInfo span,
+.ChaneelInfo span,
+.CostInfo span,
+.RevInfo span {
      color: #434A48;
      padding: 0 5px;
      line-height: 2.5
@@ -68,13 +83,21 @@ h1 {font-weight: 900;}
 
 .keyInfo span .fa,
 .valueInfo span .fa,
-.RelationInfo span .fa {
+.RelationInfo span .fa,
+.ResourceInfo span .fa,
+.ChaneelInfo span .fa,
+.CostInfo span .fa,
+.RevInfo span .fa {
      color: #999;
 }
 
 .keyInfo span .fa:hover,
 .valueInfo span .fa:hover,
-.RelationInfo span .fa:hover {
+.RelationInfo span .fa:hover,
+.ResourceInfo span .fa:hover,
+.ChaneelInfo span .fa:hover,
+.CostInfo span .fa:hover,
+.RevInfo span .fa:hover {
      color: #777;
      cursor: pointer;
 }
@@ -84,14 +107,26 @@ h1 {font-weight: 900;}
 .valueInfo .editvalue,
 .valueInfo .editValueDesc,
 .RelationInfo .editRelation,
-.RelationInfo .editRelationDesc {
+.RelationInfo .editRelationDesc,
+.ResourceInfo .editResource,
+.ResourceInfo .editResourceDesc,
+.ChaneelInfo .editChaneel,
+.ChaneelInfo .editChaneelDesc,
+.CostInfo .editCost,
+.CostInfo .editCostDesc,
+.RevInfo .editRev,
+.RevInfo .editRevDesc {
      display: none;
 }
 
 
 .keyInfo .keyDesc p,
 .valueInfo .valueDesc p,
-.RelationInfo .RelationDesc p{
+.RelationInfo .RelationDesc p,
+.ResourceInfo .ResourceDesc p,
+.ChaneelInfo .ChaneelDesc p,
+.CostInfo .CostDesc p,
+.RevInfo .RevDesc p {
      font-size: 20px;
      font-weight: bold;
      color: #777;

@@ -45,22 +45,31 @@
         </tr>
         <tr>
           <td colspan="2">
-            <h4>Key Resources</h4>
-            <p>...</p>
+            <h4>Key Resources <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addResourceModal"></i></h4>
+            <div id="resources">
+
+            </div>
           </td>
           <td colspan="2">
-            <h4>Channels</h4>
-            <p>...</p>
+            <h4>Channels <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addChaneelModal"></i></h4>
+            <div id="chaneels">
+
+            </div>
+
           </td>
         </tr>
         <tr>
           <td colspan="5">
-            <h4>Cost Structure</h4>
-            <p>...</p>
+            <h4>Cost Structure <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addCostModal"></i></h4>
+            <div id="costs">
+
+            </div>
           </td>
           <td colspan="5">
-            <h4>Revenue Streams</h4>
-            <p>...</p>
+            <h4>Revenue Streams <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRevModal"></i></h4>
+            <div id="revs">
+
+            </div>
           </td>
         </tr>
       </table>
