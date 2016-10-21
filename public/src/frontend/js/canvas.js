@@ -168,7 +168,7 @@ $(document).ready(function() {
       });
 });
 /*start run relation modal*/
-$('#saveRelation').on('click', function () {
+$('#saveRelation').on('click',function () {
      var keyActivity;
      var title = $(this).parents().siblings('.modal-body').children().children().siblings('#relationTitle');
      var description = $(this).parents().siblings('.modal-body').children('#contentRelation').children().siblings('#relationContent');
