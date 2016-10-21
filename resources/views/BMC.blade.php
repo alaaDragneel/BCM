@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>The Business Model Canvas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{asset('src/frontend/css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('src/frontend/css/bootstrap-responsive.css')}}" rel="stylesheet">
-    <link href="{{asset('src/frontend/css/canvas.css')}}" rel="stylesheet">
-    <meta name="description" content="Business Model Canvas Template">
-    <meta name="author" content="Zeljko Dakic">
-    <link href='http://fonts.googleapis.com/css?family=Headland+One' rel='stylesheet' type='text/css'>
-  </head>
-  <body>
-    <div class="container">
+@extends('layouts.master')
+@section('content')
+
       <h1>The Business Model Canvas</h1>
       <!-- Canvas -->
       <table id="bizcanvas" border="1">
@@ -27,21 +15,28 @@
               rel="popover" href="#">...</a>
             </p>
           </td>
-          <td colspan="2">
-            <h4>Key Activities</h4>
-            <p><a class=""
-              data-original-title="More details"
-              data-content="And here's some amazing content. It's very engaging. right?"
-              data-placement="bottom"
-              rel="popover" href="#">...</a></p>
+          <td colspan="2" id="keyActivities">
+               <h4 data-original-title="More details"
+                 data-content="And here's some amazing content. It's very engaging. right?"
+                 data-placement="bottom"
+                 rel="popover">Key Activities
+                 <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addActivityModal"></i>
+               </h4>
+               <div class="activities">
+
+               </div>
           </td>
           <td colspan="2" rowspan="2">
-            <h4>Value Proposition</h4>
-            <p>...</p>
+            <h4>Value Proposition <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addValueModal"></i></h4>
+            <div id="Values">
+
+            </div>
           </td>
           <td colspan="2">
-            <h4>Customer Relationship</h4>
-            <p>...</p>
+            <h4>Customer Relationship <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRelationModal"></i></h4>
+            <div id="relations">
+
+            </div>
           </td>
           <td colspan="2" rowspan="2">
             <h4>Customer Segments</h4>
@@ -70,11 +65,5 @@
         </tr>
       </table>
       <!-- /Canvas -->
-    </div>
-
-    <!-- Javascript loading -->
-    <script src="{{asset('src/frontend/js/jquery.min.js')}}"></script>
-    <script src="{{asset('src/frontend/js/bootstrap.js')}}"></script>
-    <script src="{{asset('src/frontend/js/canvas.js')}}"></script>
-  </body>
-</html>
+      @include('includes.modals')
+@endsection

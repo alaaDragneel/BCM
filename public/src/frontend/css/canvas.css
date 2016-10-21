@@ -1,6 +1,6 @@
-BODY {font-family: 'Headland One', serif;}
+body {font-family: Verdana, Geneva, sans-serif;}
 
-H1 {font-weight: 900;}
+h1 {font-weight: 900;}
 
 #bizcanvas {
   border: 3px solid black;
@@ -28,4 +28,72 @@ H1 {font-weight: 900;}
 #bizcanvas p {
   font-weight: 300;
   font-size: 0.8em;
+}
+
+/*start add plus button*/
+.fa-plus {
+     color: #999;
+}
+.fa-plus:hover {
+     color: #777;
+     cursor: pointer;
+}
+
+.activities, #Values, #relations{
+     display: none;
+}
+.keyInfo,
+.valueInfo,
+#relations{
+     background-color: #f1f1f1;
+}
+
+
+.keyInfo .keyTitle h6,
+.valueInfo .valueTitle h6,
+.RelationInfo .RelationTitle h6{
+     font-size: 15px;
+     font-weight: bold;
+     color: #434A48;
+     padding: 0 7px
+}
+
+.keyInfo span,
+.valueInfo span,
+.RelationInfo span {
+     color: #434A48;
+     padding: 0 5px;
+     line-height: 2.5
+}
+
+.keyInfo span .fa,
+.valueInfo span .fa,
+.RelationInfo span .fa {
+     color: #999;
+}
+
+.keyInfo span .fa:hover,
+.valueInfo span .fa:hover,
+.RelationInfo span .fa:hover {
+     color: #777;
+     cursor: pointer;
+}
+
+.keyInfo .editKey,
+.keyInfo .editKeyDesc,
+.valueInfo .editvalue,
+.valueInfo .editValueDesc,
+.RelationInfo .editRelation,
+.RelationInfo .editRelationDesc {
+     display: none;
+}
+
+
+.keyInfo .keyDesc p,
+.valueInfo .valueDesc p,
+.RelationInfo .RelationDesc p{
+     font-size: 20px;
+     font-weight: bold;
+     color: #777;
+     padding: 0 7px 7px;
 }
