@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('BMC');
 });
+
+// Route::get('/test', 'ProSearchController@getindex');
