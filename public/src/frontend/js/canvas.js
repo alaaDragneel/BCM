@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  $('h4[rel=popover]').click(function() {
-    $(this).popover('toggle');
-  });
-  $('h4[rel=popover]').hover(function() {
+  $('.Info').hover(function() {
     $(this).popover('show');
   }, function() {
     $(this).popover('hide');

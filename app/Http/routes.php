@@ -15,4 +15,15 @@ Route::get('/', function () {
     return view('BMC');
 });
 
-// Route::get('/test', 'ProSearchController@getindex');
+
+// search
+Route::get('/getresults', [
+    'uses'  =>  'ProSearchController@getAjaxResults',
+    'as'    =>  'results'
+]);
+
+// searchBtn
+Route::get('/getrequest', [
+    'uses'  =>  'ProSearchController@getAjaxBtnResults',
+    'as'    =>  'request'
+]);

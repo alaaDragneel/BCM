@@ -20,5 +20,6 @@
 	<script src="{{asset('src/frontend/js/jquery.min.js')}}"></script>
 	<script src="{{asset('src/frontend/js/bootstrap.js')}}"></script>
 	<script src="{{asset('src/frontend/js/canvas.js')}}"></script>
+	<script src="{{asset('src/frontend/js/AjaxSearch.js')}}"></script>
   </body>
 </html>
