@@ -72,7 +72,7 @@
  	  <div class="modal-body">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">Choose the Gender</h3>
+          <h3 class="panel-title">Choose the Information</h3>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -85,14 +85,24 @@
             </div>
             <div class="hr"></div>
             <div class="col-md-6 col-md-offset-1 age">
-              <select class='form-control'>
-                <option value="12-17">12-17</option>
-                <option value="18-28">18-28</option>
-                <option value="29-40">29-40</option>
-                <option value="41-60">41-60</option>
-              </select>
+              <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                  From: <select class='form-control from'>
+                    @for ($i=16; $i <= 65 ; $i++)
+                      <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                  </select>
+                </div>
+                <div class="col-md-5 col-md-offset-1 toCont">
+                  To: <select class='form-control to'>
+                    @for ($i=16; $i <= 65 ; $i++)
+                      <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                  </select>
+                </div>
+              </div>
+              <div class="hr2"></div>
             </div>
-            <div class="hr"></div>
             <div class="col-md-6 col-md-offset-1 location">
               <select class='form-control'>
                 <option value="Egypt">Egypt</option>

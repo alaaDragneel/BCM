@@ -144,7 +144,8 @@ search.on('focus', function() {
        gender = 'All';
      }
      // age
-     var age = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.age').find('option:selected').text();
+     var ageFrom = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.age').children().children().children('.from').find('option:selected').val();
+     var ageTo = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.age').children().siblings().children('.toCont').children().find('option:selected').val();
      // location
      var location =  $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.location').find('option:selected').text();
 
@@ -153,8 +154,10 @@ search.on('focus', function() {
       Segments = '<div class="userInfo">';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> gender</h4><div class="clearfix"></div>';
       Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ gender +'</h4><div class="clearfix"></div>';
-      Segments += '<h4 class="fullName"><i class="fa fa-user"></i> age</h4><div class="clearfix"></div>';
-      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ age +'</h4><div class="clearfix"></div>';
+      Segments += '<h4 class="fullName"><i class="fa fa-user"></i> age From</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ ageFrom +'</h4><div class="clearfix"></div>';
+      Segments += '<h4 class="fullName"><i class="fa fa-user"></i> age To</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ ageTo +'</h4><div class="clearfix"></div>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> location </h4><div class="clearfix"></div>';
       Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ location +'</h4><div class="clearfix"></div>';
       if(people === ''){
@@ -163,8 +166,8 @@ search.on('focus', function() {
         Segments += '<h4 class="fullName"><i class="fa fa-user"></i> people</h4><div class="clearfix"></div>';
         Segments += '<h6 class="email"><i class="fa fa-user"></i> '+ people +'</h4><div class="clearfix"></div>';
       }
+      $('#Segments').append(Segments);
 
-     $('#Segments').html(Segments);
      $('#addSegmentsModal').modal('hide');
    });
 });
