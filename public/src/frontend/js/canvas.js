@@ -5,6 +5,13 @@ $(document).ready(function() {
     $(this).popover('hide');
   });
 
+   $("html").niceScroll({
+     cursorcolor:"#2c3e50",
+     cursorwidth: "10px",
+     scrollspeed: "40",
+     mousescrollstep:"30",
+   });
+
   /*start run key activity modal*/
   $('#saveKeyActivity').on('click', function () {
        var keyActivity;

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-      <h1>The Business Model Canvas</h1>
+      <h1>BMC</h1>
       <!-- Canvas -->
       <table id="bizcanvas" class="table table-responsive table-bordered">
         <tr>
-          <td colspan="2" rowspan="2" style="width: auto;">
+          <td colspan="2" rowspan="2">
                <h4
                 class="Info"
                 data-original-title="More details"
@@ -91,7 +91,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="5">
+          <td colspan="5" class="costs">
             <h4 class="Info"
               data-original-title="More details"
               data-content="this is the Cost Structure write the Cost Structure of your Project"
@@ -102,7 +102,7 @@
 
             </div>
           </td>
-          <td colspan="5">
+          <td colspan="5" class="revs">
             <h4 class="Info"
               data-original-title="More details"
               data-content="this is the Revenue Streams write the Revenue Streams of your Project"
