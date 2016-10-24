@@ -16,11 +16,9 @@ class ProSearchController extends Controller
          $searchWordWithAjax = $request['body'];
 
          $searchResultsWithAjax = ProSearch::select('id','Fullname','PhoneNo', 'email', 'Job', 'Describtion')
+          ->where('Type', '1') // type 1 == companies
           ->where("Job" , 'like', "$searchWordWithAjax%")
           ->orWhere("Fullname", 'like', "$searchWordWithAjax%")
-          ->orWhere("Job", 'like', "%$searchWordWithAjax%") // like keyword
-          ->orWhere("Fullname", 'like', "%$searchWordWithAjax%") // like keyword
-          ->where('Type', '1') // type 1 == companies
           ->orderBy('Fullname', 'ASC')
           ->get();
          $AjaxResult = '';
@@ -28,10 +26,9 @@ class ProSearchController extends Controller
            foreach($searchResultsWithAjax as $results){
              $AjaxResult .=
              '
+             <input type="hidden" value="'. $results->id .'"/>
+             <button type="button" class="btn btn-primary btn-sm pull-right requestBtn">request</button>
                <div class="userInfo">
-                    <input type="hidden" value="'. $results->id .'"/>
-                   <button type="button" class="btn btn-primary btn-sm pull-right requestBtn">request</button>
-
                  <h4 class="fullName"><i class="fa fa-user"></i> '. $results->Fullname .'</h4><div class="clearfix"></div>';
                  if($results->PhoneNo){
                    $AjaxResult .=' <h4 class="num"><i class="fa fa-phone"></i> '. $results->PhoneNo .'</h4><div class="clearfix"></div>';
@@ -47,7 +44,7 @@ class ProSearchController extends Controller
 
                if($results->Describtion){
                 $AjaxResult .= '
-                <h4 class="Desc"><i class="fa fa-black-tie"></i> '. $results->Describtion .'</h4></p><div class="clearfix"></h4>
+                <p class="Desc"><i class="fa fa-black-tie"></i> '. $results->Describtion .'</h4></p>
                 </div>
                 ';
                }else {
@@ -61,41 +58,73 @@ class ProSearchController extends Controller
 
     public function getAjaxBtnResults(Request $request)
     {
-         // get the search word
-         $id = $request['id'];
+      // get the search word
+      $id = $request['id'];
 
-         $searchBtnResults= ProSearch::select('Fullname','PhoneNo', 'email', 'Job', 'Describtion')
-          ->where("id" , '=', "$id")
-          ->get();
-         $AjaxResult = '';
-           // loop the data
-           foreach($searchBtnResults as $results){
-             $AjaxResult .=
-             '
-               <div class="userInfo">
-                 <h4 class="fullName"><i class="fa fa-user"></i> '. $results->Fullname .'</h4><div class="clearfix"></div>';
-                 if($results->PhoneNo){
-                   $AjaxResult .=' <h4 class="num"><i class="fa fa-phone"></i> '. $results->PhoneNo .'</h4><div class="clearfix"></div>';
-                 }
+      $searchBtnResults= ProSearch::select('Fullname','PhoneNo', 'email', 'Job', 'Describtion')
+      ->where("id" , '=', "$id")
+      ->get();
+      $AjaxResult = '';
+      // loop the data
+      foreach($searchBtnResults as $results){
+        $AjaxResult .='
+        <div class="userInfo">
+        <h4 class="fullName"><i class="fa fa-user"></i> '. $results->Fullname .'</h4><div class="clearfix"></div>';
+        if($results->PhoneNo){
+          $AjaxResult .=' <h4 class="num"><i class="fa fa-phone"></i> '. $results->PhoneNo .'</h4><div class="clearfix"></div>';
+        }
 
-                   $AjaxResult .='<h4 class="email"><i class="fa fa-envelope"></i> '. $results->email .'</h4><div class="clearfix"></div>
-                 ';
-                 if($results->Job){
-                      $AjaxResult .= '
-                      <h4 class="job"><i class="fa fa-briefcase"></i> '. $results->Job .'</h4><div class="clearfix"></div>
-                      ';
-                 }
+        $AjaxResult .='<h4 class="email"><i class="fa fa-envelope"></i> '. $results->email .'</h4><div class="clearfix"></div>';
+        if($results->Job){
+          $AjaxResult .= '
+          <h4 class="job"><i class="fa fa-briefcase"></i> '. $results->Job .'</h4><div class="clearfix"></div>';
+        }
 
-               if($results->Describtion){
-                $AjaxResult .= '
-                <h4 class="Desc"><i class="fa fa-black-tie"></i> '. $results->Describtion .'</h4><div class="clearfix"></div>
-                </div>
-                ';
-               }else {
-                    $AjaxResult .= '</div>';
-               }
-           }
-           // return the response by json
-           return response()->json(['resultsBtn' => $AjaxResult], 200);
+        if($results->Describtion){
+          $AjaxResult .= '
+          <p class="Desc"><i class="fa fa-black-tie"></i> '. $results->Describtion .'</p>
+          </div>';
+        }else {
+          $AjaxResult .= '</div>';
+        }
+      }
+      // return the response by json
+      return response()->json(['resultsBtn' => $AjaxResult], 200);
+    }
+
+    public function getAjaxCompanies(Request $request)
+    {
+      $area = $request->area;
+      $companies = ProSearch::select('Username','Job')->where('Address', $area)->get();
+      $results ='<select class="form-control"> ';
+
+      foreach ($companies as $company) {
+        $results .=
+        '
+          <option value="'. $company->Username .'">'. $company->Username .'</option>
+
+        ';
+      }
+      $results .= '</select>';
+      // return the response by json
+      return response()->json(['ResultsCompanies' => $results], 200);
+      /*
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Fields
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Dropdown header 1</li>
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li class="divider"></li>
+          <li class="dropdown-header">Dropdown header 2</li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+        <li class="dropdown-header">'. $company->Job .'</li>
+        <li><a href="#">'. $company->Username .'</a></li>
+        <li class="divider"></li>
+      </div>
+      */
     }
 }

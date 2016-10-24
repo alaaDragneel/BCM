@@ -27,3 +27,9 @@ Route::get('/getrequest', [
     'uses'  =>  'ProSearchController@getAjaxBtnResults',
     'as'    =>  'request'
 ]);
+
+// searchCompaniesCountry
+Route::get('/getCompanies', [
+    'uses'  =>  'ProSearchController@getAjaxCompanies',
+    'as'    =>  'Companies'
+]);

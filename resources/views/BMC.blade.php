@@ -16,7 +16,7 @@
                @include('includes.proSearch.searchForm')
                <div id="Partner" class="companies">
 
-              </div>
+               </div>
           </td>
           <td colspan="2" id="keyActivities">
                <h4 class="Info"
@@ -57,10 +57,12 @@
             <h4 class="Info"
               data-original-title="More details"
               data-content="this is the Customer Segments write the Customer Segments of your Project"
-              data-placement="right"
-              rel="popover" >Customer Segments</h4>
+              data-placement="bottom"
+              rel="popover" >Customer Segments <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addSegmentsModal"></i></h4>
               <div class="clearfix"></div>
-            <p>...</p>
+              <div id="Segments" class="companies">
+
+              </div>
           </td>
         </tr>
         <tr>

@@ -10,5 +10,6 @@
 <script>
 var url = '{{ route('results') }}';
 var urlBtn = '{{ route('request') }}';
+var urlCustomer = '{{ route('Companies') }}';
 var token = '{{ csrf_field() }}';
 </script>

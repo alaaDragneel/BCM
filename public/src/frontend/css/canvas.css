@@ -158,8 +158,8 @@ h1 {font-weight: 900;}
 }
 
 .userInfo {
+  margin: 20px;
   border-bottom: 1px solid #aaa;
-  margin: 0 20px;
 }
 .userInfo:last-child {
   border-bottom: none;
@@ -195,5 +195,19 @@ h1 {font-weight: 900;}
 }
 
 h4 {
-     float: left;
+  float: left;
+}
+
+.active {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.hr {
+  height: 50px;
+}
+
+.requestBtn {
+  margin-top: 20px;
+  margin-right: 20px;
 }
