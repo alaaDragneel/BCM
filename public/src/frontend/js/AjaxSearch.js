@@ -146,13 +146,15 @@ search.on('focus', function() {
      // age
      var ageFrom = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.age').children().children().children('.from').find('option:selected').val();
      var ageTo = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.age').children().siblings().children('.toCont').children().find('option:selected').val();
+
      // location
      var location =  $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.location').find('option:selected').text();
 
-     var people = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.peoples').find('option:selected').text();
+     var people = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.peoples').find('option:selected').val();
        Segments = '<div class="userInfo">';
        Segments +='<i class="fa fa-close pull-right deleteSegments"></i>';
        Segments +='<i class="fa fa-edit editSegments pull-right SegmentsEdit"></i>';
+       Segments +='<button class="save btn btn-primary">Save</button>';
        Segments +='<div class="clearfix"></div>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> gender</h4><div class="clearfix"></div>';
       Segments += '<h6 class="num" id="gender"><i class="fa fa-user"></i>'+ gender +'</h4><div class="clearfix"></div>';
@@ -199,56 +201,77 @@ search.on('focus', function() {
      });
 
      $('.SegmentsEdit').on('click', function() {
-
+       $(this).fadeOut();
+       $(this).siblings('.save').fadeIn();
        var id = $(this).parents().data('id');
-       var gender = $(this).siblings('#gender').text();
-       var ageFrom = $(this).siblings('#ageFrom').text();
-       var ageTo = $(this).siblings('#ageTo').text();
-       var location = $(this).siblings('#location').text();
+       var gender = $(this).siblings('#gender');
+       var ageFrom = $(this).siblings('#ageFrom');
+       var ageTo = $(this).siblings('#ageTo');
+       var location = $(this).siblings('#location');
        var people = $(this).siblings('#people').text();
 
        $(this).siblings('.genderSelect').fadeIn();
-       $(this).siblings('.genderSelect').find("option:contains("+gender+")").attr('selected', 'selected');
+       $(this).siblings('.genderSelect').find("option:contains("+gender.text()+")").attr('selected', 'selected');
 
        $(this).siblings('.fromSelect').fadeIn();
-       $(this).siblings('.fromSelect').find("option:contains("+ageFrom+")").attr('selected', 'selected');
+       $(this).siblings('.fromSelect').find("option:contains("+ageFrom.text()+")").attr('selected', 'selected');
 
        $(this).siblings('.toSelect').fadeIn();
-       $(this).siblings('.toSelect').find("option:contains("+ageTo+")").attr('selected', 'selected');
+       $(this).siblings('.toSelect').find("option:contains("+ageTo.text()+")").attr('selected', 'selected');
 
        $(this).siblings('.countrySelect').fadeIn();
-       $(this).siblings('.countrySelect').find("option:contains("+location+")").attr('selected', 'selected');
+       $(this).siblings('.countrySelect').find("option:contains("+location.text()+")").attr('selected', 'selected');
 
-       $(this).siblings('.companies2').fadeIn();
+      //  $(this).siblings('.companies2').fadeIn();
 
         $.ajax({
           method: 'GET',
           url: urlCustomer,
-          data: {area: location, _token: token},
+          data: {area: location.text(), _token: token},
 
          }).done(function(msg) {
           // view the response with json
           $('.companies2').html(msg['ResultsCompanies']);
          });
+       //
+      //    $(this).siblings('.countrySelect').on('change', function() {
+      //      locationText = $(this).siblings('.countrySelect').find('option:selected');
+      //      console.log(locationText.text());
+      //      $.ajax({
+      //        method: 'GET',
+      //        url: urlCustomer,
+      //        data: {area: locationText.text(), _token: token},
+       //
+      //       }).done(function(msg) {
+      //        // view the response with json
+      //        $('.companies2').html(msg['ResultsCompanies']);
+      //       });
+      //    });
+       //
+      //  test = $(this).parents().children().siblings('.companies2').children().find("option:contains("+people+")").text();
+      //  console.log(test);
+       $('.save').on('click', function() {
+         var selectorGender = $(this).siblings('.genderSelect').find('option:selected');
+         gender.text(selectorGender.text());
 
-         $(this).siblings('.countrySelect').on('change', function() {
-           locationText = $(this).siblings('.countrySelect').find('option:selected');
-           $.ajax({
-             method: 'GET',
-             url: urlCustomer,
-             data: {area: locationText.text(), _token: token},
+         var selectorFrom = $(this).siblings('.fromSelect').find('option:selected');
+         ageFrom.text(selectorFrom.text());
 
-            }).done(function(msg) {
-             // view the response with json
-             $('.companies2').html(msg['ResultsCompanies']);
-            });
+         var selectorTo = $(this).siblings('.toSelect').find('option:selected');
+         ageTo.text(selectorTo.text());
 
-         });
-
-       test = $(this).parents().children().siblings('.companies2').children().text();
-       console.log(test);
+         var selectorCountry = $(this).siblings('.countrySelect').find('option:selected');
+         location.text(selectorCountry.text());
 
 
+          $(this).fadeOut();
+          $(this).siblings('.SegmentsEdit').fadeIn();
+          $(this).siblings('.genderSelect').fadeOut();
+          $(this).siblings('.fromSelect').fadeOut();
+          $(this).siblings('.toSelect').fadeOut();
+          $(this).siblings('.countrySelect').fadeOut();
+          $(this).siblings('.companies2').fadeOut();
+       });
      });
    });
 });

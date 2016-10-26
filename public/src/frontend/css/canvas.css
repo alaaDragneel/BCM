@@ -234,6 +234,7 @@ h4 {
 .fromSelect,
 .countrySelect,
 .companies2,
+.save,
 .toSelect {
   display: none;
 }

@@ -95,14 +95,14 @@ class ProSearchController extends Controller
     public function getAjaxCompanies(Request $request)
     {
       $area = $request->area;
-      $companies = ProSearch::select('Username','Job')->where('Address', $area)->get();
+      // dd($area);
+      $companies = ProSearch::select('Username')->where('Address', $area)->get();
       $results ='<select class="form-control"> ';
 
       foreach ($companies as $company) {
         $results .=
         '
           <option value="'. $company->Username .'">'. $company->Username .'</option>
-
         ';
       }
       $results .= '</select>';

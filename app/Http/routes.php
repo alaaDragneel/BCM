@@ -33,3 +33,7 @@ Route::get('/getCompanies', [
     'uses'  =>  'ProSearchController@getAjaxCompanies',
     'as'    =>  'Companies'
 ]);
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
