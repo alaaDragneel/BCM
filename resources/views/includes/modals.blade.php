@@ -113,10 +113,7 @@
                 <option value="Japan">Japan</option>
               </select>
             </div>
-            <div class="hr"></div>
-            <div class="col-md-6 col-md-offset-1 peoples">
-
-            </div>
+            <div class="col-md-6 col-md-offset-1 peoples"></div>
           </div>
         </div>
       </div>

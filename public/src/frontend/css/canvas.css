@@ -27,15 +27,19 @@ h1 {font-weight: 900;}
 
 /*start add plus button*/
 .fa-plus {
-     color: #999;
+ color: #999;
 }
 
 .fa-plus:hover {
-     color: #777;
-     cursor: pointer;
+ color: #777;
+ cursor: pointer;
 }
- .fa-close {
-      cursor: pointer;
+.fa-close,.fa-edit {
+  color: #999;
+  cursor: pointer;
+}
+.fa-close:hover,.fa-edit:hover {
+  color: #777;
 }
 .activities, #Values, #relations, #resources, #chaneels, #costs, #revs{
   display: none;
@@ -89,7 +93,7 @@ h1 {font-weight: 900;}
 .ChaneelInfo span .fa,
 .CostInfo span .fa,
 .RevInfo span .fa {
-     color: #999;
+  color: #999;
 }
 
 .keyInfo span .fa:hover,
@@ -219,4 +223,17 @@ h4 {
 .requestBtn {
   margin-top: 20px;
   margin-right: 20px;
+}
+
+.peoples {
+
+  margin-top: 30px;
+}
+
+.genderSelect,
+.fromSelect,
+.countrySelect,
+.companies2,
+.toSelect {
+  display: none;
 }

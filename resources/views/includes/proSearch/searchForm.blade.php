@@ -6,10 +6,3 @@
          <span class="btn btn-danger">&times;</span>
          <div class="results searchAjax"></div>
     </div>
-
-<script>
-var url = '{{ route('results') }}';
-var urlBtn = '{{ route('request') }}';
-var urlCustomer = '{{ route('Companies') }}';
-var token = '{{ csrf_field() }}';
-</script>

@@ -60,9 +60,7 @@
               data-placement="bottom"
               rel="popover" >Customer Segments <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addSegmentsModal"></i></h4>
               <div class="clearfix"></div>
-              <div id="Segments" class="companies">
-
-              </div>
+              <div id="Segments" class="companies"></div>
           </td>
         </tr>
         <tr>

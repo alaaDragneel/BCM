@@ -123,7 +123,7 @@ search.on('focus', function() {
 
    /*location select*/
    $('.location').on('change', function() {
-     var locationText = $(this).find('option:selected');
+     locationText = $(this).find('option:selected');
      $.ajax({
        method: 'GET',
        url: urlCustomer,
@@ -150,24 +150,105 @@ search.on('focus', function() {
      var location =  $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.location').find('option:selected').text();
 
      var people = $(this).parents().siblings('.modal-body').children().children('.panel-body').children().children('.peoples').find('option:selected').text();
-
-      Segments = '<div class="userInfo">';
+       Segments = '<div class="userInfo">';
+       Segments +='<i class="fa fa-close pull-right deleteSegments"></i>';
+       Segments +='<i class="fa fa-edit editSegments pull-right SegmentsEdit"></i>';
+       Segments +='<div class="clearfix"></div>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> gender</h4><div class="clearfix"></div>';
-      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ gender +'</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num" id="gender"><i class="fa fa-user"></i>'+ gender +'</h4><div class="clearfix"></div>';
+      Segments += '<select class="genderSelect form-control">';
+      Segments += '<option>All</option>';
+      Segments += '<option>Male</option>';
+      Segments += '<option>Female</option>';
+      Segments += '</select>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> age From</h4><div class="clearfix"></div>';
-      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ ageFrom +'</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num" id="ageFrom"><i class="fa fa-user"></i>'+ ageFrom +'</h4><div class="clearfix"></div>';
+      Segments += '<select class="fromSelect form-control">';
+        for (i=16; i <= 65 ; i++) {
+            Segments += '<option value="'+i+'">'+i+'</option>'
+        }
+      Segments += '</select>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> age To</h4><div class="clearfix"></div>';
-      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ ageTo +'</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num" id="ageTo"><i class="fa fa-user"></i>'+ ageTo +'</h4><div class="clearfix"></div>';
+      Segments += '<select class="toSelect form-control">';
+        for (i=16; i <= 65 ; i++) {
+            Segments += '<option value="'+i+'">'+i+'</option>'
+        }
+      Segments += '</select>';
       Segments += '<h4 class="fullName"><i class="fa fa-user"></i> location </h4><div class="clearfix"></div>';
-      Segments += '<h6 class="num"><i class="fa fa-user"></i> '+ location +'</h4><div class="clearfix"></div>';
+      Segments += '<h6 class="num" id="location"><i class="fa fa-user"></i>'+ location +'</h4><div class="clearfix"></div>';
+      Segments += '<select class="countrySelect form-control">';
+        Segments += '<option value="Egypt">Egypt</option>';
+        Segments += '<option value="cairo">cairo</option>';
+        Segments += '<option value="Giza">Giza</option>';
+      Segments += '</select>';
       if(people === ''){
           Segments += '<div class="alert alert-info">You Didn\'t choose any Fields</div>';
       } else {
         Segments += '<h4 class="fullName"><i class="fa fa-user"></i> people</h4><div class="clearfix"></div>';
-        Segments += '<h6 class="email"><i class="fa fa-user"></i> '+ people +'</h4><div class="clearfix"></div>';
+        Segments += '<h6 class="email" id="people"><i class="fa fa-user"></i>'+ people +'</h4><div class="clearfix"></div>';
+        Segments += '<div class="companies2"></div>';
+
       }
       $('#Segments').append(Segments);
 
      $('#addSegmentsModal').modal('hide');
+
+     $('.deleteSegments').on('click', function () {
+        $(this).parents('.userInfo').remove();
+     });
+
+     $('.SegmentsEdit').on('click', function() {
+
+       var id = $(this).parents().data('id');
+       var gender = $(this).siblings('#gender').text();
+       var ageFrom = $(this).siblings('#ageFrom').text();
+       var ageTo = $(this).siblings('#ageTo').text();
+       var location = $(this).siblings('#location').text();
+       var people = $(this).siblings('#people').text();
+
+       $(this).siblings('.genderSelect').fadeIn();
+       $(this).siblings('.genderSelect').find("option:contains("+gender+")").attr('selected', 'selected');
+
+       $(this).siblings('.fromSelect').fadeIn();
+       $(this).siblings('.fromSelect').find("option:contains("+ageFrom+")").attr('selected', 'selected');
+
+       $(this).siblings('.toSelect').fadeIn();
+       $(this).siblings('.toSelect').find("option:contains("+ageTo+")").attr('selected', 'selected');
+
+       $(this).siblings('.countrySelect').fadeIn();
+       $(this).siblings('.countrySelect').find("option:contains("+location+")").attr('selected', 'selected');
+
+       $(this).siblings('.companies2').fadeIn();
+
+        $.ajax({
+          method: 'GET',
+          url: urlCustomer,
+          data: {area: location, _token: token},
+
+         }).done(function(msg) {
+          // view the response with json
+          $('.companies2').html(msg['ResultsCompanies']);
+         });
+
+         $(this).siblings('.countrySelect').on('change', function() {
+           locationText = $(this).siblings('.countrySelect').find('option:selected');
+           $.ajax({
+             method: 'GET',
+             url: urlCustomer,
+             data: {area: locationText.text(), _token: token},
+
+            }).done(function(msg) {
+             // view the response with json
+             $('.companies2').html(msg['ResultsCompanies']);
+            });
+
+         });
+
+       test = $(this).parents().children().siblings('.companies2').children().text();
+       console.log(test);
+
+
+     });
    });
 });

@@ -108,23 +108,6 @@ class ProSearchController extends Controller
       $results .= '</select>';
       // return the response by json
       return response()->json(['ResultsCompanies' => $results], 200);
-      /*
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Fields
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="dropdown-header">Dropdown header 1</li>
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">CSS</a></li>
-          <li><a href="#">JavaScript</a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header 2</li>
-          <li><a href="#">About Us</a></li>
-        </ul>
-        <li class="dropdown-header">'. $company->Job .'</li>
-        <li><a href="#">'. $company->Username .'</a></li>
-        <li class="divider"></li>
-      </div>
-      */
+
     }
 }
