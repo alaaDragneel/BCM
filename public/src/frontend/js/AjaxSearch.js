@@ -187,6 +187,7 @@ search.on('focus', function() {
       if(people === ''){
           Segments += '<div class="alert alert-info">You Didn\'t choose any Fields</div>';
       } else {
+
         Segments += '<h4 class="fullName"><i class="fa fa-user"></i> people</h4><div class="clearfix"></div>';
         Segments += '<h6 class="email" id="people"><i class="fa fa-user"></i>'+ people +'</h4><div class="clearfix"></div>';
         Segments += '<div class="companies2"></div>';
