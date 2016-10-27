@@ -1,10 +1,22 @@
-@extends('layouts.app')
+@extends('frontend.layouts.master')
+
+@section('styles')
+{!! Html::style('src/frontend/css/customStyle.css') !!}
+@endsection
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="badge Text"><a href="{{url('/login')}}">LogIn</a></div>
+            </div>
+            <div class="col-md-6">
+              <div class="badge registerText">register</div>
+            </div>
+          </div>
+            <div class="panel panel-success register">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -52,6 +64,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('userType') ? ' has-error' : '' }}">
+                          <label for="userType" class="col-md-4 control-label">Type</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="userType" id="userType">
+                                  <option value="2">individual</option>
+                                  <option value="3">company</option>
+                                </select>
+                                @if ($errors->has('userType'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('userType') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -82,7 +109,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     <i class="fa fa-btn fa-user"></i> Register
                                 </button>
                             </div>

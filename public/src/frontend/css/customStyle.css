@@ -1,0 +1,50 @@
+body{
+  background-color: rgba(236, 233, 233, 0.68);
+}
+/*start login And Register*/
+.loginText{
+  margin-bottom: -35%;
+  padding: 20px 20px 35px;
+  font-size: 100px;
+  color: #fff;
+  background: #337ab7;
+  border-radius: 24px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.container .row .login {
+  margin-top: 30%;
+}
+.registerText{
+  margin-bottom: -35%;
+  padding: 20px 20px 35px;
+  font-size: 100px;
+  color: #fff;
+  background: #52cc52;
+  border-radius: 24px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.Text{
+  margin-bottom: -35%;
+  padding: 20px 20px 35px;
+  font-size: 100px;
+  color: #fff;
+  background: #ccc;
+  border-radius: 24px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.Text a {
+  text-decoration: none;
+  color: #fff;
+}
+.container .row .register {
+  margin-top: 30%;
+}
+
+.panel-success .panel-heading{
+  background: #52cc52;
+  color: #fff;
+}
+/*end login And Register*/
