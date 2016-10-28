@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.welcomeMaster')
 @section('content')
 <div class="level level-hero hero-home has-hint">
 
@@ -8,7 +8,6 @@
 	<video loop id=bg-video class=fullscreen-video>
 		<source src="http://alvarez.is/bt/appi.webm" type="video/webm">
 		<source src="http://alvarez.is/bt/appi.mp4" type="video/mp4">
-
 	</video>
 
 	<div class="container full-height">
@@ -54,11 +53,7 @@
 			</div>
 		</div>
 	</div>
-
-	<img src="img/v2/iphone6.min.png" alt class="mb-80 hidden-xs iphone-inline">
-
-
-
+	{!! Html::image('src/frontend/welcomeFiles/img/v2/iphone6.min.png') !!}
 	<div class=container>
 		<div class="row mb-90 xs-mb-0">
 
@@ -105,7 +100,7 @@
 <div class="level level-img-right">
 
 	<div class="container xs-mb-30">
-		<img class=img-right-sprite src="img/v2/iphone-bg-lg.min.png" alt>
+		{!! Html::image('src/frontend/welcomeFiles/img/v2/iphone-bg-lg.min.png') !!}
 		<div class="row mb-60 xs-mb-20">
 			<div class="col-sm-6 col-lg-offset-1 col-lg-5">
 				<h1 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent">Details</h1>
@@ -115,7 +110,7 @@
 		</div>
 
 	<div class="visible-xs xs-mw xs-mb-40">
-		<img src="img/v2/iphone-mobile.min.png" alt>
+		{!! Html::image('src/frontend/welcomeFiles/img/v2/iphone6.min.png') !!}
 	</div>
 
 		<div class="row mb-60 xs-mb-20">
