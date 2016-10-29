@@ -53,11 +53,13 @@ Route::group(['middleWare' => 'users'] , function () {
                'as' => 'teamworks'
           ]);
 
-          // teamworks add
-          // Route::get('/teamworks/view/create', [
-          //      'uses' => 'HomeController@getNewMember',
-          //      'as' => 'create.member'
+          // #datatable ajax
+          //
+          // Route::get('/teamworks/view/members', [
+          //      'uses' => 'HomeController@getTeamWorkData',
+          //      'as' => 'teamworks.data'
           // ]);
+          //
 
           // teamworks add
           Route::post('/teamworks/view/store', [
@@ -65,6 +67,23 @@ Route::group(['middleWare' => 'users'] , function () {
                'as' => 'create.member'
           ]);
 
+          // teamworks edit
+          Route::post('/teamworks/view/update', [
+               'uses' => 'HomeController@editMember',
+               'as' => 'edit.member'
+          ]);
+
+          // teamworks delete
+          Route::get('/teamworks/view/delete/', [
+               'uses' => 'HomeController@getTeamWorkDelete',
+               'as' => 'delete.member'
+          ]);
+
+          // projects view
+          Route::get('/projects/view/', [
+               'uses' => 'HomeController@getProjects',
+               'as' => 'projects'
+          ]);
 
      });
 });

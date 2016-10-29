@@ -39,15 +39,15 @@
 
           <ul class="nav">
                <li {{ Request::is('users/dashboard') ? 'class=active' : '' }}>
-                    <a href="">
+                    <a href="{{ route('user.dashboard') }}">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                </li>
                <li {{ Request::is('users/create/project') ? 'class=active' : '' }}>
-                    <a href="">
+                    <a href="#">
                         <i class="ti-plus"></i>
-                        <p>Create BMC Project</p>
+                        <p>Create Project</p>
                     </a>
                </li>
                <li {{ Request::is('users/teamworks*') ? 'class=active' : '' }}>
@@ -57,8 +57,8 @@
                     </a>
            	</li>
                <li {{ Request::is('users/projects*') ? 'class=active' : '' }}>
-                    <a href="">
-                        <i class="ti-eye"></i>
+                    <a href="{{ route('projects') }}">
+                        <i class="fa fa-tasks"></i>
                         <p>View Projects</p>
                     </a>
            	</li>

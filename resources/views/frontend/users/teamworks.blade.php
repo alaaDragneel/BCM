@@ -6,50 +6,52 @@
 
 @section('styles')
 	{!! Html::style('src/frontend/usersFiles/css/teamwork.css') !!}
+	{!! Html::style('https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css') !!}
 @endsection
 
 @section('content')
 	    <!-- Content -->
-	<div class="content">
+	<div class="content" style="overflow: hidden">
 		<div class="info"></div>
-		<div class="panel panel-default">
+		<div class="panel panel-default" style="overflow:scroll">
 		  <div class="panel-heading">
 		    <h3 class="panel-title pull-left">TeamWorks</h3>
 		    <span class="btn btn-info pull-right" id="addMember">Add Member</span>
 		    <div class="clearfix"></div>
 		  </div>
 		  <div class="panel-body">
-			  <table id="myTableData" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-      				<thead>
-      					<tr role="row">
+			  <table id="myTableData" class="table table-responsive table-bordered table-striped">
+      		<thead>
+      			<tr role="row">
 							<th>#ID</th>
-							<th >Name</th>
+							<th > Name</th>
 							<th >Email</th>
-							<th >User Type</th>
+							<th > phoneNo</th>
+							<th >job</th>
+							<th >image</th>
 							<th >Created At</th>
-							<th >Actions</th>
+							<th > Actions</th>
 						</tr>
-      				</thead>
-	                   <tbody>
-					    <tr role="row">
-						    <td>#1</td>
-						    <td>alaa</td>
-						    <td>test</td>
-						    <td>test</td>
-						    <td>Created At</td>
-						    <td>Actions</td>
-					    </tr>
+      		</thead>
+	            <tbody>
+								@foreach ($members as $member)
+									<tr role="row">
+										<td data-id="{{ $member->id }}">{{ $member->id }}</td>
+										<td data-name="{{ $member->name }}">{{ $member->name }}</td>
+										<td data-email="{{ $member->email }}">{{ $member->email }}</td>
+										<td data-phoneNo="{{ $member->phoneNo }}">{{ $member->phoneNo }}</td>
+										<td data-job="{{ $member->job }}">{{ $member->job }}</td>
+										<td>{!! Html::image($member->image) !!}</td>
+										<td>{{ $member->created_at->format('Y.m.d') }}</td>
+										<td>
+											<span class="btn btn-info btn-block editTeam"><i class="fa fa-edit"></i>Edit</span>
+											<span class="btn btn-danger btn-block deleteMember"><i class="fa fa-close"></i>delete</span>
+										</td>
+									</tr>
+								@endforeach
 					    {{-- dataTable --}}
 			    		</tbody>
-					<tfoot>
-      					<tr role="row">
-							<th>#ID</th>
-							<th >Name</th>
-							<th >Email</th>
-							<th >User Type</th>
-							<th colspan="2">More Information</th>
-						</tr>
-      				</tfoot>
+
     			</table>
 		  </div>
 		</div>
@@ -57,9 +59,39 @@
 @endsection
 @include('frontend.includes.teamWorksModels')
 @section('scripts')
-	<script>
-		var url = '{{ route('create.member') }}';
-		var token = '{{ Session::token() }}'
-	</script>
 	{!! Html::script('src/frontend/usersFiles/js/teamwork.js') !!}
+	{!! Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js') !!}
+	<script>
+	var url = '{{ route('create.member') }}';
+	var editUrl = '{{route('edit.member')}}';
+	var deleteUrl = '{{route('delete.member')}}';
+	var token = '{{ Session::token() }}';
+
+	//  var lastIdx = null;
+	//
+	// $('#myTableData tfoot th').each( function () {
+	// 	var classname = 'form-control'
+	//  if($(this).index()  < 6 ){
+	// 	var title = $(this).html();
+	// 	$(this).html( '<input type="text" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" search by '+title+'" />');
+	// }
+	// });
+	// var tableUrl = '{{-- route('teamworks.data') --}}';
+	// var table = $('#myTableData').DataTable({
+	//  processing: true,
+	//  serverSide: true,
+	//  ajax: tableUrl,
+	//  columns: [
+	// 	{data: 'id', name: 'id'},
+	// 	{data: 'name', name: 'name'},
+	// 	{data: 'email', name: 'email'},
+	// 	{data: 'phoneNo', name: 'phoneNo'},
+	// 	{data: 'image', name: ''},
+	// 	{data: 'created_at', name: ''},
+	// 	{data: 'actions', name: ''},
+	//
+	//  ],
+	//  	});
+
+	</script>
 @endsection
