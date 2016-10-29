@@ -36,6 +36,11 @@ class Kernel extends HttpKernel
              \App\Http\Middleware\AdminCheck::class,
         ],
 
+        'users' => [
+             \App\Http\Middleware\Authenticate::class,
+             \App\Http\Middleware\UsersCheck::class,
+        ],
+
         'api' => [
             'throttle:60,1',
         ],

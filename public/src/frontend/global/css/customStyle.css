@@ -48,3 +48,6 @@ body{
   color: #fff;
 }
 /*end login And Register*/
+.logsHead {
+     margin-left: -95px;
+}

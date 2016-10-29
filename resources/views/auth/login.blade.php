@@ -1,13 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('styles')
-{!! Html::style('src/frontend/css/customStyle.css') !!}
+{!! Html::style('src/frontend/global/css/customStyle.css') !!}
 @endsection
 
 @section('content')
   <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <div class="row">
+        <div class="row logsHead">
           <div class="col-md-6">
             <div class="badge loginText">LogIn</div>
           </div>

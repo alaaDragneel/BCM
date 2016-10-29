@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2016 at 06:58 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Oct 29, 2016 at 12:58 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -140,11 +140,21 @@ CREATE TABLE `teamworks` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phoneNo` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `job` varchar(255) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teamworks`
+--
+
+INSERT INTO `teamworks` (`id`, `name`, `email`, `password`, `phoneNo`, `image`, `job`, `user_id`, `created_at`, `updated_at`) VALUES
+(10, 'slss', 'alaa_dragneel@yahoo.com', '$2y$10$6k0PHD9J1SzC4Zn.B9ZkCeZFDGAxPuWxNXl3qZOcOCBv3TMNHegp6', '030303', 'src/frontend/global/img/avatar5.png', '', 2, '2016-10-28 20:28:32', '2016-10-28 20:28:32'),
+(11, 'MobileApplication', 'aaa@xxx.com', '$2y$10$2bbffmNAYEryZfOtUJHL6.Vf8V5/8hKlJaNy.rbt32AEOK8aIktxi', '02020', 'src/frontend/global/img/avatar5.png', 'super', 2, '2016-10-28 20:35:04', '2016-10-28 20:35:04'),
+(12, 'mohamed', 'aa@yahoo.com', '$2y$10$eQgVi4cJzqydqlVgaWbEd.UXNI22fWvGdTvJnrfNvTtfmW1Cledo6', '0202120', 'src/frontend/global/img/avatar5.png', 'sexy', 2, '2016-10-28 20:40:21', '2016-10-28 20:40:21');
 
 -- --------------------------------------------------------
 
@@ -174,10 +184,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phoneNo`, `image`, `job`, `description`, `address`, `companyStartFrom`, `userType`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'alaaDragneel', 'alaa_dragneel@yahoo.com', '01096901954', 'src/backend/dist/img/avatar5.png', 'Web Developer', '', '', '', 1, '$2y$10$XzNqmjTpVcAI3CFRMWqQvuKwT2H7cdZNgykSWymfIrm.cvaoPhTs6', 'ZSB38Riw5NtkNcxtBupdMRwMGZwO2uhUhQ9OiHMLhU27Y964xSVyLoM7oe71', '2016-10-27 12:03:53', '2016-10-27 14:23:20'),
-(2, 'alaa', 'moaalaa16@gmail.com', '0101100101', 'src/backend/dist/img/avatar5.png', '', '', '', '', 3, '$2y$10$EMXF8UBZgBLOwL3f9Ezq4eCWSvu0A5U3aDHySJz9/W1gTaZEarA3K', 'AAZKurgHzPgag6bq4xYMLmsPHNh22kVcOXMyQqWijqGFAfhcYema3Q31rCGM', '2016-10-27 12:36:38', '2016-10-27 12:37:05'),
-(3, 'sasuke', 'sasuke@yahoo.com', '0101010', 'src/backend/dist/img/avatar5.png', '', '', '', '', 2, '$2y$10$6oFH55VsuKhPoC4kFdxCf.AZn95EEP5l29ra3n0eQx6wNpZKtEOOG', '6ZELmu3aO8Bo8exvUw5LrpcdAo85PaHhN7R2vuETG1hzjV3Dvgra1yyAxLHb', '2016-10-27 13:49:10', '2016-10-27 14:26:14'),
-(4, 'moaalaa', 'moaalaa16@yahoo.com', '010100101', 'src/backend/dist/img/avatar5.png', '', '', '', '', 3, '$2y$10$u3uc0Cj7ozGYxWFHIkze2.6.PNdedW62G59GoL65KaTvmbS0mw4V.', 'qvIXrb9Zf94LNiCTnCOGE1l9cVDs8Y38MWXxInJtMgPkUhYD2teF4HokzOKw', '2016-10-27 13:49:30', '2016-10-27 14:17:03');
+(1, 'alaaDragneel', 'alaa_dragneel@yahoo.com', '01096901954', 'src/backend/dist/img/avatar5.png', 'web develpment', '', '', '', 1, '$2y$10$GVaH3AsgVpIY3nVLwvswEOiCVA9l7bwnEw2tCtwbt6oDmiBApG/Mu', 'ban7KfMbA1YieEerprchUvHrC0FH4ukLCiafQ7K7YsaLIBdY9MD7o5SECMdV', '2016-10-28 17:14:19', '2016-10-28 17:25:38'),
+(2, 'sasuke_alaa', 'sasuke_alaa@yahoo.com', '01196901954', 'src/backend/dist/img/avatar5.png', 'Web Design', '', '', '', 2, '$2y$10$KaEUUOdm8FcI8Z.FTG8HfewAOLAIaanqIpZbJydP/.j7GwXZHD5tG', 'bgR1RQRXANDoGzz45S2p7VVPhlOoVdfgzXvJNVxAIzMTc7HN9AU7sNiVLKys', '2016-10-28 17:14:19', '2016-10-28 17:29:44'),
+(3, 'moaalaa', 'moaalaa@yahoo.com', '01296901954', 'src/backend/dist/img/avatar5.png', 'SEO', '', '', '', 3, '$2y$10$w9o2zB1t7Ti8ITXDZnB2DusdcJXCC9VTXh4T61O3oyvwFp1de5y1a', NULL, '2016-10-28 17:14:20', '2016-10-28 17:14:20');
 
 --
 -- Indexes for dumped tables
@@ -260,12 +269,12 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `teamworks`
 --
 ALTER TABLE `teamworks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

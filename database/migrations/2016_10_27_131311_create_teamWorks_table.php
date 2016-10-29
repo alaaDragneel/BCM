@@ -18,6 +18,7 @@ class CreateTeamWorksTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phoneNo');
+            $table->string('image');
             $table->string('job');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

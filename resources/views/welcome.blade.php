@@ -21,10 +21,12 @@
 				</div>
 				<div>
 					@if (Auth::check())
+						<a class="btn btn-prepend" href="{{ route('user.dashboard') }}">
+							<i class="prepended icon-append-iphone"></i>Dashboard
+						</a>
 						<a class="btn btn-prepend" href="{{url('/logout')}}">
 							<i class="prepended icon-append-iphone"></i>logOut
 						</a>
-
 					@else
 						<a class="btn btn-prepend btn-launch-video" href="{{url('/register')}}">
 							<i class="prepended icon-append-play"></i>Join Us
