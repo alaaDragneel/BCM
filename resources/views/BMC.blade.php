@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('frontend.layouts.master')
 @section('content')
 
       <h1>BMC</h1>
@@ -13,7 +13,7 @@
                  data-placement="right"
                  rel="popover">Key Partners ?</h4>
                  <div class="clearfix"></div>
-               @include('includes.proSearch.searchForm')
+               @include('frontend.includes.proSearch.searchForm')
                <div id="Partner" class="companies">
 
                </div>
@@ -58,7 +58,7 @@
               data-original-title="More details"
               data-content="this is the Customer Segments write the Customer Segments of your Project"
               data-placement="bottom"
-              rel="popover" >Customer Segments <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addSegmentsModal"></i></h4>
+                rel="popover" >Customer Segments <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addSegmentsModal"></i></h4>
               <div class="clearfix"></div>
               <div id="Segments" class="companies"></div>
           </td>
@@ -114,5 +114,5 @@
         </tr>
       </table>
       <!-- /Canvas -->
-      @include('includes.modals')
+      @include('frontend.includes.modals')
 @endsection

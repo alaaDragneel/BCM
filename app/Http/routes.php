@@ -96,7 +96,6 @@ Route::group(['middleWare' => 'users'] , function () {
 ** start BMC Routes
 /**********************************************************************************************************/
 
-
 // search
 Route::get('/getresults', [
     'uses'  =>  'ProSearchController@getAjaxResults',

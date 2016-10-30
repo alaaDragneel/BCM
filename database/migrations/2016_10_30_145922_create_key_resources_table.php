@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBMCSTable extends Migration
+class CreateKeyResourcesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateBMCSTable extends Migration
      */
     public function up()
     {
-        Schema::create('BMCS', function (Blueprint $table) {
+        Schema::create('key_resources', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('kr_title');
+            $table->text('kr_desc');
+            $table->integer('BMC_id')->unsigned();
+            $table->foreign('BMC_id')->references('id')->on('BMCS')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateBMCSTable extends Migration
      */
     public function down()
     {
-        Schema::drop('BMCS');
+        Schema::drop('key_resources');
     }
 }
