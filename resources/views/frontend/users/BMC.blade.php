@@ -1,9 +1,18 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.userMaster')
+@section('styles')
+  {!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
+  {!! Html::style('src/frontend/global/css/canvas.css') !!}
+@endsection
 @section('content')
-
+  <div class="content">
+    <div class="container-fluid">
+      <div class="alert alert-success" id="success"></div>
+      <div class="alert alert-info" id="successDelete"></div>
       <h1>BMC</h1>
       <!-- Canvas -->
-      <table id="bizcanvas" class="table table-responsive table-bordered">
+      @foreach ($canvas as $can)
+        <table id="bizcanvas" class="table table-responsive table-bordered" data-id="{{ $can->id }}">
+      @endforeach
         <tr>
           <td colspan="2" rowspan="2">
                <h4
@@ -15,9 +24,14 @@
                  <div class="clearfix"></div>
                @include('frontend.includes.proSearch.searchForm')
                <div id="Partner" class="companies">
+                  <div class="callout callout-info">
+                    <h4>I am an info callout!</h4>
 
+                    <p>Follow the steps to continue to payment.</p>
+                  </div>
                </div>
           </td>
+          {{--  --}}
           <td colspan="2" id="keyActivities">
                <h4 class="Info"
                  data-original-title="More details"
@@ -28,9 +42,19 @@
                </h4>
                <div class="clearfix"></div>
                <div class="activities">
-
+                 @if ($KA && count($KA) > 0)
+                   @foreach ($KA as $ka)
+                     <div class="callout callout-info" data-ka="{{ $ka->id }}">
+                       <span class="pull-right deleteKA"><i class="fa fa-close"></i></span>
+                       <div class="clearfix"></div>
+                       <h4>{{ $ka->ka_title }}</h4>
+                       <p>{{ $ka->ka_desc }}</p>
+                     </div>
+                   @endforeach
+                 @endif
                </div>
           </td>
+          {{--  --}}
           <td colspan="2" rowspan="2">
             <h4 class="Info"
               data-original-title="More details"
@@ -38,9 +62,7 @@
               data-placement="right"
               rel="popover" >Value Proposition <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addValueModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="Values">
-
-            </div>
+            <div id="Values"></div>
           </td>
           <td colspan="2">
             <h4 class="Info"
@@ -49,9 +71,7 @@
               data-placement="right"
               rel="popover" >Customer Relationship <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRelationModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="relations">
-
-            </div>
+            <div id="relations"></div>
           </td>
           <td colspan="2" rowspan="2">
             <h4 class="Info"
@@ -107,12 +127,25 @@
               data-placement="right"
               rel="popover" >Revenue Streams <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRevModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="revs">
-
-            </div>
+            <div id="revs"></div>
           </td>
         </tr>
       </table>
       <!-- /Canvas -->
-      @include('frontend.includes.modals')
+    </div>
+  </div>
+  <script>
+  var url = '{{ route('results') }}';
+  var urlBtn = '{{ route('request') }}';
+  var urlCustomer = '{{ route('Companies') }}';
+  var KAurl = '{{ route('KA.store') }}';
+  var KAurlDelete = '{{ route('KA.delete') }}';
+  var token = '{{ csrf_token() }}';
+  </script>
+@endsection
+@include('frontend.includes.modals')
+@section('scripts')
+  <script src="{{asset('src/frontend/global/js/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/canvas.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/AjaxSearch.js')}}"></script>
 @endsection

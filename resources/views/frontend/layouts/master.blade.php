@@ -7,6 +7,7 @@
     {!! Html::style('src/frontend/global/css/bootstrap.min.css') !!}
     {!! Html::style('src/frontend/global/css/bootstrap-responsive.css') !!}
     {!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
+    {!! Html::style('src/frontend/global/css/canvas.css') !!}
     {{-- mainStyle --}}
     @yield('styles')
     <meta name="description" content="Business Model Canvas Template">

@@ -18,6 +18,8 @@ class CreateKeyActivityTable extends Migration
             $table->string('ka_memper');
             $table->string('ka_job');
             $table->text('ka_desc');
+            $table->integer('BMC_id')->unsigned();
+            $table->foreign('BMC_id')->references('id')->on('BMCS')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

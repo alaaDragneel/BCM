@@ -5,17 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use Datatables;
-
 use Html;
 
 use App\TeamWork;
 
 use App\BMC;
-
-use Illuminate\Validation\Rule;
-
-use Validator;
 
 class HomeController extends Controller
 {
@@ -155,5 +149,30 @@ class HomeController extends Controller
     public function getCreateInfoProjects()
     {
       return view('frontend.users.projectInfo');
+    }
+
+    /**
+     * store canvas .
+     **/
+    public function postCanvasStore(Request $request)
+    {
+      $this->validate($request, [
+        'name' => 'required|min:4|max:255',
+        'description' => 'required|min:4|max:500',
+      ]);
+      $success = '';
+      $fail = '';
+      $userId = \Auth::user()->id;
+      $canvas = new BMC();
+      $canvas->name = $request->name;
+      $canvas->description = $request->description;
+      $canvas->user_id = $userId;
+      $saveCanvas = $canvas->save();
+      if($saveCanvas){
+        $success= 'the canvas created Successfully Do Greate Job ;)';
+        return redirect()->route('projects')->with(['success' => $success]);
+      }
+      $fail = 'there are some Errors the canvas Didn\'t created Successfully';
+        return redirect()->route('user.dashboard')->with(['fail' => $fail]);
     }
 }

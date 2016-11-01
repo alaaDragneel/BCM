@@ -78,6 +78,27 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                'uses' => 'HomeController@getTeamWorkDelete',
                'as' => 'delete.member'
           ]);
+/**********************************************************************************************************
+** start BMC Routes
+/**********************************************************************************************************/
+
+          // search
+          Route::get('/getresults', [
+              'uses'  =>  'ProSearchController@getAjaxResults',
+              'as'    =>  'results'
+          ]);
+
+          // searchBtn
+          Route::get('/getrequest', [
+              'uses'  =>  'ProSearchController@getAjaxBtnResults',
+              'as'    =>  'request'
+          ]);
+
+          // searchCompaniesCountry
+          Route::get('/getCompanies', [
+              'uses'  =>  'ProSearchController@getAjaxCompanies',
+              'as'    =>  'Companies'
+          ]);
 
           // projects view
           Route::get('/projects/view/', [
@@ -86,44 +107,46 @@ Route::group(['middleware' => 'usersCompany'] , function () {
           ]);
 
           // create projects view
-          Route::get('/create/project', [
+          Route::get('/canvas/create', [
                'uses' => 'HomeController@getCreateProjects',
                'as' => 'create.projects'
              ]);
+
           // create projects info view
-          Route::get('/create/projectInfo', [
+          Route::get('/canvas/create/mainInfo', [
                'uses' => 'HomeController@getCreateInfoProjects',
                'as' => 'createInfo.projects'
              ]);
+
+          // store canvas
+          Route::post('/canvas/store', [
+               'uses' => 'HomeController@postCanvasStore',
+               'as' => 'store.canvas'
+             ]);
+
+          // get canvas
+          Route::get('/canvas/view/{canvas_id}', [
+               'uses' => 'bmcCanvasController@getCanvas',
+               'as' => 'view.canvas'
+             ]);
+
+          // store KA canvas
+            Route::post('/canvas/view/KA/store', [
+               'uses' => 'bmcCanvasController@postKA',
+               'as' => 'KA.store'
+             ]);
+          // delete KA canvas
+            Route::get('/canvas/view/KA/delete', [
+               'uses' => 'bmcCanvasController@getDeleteKA',
+               'as' => 'KA.delete'
+             ]);
+/**********************************************************************************************************
+** end BMC Routes
+/**********************************************************************************************************/
+
      });
 });
 
 /**********************************************************************************************************
 ** end users Routes
-/**********************************************************************************************************/
-
-/**********************************************************************************************************
-** start BMC Routes
-/**********************************************************************************************************/
-
-// search
-Route::get('/getresults', [
-    'uses'  =>  'ProSearchController@getAjaxResults',
-    'as'    =>  'results'
-]);
-
-// searchBtn
-Route::get('/getrequest', [
-    'uses'  =>  'ProSearchController@getAjaxBtnResults',
-    'as'    =>  'request'
-]);
-
-// searchCompaniesCountry
-Route::get('/getCompanies', [
-    'uses'  =>  'ProSearchController@getAjaxCompanies',
-    'as'    =>  'Companies'
-]);
-
-/**********************************************************************************************************
-** end BMC Routes
 /**********************************************************************************************************/

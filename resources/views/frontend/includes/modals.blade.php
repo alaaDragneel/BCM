@@ -10,13 +10,14 @@
 		  {{-- stat key activity Title --}}
 	    <div class="form-group">
 	      <label for="keyActivityTitle">Title</label>
-	      <input type="text" class="form-control" id="keyActivityTitle" placeholder="wirte the key activity title">
+	      <input type="text" class="form-control border-input" id="keyActivityTitle" placeholder="wirte the key activity title">
 	    </div>
 	    {{-- end key activity name --}}
+      
 	    {{-- stat key activity content --}}
 	 <div class="form-group" id="content">
 	   <label for="keyActivityContent">Description</label>
-	   <textarea class="form-control" id="keyActivityContent" placeholder="wirte the key activity description" rows="5"></textarea>
+	   <textarea class="form-control  border-input" id="keyActivityContent" placeholder="wirte the key activity description" rows="5"></textarea>
 	 </div>
 	 {{-- end key activity content --}}
 	  </div>
@@ -41,13 +42,13 @@
  		  {{-- stat key activity Title --}}
  	    <div class="form-group">
  	      <label for="valueTitle">Title</label>
- 	      <input type="text" class="form-control" id="valueTitle" placeholder="wirte the value title">
+ 	      <input type="text" class="form-control  border-input" id="valueTitle" placeholder="wirte the value title">
  	    </div>
  	    {{-- end key activity name --}}
  	    {{-- stat key activity content --}}
  	 <div class="form-group" id="contentValue">
  	   <label for="valueContent">Description</label>
- 	   <textarea class="form-control" id="valueContent" placeholder="wirte the value description" rows="5"></textarea>
+ 	   <textarea class="form-control  border-input" id="valueContent" placeholder="wirte the value description" rows="5"></textarea>
  	 </div>
  	 {{-- end key activity content --}}
  	  </div>
@@ -139,13 +140,13 @@
   		  {{-- stat key activity Title --}}
   	    <div class="form-group">
   	      <label for="relationTitle">Title</label>
-  	      <input type="text" class="form-control" id="relationTitle" placeholder="wirte the relation title">
+  	      <input type="text" class="form-control  border-input" id="relationTitle" placeholder="wirte the relation title">
   	    </div>
   	    {{-- end key activity name --}}
   	    {{-- stat key activity content --}}
   	 <div class="form-group" id="contentRelation">
   	   <label for="relationContent">Description</label>
-  	   <textarea class="form-control" id="relationContent" placeholder="wirte the relation description" rows="5"></textarea>
+  	   <textarea class="form-control  border-input" id="relationContent" placeholder="wirte the relation description" rows="5"></textarea>
   	 </div>
   	 {{-- end key activity content --}}
   	  </div>
@@ -171,14 +172,14 @@
    		  {{-- stat key activity Title --}}
    	    <div class="form-group">
    	      <label for="resourceTitle">Title</label>
-   	      <input type="text" class="form-control" id="resourceTitle" placeholder="wirte the Key Resource title">
+   	      <input type="text" class="form-control  border-input" id="resourceTitle" placeholder="wirte the Key Resource title">
    	    </div>
    	    {{-- end key activity name --}}
 
    	    {{-- stat key activity content --}}
    	 <div class="form-group" id="contentResource">
    	   <label for="resourceContent">Description</label>
-   	   <textarea class="form-control" id="resourceContent" placeholder="wirte the Key Resource description" rows="5"></textarea>
+   	   <textarea class="form-control  border-input" id="resourceContent" placeholder="wirte the Key Resource description" rows="5"></textarea>
    	 </div>
    	 {{-- end key activity content --}}
    	  </div>
@@ -203,14 +204,14 @@
      		  {{-- stat key activity Title --}}
      	    <div class="form-group">
      	      <label for="chaneelTitle">Title</label>
-     	      <input type="text" class="form-control" id="chaneelTitle" placeholder="wirte the chaneel title">
+     	      <input type="text" class="form-control  border-input" id="chaneelTitle" placeholder="wirte the chaneel title">
      	    </div>
      	    {{-- end key activity name --}}
 
      	    {{-- stat key activity content --}}
      	 <div class="form-group" id="contentChaneel">
      	   <label for="chaneelContent">Description</label>
-     	   <textarea class="form-control" id="chaneelContent" placeholder="wirte the Chaneel description" rows="5"></textarea>
+     	   <textarea class="form-control  border-input" id="chaneelContent" placeholder="wirte the Chaneel description" rows="5"></textarea>
      	 </div>
      	 {{-- end key activity content --}}
      	  </div>
@@ -235,14 +236,14 @@
        		  {{-- stat key activity Title --}}
        	    <div class="form-group">
        	      <label for="costTitle">Cost</label>
-       	      <input type="text" class="form-control" id="costTitle" placeholder="wirte the cost title">
+       	      <input type="text" class="form-control  border-input" id="costTitle" placeholder="wirte the cost title">
        	    </div>
        	    {{-- end key activity name --}}
 
        	    {{-- stat key activity content --}}
        	 <div class="form-group" id="contentCost">
        	   <label for="costContent">Description</label>
-       	   <textarea class="form-control" id="costContent" placeholder="wirte the cost description" rows="5"></textarea>
+       	   <textarea class="form-control  border-input" id="costContent" placeholder="wirte the cost description" rows="5"></textarea>
        	 </div>
        	 {{-- end key activity content --}}
        	  </div>
@@ -267,14 +268,14 @@
       		  {{-- stat key activity Title --}}
       	    <div class="form-group">
       	      <label for="revTitle">Revenue </label>
-      	      <input type="text" class="form-control" id="revTitle" placeholder="wirte Revenue ">
+      	      <input type="text" class="form-control  border-input" id="revTitle" placeholder="wirte Revenue ">
       	    </div>
       	    {{-- end key activity name --}}
 
       	    {{-- stat key activity content --}}
       	 <div class="form-group" id="contentRev">
       	   <label for="revContent">Description</label>
-      	   <textarea class="form-control" id="revContent" placeholder="wirte the description" rows="5"></textarea>
+      	   <textarea class="form-control  border-input" id="revContent" placeholder="wirte the description" rows="5"></textarea>
       	 </div>
       	 {{-- end key activity content --}}
       	  </div>

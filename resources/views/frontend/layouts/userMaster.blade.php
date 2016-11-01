@@ -56,7 +56,7 @@
                         <p>View Projects</p>
                     </a>
            		</li>
-							<li {{ Request::is('users/create/project') ? 'class=active' : '' }}>
+							<li {{ Request::is('users/canvas*') ? 'class=active' : '' }}>
 								<a href="{{ route('create.projects') }}">
 									<i class="ti-plus"></i>
 									<p>Create Project</p>

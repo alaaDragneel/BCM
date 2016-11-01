@@ -12,84 +12,48 @@ $(document).ready(function() {
      mousescrollstep:"30",
    });
 
+
   /*start run key activity modal*/
   $('#saveKeyActivity').on('click', function () {
-       var keyActivity;
-       var title = $(this).parents().siblings('.modal-body').children().children().siblings('#keyActivityTitle');
-       var description = $(this).parents().siblings('.modal-body').children('#content').children().siblings('#keyActivityContent');
-       /*
-       keyInfo
-       keyTitle
-       keyDesc
-       */
-     $('.activities').css('display', 'block');
-       if($('.activities').children().length == 0){
-               keyActivity = '<div class="keyInfo">';
-                    keyActivity += '<div class="keyTitle">';
-                         keyActivity += '<h6 class="pull-left">'+ title.val() +'</h6>';
-                         keyActivity += '<span class="pull-right"><i class="fa fa-close deleteKeyActivity"></i></span>';
-                         keyActivity += '<span class="pull-right"><i class="fa fa-edit editKeyActivity"></i></span>';
-                         keyActivity += '<input type="text" class="editKey  form-control"> ';
-                         keyActivity += '<div class="clearfix"></div>';
-                    keyActivity += '</div>';
-                    keyActivity += ' <div class="keyDesc">';
-                         keyActivity += '<p>'+ description.val() +'</p>';
-                         keyActivity += '<textarea type="text" class="editKeyDesc  form-control"></textarea>';
-                    keyActivity += '</div>';
-               keyActivity += '</div>';
-            $('.activities').html(keyActivity);
-            title.val('');
-            description.val('');
-            $('#addActivityModal').modal('hide');
-       } else {
-            keyActivity = '<div class="keyInfo">';
-                keyActivity += '<div class="keyTitle">';
-                     keyActivity += '<h6 class="pull-left">'+ title.val() +'</h6>';
-                     keyActivity += '<span class="pull-right"><i class="fa fa-close deleteKeyActivity"></i></span>';
-                     keyActivity += '<span class="pull-right"><i class="fa fa-edit editKeyActivity"></i></span>';
-                     keyActivity += '<input type="text" class="editKey form-control"> ';
-                     keyActivity += '<div class="clearfix"></div>';
-                keyActivity += '</div>';
-                keyActivity += ' <div class="keyDesc">';
-                     keyActivity += '<p>'+ description.val() +'</p>';
-                     keyActivity += '<textarea type="text" class="editKeyDesc  form-control"></textarea>';
-                keyActivity += '</div>';
-           keyActivity += '</div>';
-        $('.activities').append(keyActivity);
-        title.val('');
-        description.val('');
-        $('#addActivityModal').modal('hide');
-       }
-       // delete part
-       $('.deleteKeyActivity').on('click', function () {
-            $(this).parents('.keyInfo').remove();
-       });
-       // edit part
-       $('.editKeyActivity').on('click', function () {
-            var titleEdit = $(this).parents().siblings('h6');
-            var descEdit = $(this).parents().parents().children('.keyDesc').children('p');
-              titleEditText = titleEdit.text();
-              descEditText = descEdit.text();
-            $(this).parents().siblings('input').val(titleEditText);
-            $(this).parents().children('.keyDesc').children('textarea').val(descEditText);
-            $(this).after("<button type='button' class='save btn btn-sm btn-primary'>save</button>");
-            $(this).parents().siblings('input').fadeIn();
-            $(this).parents().children('.keyDesc').children('textarea').fadeIn();
-            $(this).remove();
-            //update part
-            $('.save').on('click', function() {
-                 titleUpdateVal = $(this).parents().siblings('input').val();
-                 descUpdateVal = $(this).parents().children('.keyDesc').children('textarea').val();
-                 $(this).parents().siblings('h6').text(titleUpdateVal);
-                 $(this).parents().parents().children('.keyDesc').children('p').text(descUpdateVal);
-                 $(this).before('<span class="pull-right"><i class="fa fa-edit editKeyActivity"></i></span>');
+      var keyActivity;
+      var id = $('#bizcanvas').data('id');
+      var title = $(this).parents().siblings('.modal-body').children().children().siblings('#keyActivityTitle');
+      var description = $(this).parents().siblings('.modal-body').children('#content').children().siblings('#keyActivityContent');
+      $.ajax({
+        method:'post',
+        url: KAurl,
+        data:{id: id, title: title.val(), description: description.val(), _token: token},
+        success: function(msg){
+          $('#success').slideDown(300);
+          $('#success').append(msg['success']);
+          $('#success').delay(2500).slideUp();
+          $('.activities').slideDown(600);
+          $('.activities').append(msg['outPut']);
+          $('#addActivityModal').modal('hide');
+          $('.deleteKA').on('click', function() {
+            var keyActivityIdDelete = $(this).parents().data('ka');
+          });
+        },
+      });
+ });
 
-                 $(this).parents().siblings('input').fadeOut();
-                 $(this).parents().children('.keyDesc').children('textarea').fadeOut();
-                 $(this).remove();
-            });
+ $('.deleteKA').on('click', function() {
+   var keyActivityIdDelete = $(this).parents().data('ka');
 
-       });
+  //  console.log(keyActivityIdDelete);
+   $.ajax({
+     method:'get',
+     url: KAurlDelete,
+     data:{id: keyActivityIdDelete, _token: token},
+     success: function(msg){
+       $('#successDelete').slideDown(300);
+       $('#successDelete').append(msg['successDelete']);
+       $('#successDelete').delay(2000).slideUp();
+       setTimeout(function(){
+         location.reload()
+       }, 2500);
+     },
+   });
  });
 
  /*start run value modal*/////////////////////////////////////////////////////////////////////////////////////////////////

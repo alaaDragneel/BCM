@@ -7,6 +7,9 @@
             <div class="card">
                 <div class="content">
                     <div class="row">
+                      @if (Session::has('fail'))
+                        <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                      @endif
                         <div class="col-xs-5">
                             <div class="icon-big icon-warning text-center">
                                 <i class="ti-server"></i>
