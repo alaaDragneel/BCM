@@ -32,6 +32,6 @@ class CreateKeyPartenerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('key_partener');
+        Schema::drop('key_parteners');
     }
 }

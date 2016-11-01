@@ -3290,3 +3290,7 @@ textarea.form-control {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+.projectCard {
+  background-color: #fff !important;
+}

@@ -36,9 +36,9 @@ class Kernel extends HttpKernel
              \App\Http\Middleware\AdminCheck::class,
         ],
 
-        'users' => [
+        'usersCompany' => [
              \App\Http\Middleware\Authenticate::class,
-             \App\Http\Middleware\UsersCheck::class,
+             \App\Http\Middleware\UsersCompanyCheck::class,
         ],
 
         'api' => [

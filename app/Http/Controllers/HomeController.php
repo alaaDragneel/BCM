@@ -140,4 +140,20 @@ class HomeController extends Controller
       $projects = BMC::where('user_id', $AuthUser)->orderBy('id', 'DESC')->get();
       return view('frontend.users.projects', compact('projects'));
     }
+
+    /**
+     * Show the create projects Views.
+     **/
+    public function getCreateProjects()
+    {
+      return view('frontend.users.createProject');
+    }
+
+    /**
+     * Show the create projects Views.
+     **/
+    public function getCreateInfoProjects()
+    {
+      return view('frontend.users.projectInfo');
+    }
 }

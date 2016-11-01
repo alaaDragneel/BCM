@@ -6,7 +6,7 @@ use Closure;
 
 use Auth;
 
-class UsersCheck
+class UsersIndividualCheck
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class UsersCheck
      */
     public function handle($request, Closure $next)
     {
-         if(Auth::user()->userType !== 2 || Auth::user()->userType !== 3){
+        if(Auth::user()->userType !== 2){
           return redirect()->route('welcome');
         }
         return $next($request);

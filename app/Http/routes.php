@@ -38,7 +38,7 @@ Route::group(['middleware' => 'admin'], function () {
 ** start users Routes
 /**********************************************************************************************************/
 // group the routes by the users middleWare
-Route::group(['middleWare' => 'users'] , function () {
+Route::group(['middleware' => 'usersCompany'] , function () {
      // add users prefix
      Route::group(['prefix' => 'users'], function () {
           // index view
@@ -81,10 +81,20 @@ Route::group(['middleWare' => 'users'] , function () {
 
           // projects view
           Route::get('/projects/view/', [
-               'uses' => 'HomeController@getProjects',
-               'as' => 'projects'
+            'uses' => 'HomeController@getProjects',
+            'as' => 'projects'
           ]);
 
+          // create projects view
+          Route::get('/create/project', [
+               'uses' => 'HomeController@getCreateProjects',
+               'as' => 'create.projects'
+             ]);
+          // create projects info view
+          Route::get('/create/projectInfo', [
+               'uses' => 'HomeController@getCreateInfoProjects',
+               'as' => 'createInfo.projects'
+             ]);
      });
 });
 

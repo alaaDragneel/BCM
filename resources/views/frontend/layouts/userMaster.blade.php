@@ -44,24 +44,24 @@
                         <p>Dashboard</p>
                     </a>
                </li>
-               <li {{ Request::is('users/create/project') ? 'class=active' : '' }}>
-                    <a href="#">
-                        <i class="ti-plus"></i>
-                        <p>Create Project</p>
-                    </a>
-               </li>
-               <li {{ Request::is('users/teamworks*') ? 'class=active' : '' }}>
-                    <a href="{{ route('teamworks') }}">
-                        <i class="fa fa-users"></i>
-                        <p>teamWorks</p>
-                    </a>
-           	</li>
-               <li {{ Request::is('users/projects*') ? 'class=active' : '' }}>
+							 <li {{ Request::is('users/teamworks*') ? 'class=active' : '' }}>
+								 <a href="{{ route('teamworks') }}">
+									 <i class="fa fa-users"></i>
+									 <p>teamWorks</p>
+								 </a>
+							 </li>
+            	<li {{ Request::is('users/projects*') ? 'class=active' : '' }}>
                     <a href="{{ route('projects') }}">
                         <i class="fa fa-tasks"></i>
                         <p>View Projects</p>
                     </a>
-           	</li>
+           		</li>
+							<li {{ Request::is('users/create/project') ? 'class=active' : '' }}>
+								<a href="{{ route('create.projects') }}">
+									<i class="ti-plus"></i>
+									<p>Create Project</p>
+								</a>
+							</li>
 		</ul>
     	</div>
     </div>

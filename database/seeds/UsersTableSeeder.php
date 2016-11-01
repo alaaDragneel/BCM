@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
         $user->job = 'web develpment';
         $user->image = 'src/backend/dist/img/avatar5.png';
         $user->userType = 1;
+        $user->description = 'i\'am a web development';
         $user->password = bcrypt('666666');
         $user->save();
         // individual user
@@ -31,6 +32,7 @@ class UsersTableSeeder extends Seeder
         $user->job = 'Web Design';
         $user->image = 'src/backend/dist/img/avatar5.png';
         $user->userType = 2;
+        $user->description = 'i\'am a graphic desgnier';
         $user->password = bcrypt('666666');
         $user->save();
         // company user
@@ -41,6 +43,7 @@ class UsersTableSeeder extends Seeder
         $user->job = 'SEO';
         $user->image = 'src/backend/dist/img/avatar5.png';
         $user->userType = 3;
+        $user->description = 'i\'am a SEO';
         $user->password = bcrypt('666666');
         $user->save();
     }
