@@ -26,8 +26,7 @@ class bmcCanvasController extends Controller
    **/
   public function getCanvas($canvas_id)
   {
-
-    $canvas = BMC::find($canvas_id)->first();
+    $canvas = BMC::where('id', $canvas_id)->first();
     $KA = KeyActivity::where('bmc_id', $canvas_id)->get();
     $VP = ValuePorposition::where('bmc_id', $canvas_id)->get();
     return view('frontend.users.bmc', compact('canvas', 'KA', 'VP'));
