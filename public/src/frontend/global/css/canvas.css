@@ -283,10 +283,32 @@ h4 {
   color: #fff;
 }
 #success,
-#successDelete{
+#successDelete,
+#errors{
   display: none;
 }
 
 .callout {
   word-break: break-all;
+}
+
+.card-option{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -10px;
+  display: none;
+}
+.card-optionVP{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -204px;
+  display: none;
 }

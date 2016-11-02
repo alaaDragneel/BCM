@@ -140,6 +140,27 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                'uses' => 'bmcCanvasController@getDeleteKA',
                'as' => 'KA.delete'
              ]);
+          // update KA canvas
+            Route::post('/canvas/view/KA/update', [
+               'uses' => 'bmcCanvasController@UpdateKA',
+               'as' => 'KA.update'
+             ]);
+
+          // store VP canvas
+            Route::post('/canvas/view/VP/store', [
+               'uses' => 'bmcCanvasController@postVP',
+               'as' => 'VP.store'
+             ]);
+          // delete VP canvas
+            Route::get('/canvas/view/VP/delete', [
+               'uses' => 'bmcCanvasController@getDeleteVP',
+               'as' => 'VP.delete'
+             ]);
+          // update VP canvas
+            Route::post('/canvas/view/VP/update', [
+               'uses' => 'bmcCanvasController@UpdateVP',
+               'as' => 'VP.update'
+             ]);
 /**********************************************************************************************************
 ** end BMC Routes
 /**********************************************************************************************************/

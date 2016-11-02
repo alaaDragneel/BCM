@@ -1,18 +1,32 @@
 @extends('frontend.layouts.userMaster')
+@section('title')
+  BMC
+@endsection
 @section('styles')
   {!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
   {!! Html::style('src/frontend/global/css/canvas.css') !!}
+  <style media="screen">
+  .wrapper {
+    height: auto;
+  }
+  </style>
 @endsection
+@include('frontend.includes.modals')
 @section('content')
   <div class="content">
     <div class="container-fluid">
       <div class="alert alert-success" id="success"></div>
       <div class="alert alert-info" id="successDelete"></div>
+      <div class="alert alert-danger" id="errors">
+        <ul class="list-unstyled">
+
+        </ul>
+      </div>
       <h1>BMC</h1>
       <!-- Canvas -->
-      @foreach ($canvas as $can)
-        <table id="bizcanvas" class="table table-responsive table-bordered" data-id="{{ $can->id }}">
-      @endforeach
+
+        <table id="bizcanvas" class="table table-responsive table-bordered" data-id="{{ $canvas->id }}">
+
         <tr>
           <td colspan="2" rowspan="2">
                <h4
@@ -22,7 +36,7 @@
                  data-placement="right"
                  rel="popover">Key Partners ?</h4>
                  <div class="clearfix"></div>
-               @include('frontend.includes.proSearch.searchForm')
+               {{-- @include('frontend.includes.proSearch.searchForm') --}}
                <div id="Partner" class="companies">
                   <div class="callout callout-info">
                     <h4>I am an info callout!</h4>
@@ -44,11 +58,14 @@
                <div class="activities">
                  @if ($KA && count($KA) > 0)
                    @foreach ($KA as $ka)
-                     <div class="callout callout-info" data-ka="{{ $ka->id }}">
-                       <span class="pull-right deleteKA"><i class="fa fa-close"></i></span>
+                     <div class="callout callout-info options" data-ka="{{ $ka->id }}">
+                       <div class="card-option optionsKA">
+                         <span class="pull-right deleteKA"><i class="fa fa-close"></i></span>
+                         <span class="pull-right editKA"><i class="fa fa-edit"></i></span>
+                       </div>
                        <div class="clearfix"></div>
-                       <h4>{{ $ka->ka_title }}</h4>
-                       <p>{{ $ka->ka_desc }}</p>
+                       <h4 class="ka_title">{{ $ka->ka_title }}</h4>
+                       <p class="ka_desc">{{ $ka->ka_desc }}</p>
                      </div>
                    @endforeach
                  @endif
@@ -62,7 +79,21 @@
               data-placement="right"
               rel="popover" >Value Proposition <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addValueModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="Values"></div>
+            <div id="Values">
+              @if ($VP && count($VP) > 0)
+                @foreach ($VP as $vp)
+                  <div class="callout callout-warning optionsVP" data-vp="{{ $vp->id }}">
+                    <div class="card-optionVP">
+                      <span class="pull-right deleteVP"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editVP"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="vp_title">{{ $vp->vp_title }}</h4>
+                    <p class="vp_desc">{{ $vp->vp_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
+            </div>
           </td>
           <td colspan="2">
             <h4 class="Info"
@@ -140,12 +171,17 @@
   var urlCustomer = '{{ route('Companies') }}';
   var KAurl = '{{ route('KA.store') }}';
   var KAurlDelete = '{{ route('KA.delete') }}';
+  var KAurlUpdate = '{{ route('KA.update') }}';
+  var VPurl = '{{ route('VP.store') }}';
+  var VPurlDelete = '{{ route('VP.delete') }}';
+  var VPurlUpdate = '{{ route('VP.update') }}';
   var token = '{{ csrf_token() }}';
   </script>
 @endsection
-@include('frontend.includes.modals')
 @section('scripts')
   <script src="{{asset('src/frontend/global/js/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/canvas.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/AjaxSearch.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/keyActivity.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/valuePorposition.js')}}"></script>
 @endsection
