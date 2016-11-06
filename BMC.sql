@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2016 at 12:58 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Nov 06, 2016 at 06:55 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,16 +32,22 @@ CREATE TABLE `bmcs` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `KP` varchar(255) NOT NULL,
-  `KA` varchar(255) NOT NULL,
-  `VP` varchar(255) NOT NULL,
-  `CR` varchar(255) NOT NULL,
-  `CS` varchar(255) NOT NULL,
-  `KR` varchar(255) NOT NULL,
-  `Ch` varchar(255) NOT NULL,
-  `CST` varchar(255) NOT NULL,
-  `RS` varchar(255) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chaneels`
+--
+
+CREATE TABLE `chaneels` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ch_title` varchar(255) NOT NULL,
+  `ch_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -56,6 +62,102 @@ CREATE TABLE `companies` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cost_structure`
+--
+
+CREATE TABLE `cost_structure` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `cst_title` varchar(255) NOT NULL,
+  `cst_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_relation`
+--
+
+CREATE TABLE `customer_relation` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `cr_title` varchar(255) NOT NULL,
+  `cr_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_segments`
+--
+
+CREATE TABLE `customer_segments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `cs_title` varchar(255) NOT NULL,
+  `cs_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `key_activity`
+--
+
+CREATE TABLE `key_activity` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ka_title` varchar(255) NOT NULL,
+  `ka_memper` varchar(255) NOT NULL,
+  `ka_job` varchar(255) NOT NULL,
+  `ka_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `key_parteners`
+--
+
+CREATE TABLE `key_parteners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `kp_name` varchar(255) NOT NULL,
+  `kp_num` varchar(255) NOT NULL,
+  `kp_email` varchar(255) NOT NULL,
+  `kp_job` varchar(255) NOT NULL,
+  `kp_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `key_resources`
+--
+
+CREATE TABLE `key_resources` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `kr_title` varchar(255) NOT NULL,
+  `kr_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -97,7 +199,16 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_10_27_132052_create_BMCS_table', 1),
 ('2016_10_27_132509_create_tasks_table', 1),
 ('2016_10_27_132735_create_companies_table', 1),
-('2016_10_27_132821_create_messages_table', 1);
+('2016_10_27_132821_create_messages_table', 1),
+('2016_10_30_145226_create_key_partener_table', 1),
+('2016_10_30_145430_create_key_activity_table', 1),
+('2016_10_30_145720_create_value_porposition_table', 1),
+('2016_10_30_145802_create_customer_relation_table', 1),
+('2016_10_30_145847_create_customer_segments_table', 1),
+('2016_10_30_145922_create_key_resources_table', 1),
+('2016_10_30_145955_create_chaneels_table', 1),
+('2016_10_30_150048_create_cost_structure_table', 1),
+('2016_10_30_150136_create_revenue_streams_table', 1);
 
 -- --------------------------------------------------------
 
@@ -109,6 +220,21 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `revenue_streams`
+--
+
+CREATE TABLE `revenue_streams` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `rs_title` varchar(255) NOT NULL,
+  `rs_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -147,15 +273,6 @@ CREATE TABLE `teamworks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `teamworks`
---
-
-INSERT INTO `teamworks` (`id`, `name`, `email`, `password`, `phoneNo`, `image`, `job`, `user_id`, `created_at`, `updated_at`) VALUES
-(10, 'slss', 'alaa_dragneel@yahoo.com', '$2y$10$6k0PHD9J1SzC4Zn.B9ZkCeZFDGAxPuWxNXl3qZOcOCBv3TMNHegp6', '030303', 'src/frontend/global/img/avatar5.png', '', 2, '2016-10-28 20:28:32', '2016-10-28 20:28:32'),
-(11, 'MobileApplication', 'aaa@xxx.com', '$2y$10$2bbffmNAYEryZfOtUJHL6.Vf8V5/8hKlJaNy.rbt32AEOK8aIktxi', '02020', 'src/frontend/global/img/avatar5.png', 'super', 2, '2016-10-28 20:35:04', '2016-10-28 20:35:04'),
-(12, 'mohamed', 'aa@yahoo.com', '$2y$10$eQgVi4cJzqydqlVgaWbEd.UXNI22fWvGdTvJnrfNvTtfmW1Cledo6', '0202120', 'src/frontend/global/img/avatar5.png', 'sexy', 2, '2016-10-28 20:40:21', '2016-10-28 20:40:21');
-
 -- --------------------------------------------------------
 
 --
@@ -179,14 +296,20 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `users`
+-- Table structure for table `value_porposition`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phoneNo`, `image`, `job`, `description`, `address`, `companyStartFrom`, `userType`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'alaaDragneel', 'alaa_dragneel@yahoo.com', '01096901954', 'src/backend/dist/img/avatar5.png', 'web develpment', '', '', '', 1, '$2y$10$GVaH3AsgVpIY3nVLwvswEOiCVA9l7bwnEw2tCtwbt6oDmiBApG/Mu', 'ban7KfMbA1YieEerprchUvHrC0FH4ukLCiafQ7K7YsaLIBdY9MD7o5SECMdV', '2016-10-28 17:14:19', '2016-10-28 17:25:38'),
-(2, 'sasuke_alaa', 'sasuke_alaa@yahoo.com', '01196901954', 'src/backend/dist/img/avatar5.png', 'Web Design', '', '', '', 2, '$2y$10$KaEUUOdm8FcI8Z.FTG8HfewAOLAIaanqIpZbJydP/.j7GwXZHD5tG', 'bgR1RQRXANDoGzz45S2p7VVPhlOoVdfgzXvJNVxAIzMTc7HN9AU7sNiVLKys', '2016-10-28 17:14:19', '2016-10-28 17:29:44'),
-(3, 'moaalaa', 'moaalaa@yahoo.com', '01296901954', 'src/backend/dist/img/avatar5.png', 'SEO', '', '', '', 3, '$2y$10$w9o2zB1t7Ti8ITXDZnB2DusdcJXCC9VTXh4T61O3oyvwFp1de5y1a', NULL, '2016-10-28 17:14:20', '2016-10-28 17:14:20');
+CREATE TABLE `value_porposition` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `vp_title` varchar(255) NOT NULL,
+  `vp_desc` text NOT NULL,
+  `BMC_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -200,10 +323,60 @@ ALTER TABLE `bmcs`
   ADD KEY `bmcs_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `chaneels`
+--
+ALTER TABLE `chaneels`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `chaneels_bmc_id_foreign` (`BMC_id`);
+
+--
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cost_structure`
+--
+ALTER TABLE `cost_structure`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cost_structure_bmc_id_foreign` (`BMC_id`);
+
+--
+-- Indexes for table `customer_relation`
+--
+ALTER TABLE `customer_relation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_relation_bmc_id_foreign` (`BMC_id`);
+
+--
+-- Indexes for table `customer_segments`
+--
+ALTER TABLE `customer_segments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_segments_bmc_id_foreign` (`BMC_id`);
+
+--
+-- Indexes for table `key_activity`
+--
+ALTER TABLE `key_activity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `key_activity_bmc_id_foreign` (`BMC_id`),
+  ADD KEY `key_activity_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `key_parteners`
+--
+ALTER TABLE `key_parteners`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `key_parteners_bmc_id_foreign` (`BMC_id`);
+
+--
+-- Indexes for table `key_resources`
+--
+ALTER TABLE `key_resources`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `key_resources_bmc_id_foreign` (`BMC_id`);
 
 --
 -- Indexes for table `messages`
@@ -217,6 +390,13 @@ ALTER TABLE `messages`
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `revenue_streams`
+--
+ALTER TABLE `revenue_streams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `revenue_streams_bmc_id_foreign` (`BMC_id`);
 
 --
 -- Indexes for table `tasks`
@@ -242,6 +422,13 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `value_porposition`
+--
+ALTER TABLE `value_porposition`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `value_porposition_bmc_id_foreign` (`BMC_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -251,14 +438,54 @@ ALTER TABLE `users`
 ALTER TABLE `bmcs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `chaneels`
+--
+ALTER TABLE `chaneels`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `cost_structure`
+--
+ALTER TABLE `cost_structure`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `customer_relation`
+--
+ALTER TABLE `customer_relation`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `customer_segments`
+--
+ALTER TABLE `customer_segments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `key_activity`
+--
+ALTER TABLE `key_activity`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `key_parteners`
+--
+ALTER TABLE `key_parteners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `key_resources`
+--
+ALTER TABLE `key_resources`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `revenue_streams`
+--
+ALTER TABLE `revenue_streams`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tasks`
@@ -269,12 +496,17 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `teamworks`
 --
 ALTER TABLE `teamworks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `value_porposition`
+--
+ALTER TABLE `value_porposition`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -284,6 +516,55 @@ ALTER TABLE `users`
 --
 ALTER TABLE `bmcs`
   ADD CONSTRAINT `bmcs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `chaneels`
+--
+ALTER TABLE `chaneels`
+  ADD CONSTRAINT `chaneels_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cost_structure`
+--
+ALTER TABLE `cost_structure`
+  ADD CONSTRAINT `cost_structure_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_relation`
+--
+ALTER TABLE `customer_relation`
+  ADD CONSTRAINT `customer_relation_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_segments`
+--
+ALTER TABLE `customer_segments`
+  ADD CONSTRAINT `customer_segments_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `key_activity`
+--
+ALTER TABLE `key_activity`
+  ADD CONSTRAINT `key_activity_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `key_activity_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `key_parteners`
+--
+ALTER TABLE `key_parteners`
+  ADD CONSTRAINT `key_parteners_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `key_resources`
+--
+ALTER TABLE `key_resources`
+  ADD CONSTRAINT `key_resources_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `revenue_streams`
+--
+ALTER TABLE `revenue_streams`
+  ADD CONSTRAINT `revenue_streams_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tasks`
@@ -297,6 +578,12 @@ ALTER TABLE `tasks`
 --
 ALTER TABLE `teamworks`
   ADD CONSTRAINT `teamworks_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `value_porposition`
+--
+ALTER TABLE `value_porposition`
+  ADD CONSTRAINT `value_porposition_bmc_id_foreign` FOREIGN KEY (`BMC_id`) REFERENCES `bmcs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
