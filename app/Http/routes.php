@@ -161,6 +161,81 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                'uses' => 'bmcCanvasController@UpdateVP',
                'as' => 'VP.update'
              ]);
+          // store CR canvas
+            Route::post('/canvas/view/CR/store', [
+               'uses' => 'bmcCanvasController@postCR',
+               'as' => 'CR.store'
+             ]);
+          // delete CR canvas
+            Route::get('/canvas/view/CR/delete', [
+               'uses' => 'bmcCanvasController@getDeleteCR',
+               'as' => 'CR.delete'
+             ]);
+          // update CR canvas
+            Route::post('/canvas/view/CR/update', [
+               'uses' => 'bmcCanvasController@UpdateCR',
+               'as' => 'CR.update'
+             ]);
+          // store KR canvas
+            Route::post('/canvas/view/KR/store', [
+               'uses' => 'bmcCanvasController@postKR',
+               'as' => 'KR.store'
+             ]);
+          // delete KR canvas
+            Route::get('/canvas/view/KR/delete', [
+               'uses' => 'bmcCanvasController@getDeleteKR',
+               'as' => 'KR.delete'
+             ]);
+          // update KR canvas
+            Route::post('/canvas/view/KR/update', [
+               'uses' => 'bmcCanvasController@UpdateKR',
+               'as' => 'KR.update'
+             ]);
+          // store CH canvas
+            Route::post('/canvas/view/CH/store', [
+               'uses' => 'bmcCanvasController@postCH',
+               'as' => 'CH.store'
+             ]);
+          // delete CH canvas
+            Route::get('/canvas/view/CH/delete', [
+               'uses' => 'bmcCanvasController@getDeleteCH',
+               'as' => 'CH.delete'
+             ]);
+          // update CH canvas
+            Route::post('/canvas/view/CH/update', [
+               'uses' => 'bmcCanvasController@UpdateCH',
+               'as' => 'CH.update'
+             ]);
+          // store CST canvas
+            Route::post('/canvas/view/CST/store', [
+               'uses' => 'bmcCanvasController@postCST',
+               'as' => 'CST.store'
+             ]);
+          // delete CST canvas
+            Route::get('/canvas/view/CST/delete', [
+               'uses' => 'bmcCanvasController@getDeleteCST',
+               'as' => 'CST.delete'
+             ]);
+          // update CST canvas
+            Route::post('/canvas/view/CST/update', [
+               'uses' => 'bmcCanvasController@UpdateCST',
+               'as' => 'CST.update'
+             ]);
+            // store RS canvas
+              Route::post('/canvas/view/RS/store', [
+                 'uses' => 'bmcCanvasController@postRS',
+                 'as' => 'RS.store'
+             ]);
+            // delete RS canvas
+              Route::get('/canvas/view/RS/delete', [
+                 'uses' => 'bmcCanvasController@getDeleteRS',
+                 'as' => 'RS.delete'
+             ]);
+            // update RS canvas
+              Route::post('/canvas/view/RS/update', [
+                 'uses' => 'bmcCanvasController@UpdateRS',
+                 'as' => 'RS.update'
+             ]);
 /**********************************************************************************************************
 ** end BMC Routes
 /**********************************************************************************************************/

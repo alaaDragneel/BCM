@@ -290,6 +290,7 @@ h4 {
 
 .callout {
   word-break: break-all;
+  box-shadow: 5px 5px 30px #ccc;
 }
 
 .card-option{
@@ -301,6 +302,7 @@ h4 {
   margin-top: -31px;
   margin-right: -10px;
   display: none;
+  box-shadow: 2px 2px 5px #666;
 }
 .card-optionVP{
   position: absolute;
@@ -311,4 +313,62 @@ h4 {
   margin-top: -31px;
   margin-right: -204px;
   display: none;
+  box-shadow: 2px 2px 5px #666;
+
+}
+
+.card-optionCR{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -393px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
+.card-optionKR{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -9px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
+.card-optionCH{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -393px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
+.card-optionCST{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -105px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
+.card-optionRS{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -582px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
 }

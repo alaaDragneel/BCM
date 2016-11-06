@@ -15,7 +15,7 @@ class CreateRevenueStreamsTable extends Migration
         Schema::create('revenue_streams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rs_title');
-            $table->text('crs_desc');
+            $table->text('rs_desc');
             $table->integer('BMC_id')->unsigned();
             $table->foreign('BMC_id')->references('id')->on('BMCS')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

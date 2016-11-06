@@ -5,11 +5,6 @@
 @section('styles')
   {!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
   {!! Html::style('src/frontend/global/css/canvas.css') !!}
-  <style media="screen">
-  .wrapper {
-    height: auto;
-  }
-  </style>
 @endsection
 @include('frontend.includes.modals')
 @section('content')
@@ -102,7 +97,21 @@
               data-placement="right"
               rel="popover" >Customer Relationship <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRelationModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="relations"></div>
+            <div id="relations">
+              @if ($CR && count($CR) > 0)
+                @foreach ($CR as $cr)
+                  <div class="callout callout-success optionsCR" data-vp="{{ $cr->id }}">
+                    <div class="card-optionCR">
+                      <span class="pull-right deleteCR"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editCR"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="cr_title">{{ $cr->cr_title }}</h4>
+                    <p class="cr_desc">{{ $cr->cr_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
+            </div>
           </td>
           <td colspan="2" rowspan="2">
             <h4 class="Info"
@@ -123,7 +132,19 @@
               rel="popover" >Key Resources <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addResourceModal"></i></h4>
               <div class="clearfix"></div>
             <div id="resources">
-
+              @if ($KR && count($KR) > 0)
+                @foreach ($KR as $kr)
+                  <div class="callout callout-danger optionsKR" data-vp="{{ $kr->id }}">
+                    <div class="card-optionKR">
+                      <span class="pull-right deleteKR"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editKR"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="kr_title">{{ $kr->kr_title }}</h4>
+                    <p class="kr_desc">{{ $kr->kr_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
             </div>
           </td>
           <td colspan="2">
@@ -134,9 +155,20 @@
               rel="popover" >Channels <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addChaneelModal"></i></h4>
               <div class="clearfix"></div>
             <div id="chaneels">
-
+              @if ($CH && count($CH) > 0)
+                @foreach ($CH as $ch)
+                  <div class="callout callout-danger optionsCH" data-vp="{{ $ch->id }}">
+                    <div class="card-optionCH">
+                      <span class="pull-right deleteCH"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editCH"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="ch_title">{{ $ch->ch_title }}</h4>
+                    <p class="ch_desc">{{ $ch->ch_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
             </div>
-
           </td>
         </tr>
         <tr>
@@ -148,7 +180,19 @@
               rel="popover" >Cost Structure <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addCostModal"></i></h4>
               <div class="clearfix"></div>
             <div id="costs">
-
+              @if ($CST && count($CST) > 0)
+                @foreach ($CST as $cst)
+                  <div class="callout callout-success optionsCST" style="width: 465px;" data-vp="{{ $cst->id }}">
+                    <div class="card-optionCST">
+                      <span class="pull-right deleteCST"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editCST"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="cst_title">{{ $cst->cst_title }}</h4>
+                    <p class="cst_desc">{{ $cst->cst_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
             </div>
           </td>
           <td colspan="5" class="revs">
@@ -158,7 +202,21 @@
               data-placement="right"
               rel="popover" >Revenue Streams <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addRevModal"></i></h4>
               <div class="clearfix"></div>
-            <div id="revs"></div>
+            <div id="revs">
+              @if ($RS && count($RS) > 0)
+                @foreach ($RS as $rs)
+                  <div class="callout callout-success optionsRS" style="width: 465px;" data-vp="{{ $rs->id }}">
+                    <div class="card-optionRS">
+                      <span class="pull-right deleteRS"><i class="fa fa-close"></i></span>
+                      <span class="pull-right editRS"><i class="fa fa-edit"></i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <h4 class="rs_title">{{ $rs->rs_title }}</h4>
+                    <p class="rs_desc">{{ $rs->rs_desc }}</p>
+                  </div>
+                @endforeach
+              @endif
+            </div>
           </td>
         </tr>
       </table>
@@ -169,12 +227,35 @@
   var url = '{{ route('results') }}';
   var urlBtn = '{{ route('request') }}';
   var urlCustomer = '{{ route('Companies') }}';
+  // key activity
   var KAurl = '{{ route('KA.store') }}';
   var KAurlDelete = '{{ route('KA.delete') }}';
   var KAurlUpdate = '{{ route('KA.update') }}';
+  // value porposition
   var VPurl = '{{ route('VP.store') }}';
   var VPurlDelete = '{{ route('VP.delete') }}';
   var VPurlUpdate = '{{ route('VP.update') }}';
+  // customer relations
+  var CRurl = '{{ route('CR.store') }}';
+  var CRurlDelete = '{{ route('CR.delete') }}';
+  var CRurlUpdate = '{{ route('CR.update') }}';
+  // ker resource
+  var KRurl = '{{ route('KR.store') }}';
+  var KRurlDelete = '{{ route('KR.delete') }}';
+  var KRurlUpdate = '{{ route('KR.update') }}';
+  // ker resource
+  var CHurl = '{{ route('CH.store') }}';
+  var CHurlDelete = '{{ route('CH.delete') }}';
+  var CHurlUpdate = '{{ route('CH.update') }}';
+  // cost structure
+  var CSTurl = '{{ route('CST.store') }}';
+  var CSTurlDelete = '{{ route('CST.delete') }}';
+  var CSTurlUpdate = '{{ route('CST.update') }}';
+  // Revenue Streams
+  var RSurl = '{{ route('RS.store') }}';
+  var RSurlDelete = '{{ route('RS.delete') }}';
+  var RSurlUpdate = '{{ route('RS.update') }}';
+  //token
   var token = '{{ csrf_token() }}';
   </script>
 @endsection
@@ -183,5 +264,5 @@
   <script src="{{asset('src/frontend/global/js/canvas.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/AjaxSearch.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/keyActivity.js')}}"></script>
-  <script src="{{asset('src/frontend/global/js/valuePorposition.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/bmcFunctions.js')}}"></script>
 @endsection

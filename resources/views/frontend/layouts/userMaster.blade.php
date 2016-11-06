@@ -22,7 +22,7 @@
     {!! Html::style('src/frontend/usersFiles/css/themify-icons.css') !!}
 	@yield('styles')
 </head>
-<body>
+<body style="background-color: #f4f3ef;">
 
 <div class="wrapper">
     <div class="sidebar" data-background-color="black" data-active-color="info">

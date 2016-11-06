@@ -100,7 +100,7 @@
  	<div class="modal-content">
  	  <div class="modal-header">
  	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
- 	    <h4 class="modal-title">add Proposition </h4>
+ 	    <h4 class="modal-title">edit Value Proposition </h4>
  	  </div>
  	  <div class="modal-body">
  		  {{-- stat key activity Title --}}
@@ -221,8 +221,38 @@
   	</div><!-- /.modal-content -->
      </div><!-- /.modal-dialog -->
    </div><!-- /.modal -->
-   {{-- edit key activity --}}
+   {{-- new customer relation --}}
 
+  {{-- edit customer relation --}}
+  <div class="modal fade" tabindex="-1" role="dialog" id="editRelationModal">
+     <div class="modal-dialog" role="document">
+  	<div class="modal-content">
+  	  <div class="modal-header">
+  	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	    <h4 class="modal-title">edit Customer Relation</h4>
+  	  </div>
+  	  <div class="modal-body">
+  		  {{-- stat key activity Title --}}
+  	    <div class="form-group">
+  	      <label for="relationTitle">Title</label>
+  	      <input type="text" class="form-control  border-input" id="editRelationTitle" placeholder="wirte the relation title">
+  	    </div>
+  	    {{-- end key activity name --}}
+  	    {{-- stat key activity content --}}
+  	 <div class="form-group" id="contentRelation">
+  	   <label for="relationContent">Description</label>
+  	   <textarea class="form-control  border-input" id="editRelationContent" placeholder="wirte the relation description" rows="5"></textarea>
+  	 </div>
+  	 {{-- end key activity content --}}
+  	  </div>
+  	  <div class="modal-footer">
+  	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  	    <button type="button" class="btn btn-primary" id="updateRelation">edit Relation</button>
+  	  </div>
+  	</div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+   </div><!-- /.modal -->
+   {{-- edit key activity --}}
 
    {{-- new key resource --}}
    <div class="modal fade" tabindex="-1" role="dialog" id="addResourceModal">
@@ -257,6 +287,38 @@
     {{-- add key resource --}}
 
    {{-- new key resource --}}
+   <div class="modal fade" tabindex="-1" role="dialog" id="editResourceModal">
+      <div class="modal-dialog" role="document">
+   	<div class="modal-content">
+   	  <div class="modal-header">
+   	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   	    <h4 class="modal-title">edit Key Resources</h4>
+   	  </div>
+   	  <div class="modal-body">
+   		  {{-- stat key activity Title --}}
+   	    <div class="form-group">
+   	      <label for="resourceTitle">Title</label>
+   	      <input type="text" class="form-control  border-input" id="editResourceTitle" placeholder="wirte the Key Resource title">
+   	    </div>
+   	    {{-- end key activity name --}}
+
+   	    {{-- stat key activity content --}}
+   	 <div class="form-group" id="contentResource">
+   	   <label for="resourceContent">Description</label>
+   	   <textarea class="form-control  border-input" id="editResourceContent" placeholder="wirte the Key Resource description" rows="5"></textarea>
+   	 </div>
+   	 {{-- end key activity content --}}
+   	  </div>
+   	  <div class="modal-footer">
+   	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+   	    <button type="button" class="btn btn-primary" id="updateResources">Add Resource</button>
+   	  </div>
+   	</div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    {{-- add key resource --}}
+
+   {{-- new chaneel --}}
      <div class="modal fade" tabindex="-1" role="dialog" id="addChaneelModal">
         <div class="modal-dialog" role="document">
      	<div class="modal-content">
@@ -281,14 +343,46 @@
      	  </div>
      	  <div class="modal-footer">
      	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-     	    <button type="button" class="btn btn-primary" id="saveChaneel">Add Resource</button>
+     	    <button type="button" class="btn btn-primary" id="saveChaneel">Add chaneel</button>
      	  </div>
      	</div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
-      {{-- add key resource --}}
+      {{-- add chaneel --}}
 
-       {{-- new key resource --}}
+   {{-- edit chaneel --}}
+     <div class="modal fade" tabindex="-1" role="dialog" id="editChaneelModal">
+        <div class="modal-dialog" role="document">
+     	<div class="modal-content">
+     	  <div class="modal-header">
+     	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     	    <h4 class="modal-title">edit chaneel</h4>
+     	  </div>
+     	  <div class="modal-body">
+     		  {{-- stat key activity Title --}}
+     	    <div class="form-group">
+     	      <label for="chaneelTitle">Title</label>
+     	      <input type="text" class="form-control  border-input" id="editChaneelTitle" placeholder="wirte the chaneel title">
+     	    </div>
+     	    {{-- end key activity name --}}
+
+     	    {{-- stat key activity content --}}
+     	 <div class="form-group" id="contentChaneel">
+     	   <label for="chaneelContent">Description</label>
+     	   <textarea class="form-control  border-input" id="editChaneelContent" placeholder="wirte the Chaneel description" rows="5"></textarea>
+     	 </div>
+     	 {{-- end key activity content --}}
+     	  </div>
+     	  <div class="modal-footer">
+     	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     	    <button type="button" class="btn btn-primary" id="updateChaneel">update Resource</button>
+     	  </div>
+     	</div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+      {{-- edit chaneel --}}
+
+       {{-- new cost structure --}}
        <div class="modal fade" tabindex="-1" role="dialog" id="addCostModal">
           <div class="modal-dialog" role="document">
        	<div class="modal-content">
@@ -318,9 +412,41 @@
        	</div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        {{-- add key resource --}}
+        {{-- new cost structure --}}
 
-      {{-- new key resource --}}
+       {{-- edit cost structure --}}
+       <div class="modal fade" tabindex="-1" role="dialog" id="editCostModal">
+          <div class="modal-dialog" role="document">
+       	<div class="modal-content">
+       	  <div class="modal-header">
+       	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       	    <h4 class="modal-title">edit Cost</h4>
+       	  </div>
+       	  <div class="modal-body">
+       		  {{-- stat key activity Title --}}
+       	    <div class="form-group">
+       	      <label for="costTitle">Cost</label>
+       	      <input type="text" class="form-control  border-input" id="editCostTitle" placeholder="wirte the cost title">
+       	    </div>
+       	    {{-- end key activity name --}}
+
+       	    {{-- stat key activity content --}}
+       	 <div class="form-group" id="contentCost">
+       	   <label for="costContent">Description</label>
+       	   <textarea class="form-control  border-input" id="editCostContent" placeholder="wirte the cost description" rows="5"></textarea>
+       	 </div>
+       	 {{-- end key activity content --}}
+       	  </div>
+       	  <div class="modal-footer">
+       	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       	    <button type="button" class="btn btn-primary" id="updateCost">edit cost</button>
+       	  </div>
+       	</div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        {{-- new cost structure --}}
+
+      {{-- new Revenue Streams --}}
       <div class="modal fade" tabindex="-1" role="dialog" id="addRevModal">
          <div class="modal-dialog" role="document">
       	<div class="modal-content">
@@ -345,11 +471,43 @@
       	  </div>
       	  <div class="modal-footer">
       	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      	    <button type="button" class="btn btn-primary" id="saveRev">Add cost</button>
+      	    <button type="button" class="btn btn-primary" id="saveRev">Add Revenue</button>
       	  </div>
       	</div><!-- /.modal-content -->
          </div><!-- /.modal-dialog -->
        </div><!-- /.modal -->
-       {{-- add key resource --}}
+       {{-- add Revenue Streams --}}
 
-       </div>
+      {{-- edit Revenue Streams --}}
+      <div class="modal fade" tabindex="-1" role="dialog" id="editRevModal">
+         <div class="modal-dialog" role="document">
+      	<div class="modal-content">
+      	  <div class="modal-header">
+      	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      	    <h4 class="modal-title">edit Revenue </h4>
+      	  </div>
+      	  <div class="modal-body">
+      		  {{-- stat key activity Title --}}
+      	    <div class="form-group">
+      	      <label for="revTitle">Revenue </label>
+      	      <input type="text" class="form-control  border-input" id="editRevTitle" placeholder="wirte Revenue ">
+      	    </div>
+      	    {{-- end key activity name --}}
+
+      	    {{-- stat key activity content --}}
+      	 <div class="form-group" id="contentRev">
+      	   <label for="revContent">Description</label>
+      	   <textarea class="form-control  border-input" id="editRevContent" placeholder="wirte the description" rows="5"></textarea>
+      	 </div>
+      	 {{-- end key activity content --}}
+      	  </div>
+      	  <div class="modal-footer">
+      	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      	    <button type="button" class="btn btn-primary" id="updateRev">Update Revenue</button>
+      	  </div>
+      	</div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+       </div><!-- /.modal -->
+       {{-- add Revenue Streams --}}
+
+</div>
