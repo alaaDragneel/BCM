@@ -1,5 +1,37 @@
 <div class="content">
 
+{{-- add new key Partner --}}
+<div class="modal fade" tabindex="-1" role="dialog" id="addPartnerModal">
+   <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <h4 class="modal-title">key Partner</h4>
+	  </div>
+	  <div class="modal-body">
+		  {{-- stat key activity Title --}}
+	    <div class="form-group">
+	      <label for="keyActivityTitle">name</label>
+	      <input type="text" class="form-control border-input" id="keyPartnerTitle" placeholder="wirte the key Partner title">
+	    </div>
+	    {{-- end key activity name --}}
+
+	    {{-- stat key activity content --}}
+	 <div class="form-group" id="content">
+	   <label for="keyPartnerContent">Description</label>
+	   <textarea class="form-control  border-input" id="keyPartnerContent" placeholder="wirte the key Partner description" rows="5"></textarea>
+	 </div>
+	 {{-- end key activity content --}}
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    <button type="button" class="btn btn-primary" id="saveKeyPartner">Add key Partner</button>
+	  </div>
+	</div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+ {{-- add new key Partner --}}
+
 {{-- add new key activity --}}
 <div class="modal fade" tabindex="-1" role="dialog" id="addActivityModal">
    <div class="modal-dialog" role="document">

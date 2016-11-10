@@ -21,27 +21,114 @@ $(document).ready(function () {
         // check if the response undifined and hide it to give more security
         if(msg['results'] === undefined || msg['results'] === ''){
           results.css('border-color', '#bce8f1');
-          results.html('<div class="alert alert-info text-center" style="margin-top:20px;">Not Found</div>');
+          results.html('<div class="alert alert-info text-center" style="margin-top:20px;">Not Found But If You No the Company You Can Add It By Click <i class="fa fa-plus"></i></div>');
         }else{
           // view the response with json
           results.html(msg['results']);
 
         }
+
         // run the request button
         $('.requestBtn').click(function(){
+             var kp = '';
              var id = $(this).siblings('input');
+             var bmc_id = $('#bizcanvas').data('id');
+             var name = $(this).siblings('.userInfo').children('.fullName').text();
+             var phone = $(this).siblings('.userInfo').children('.num').text();
+             var email = $(this).siblings('.userInfo').children('.email').text();
+             var job = $(this).siblings('.userInfo').children('.job').text();
+             var desc = $(this).siblings('.userInfo').children('.Desc').text();
+
              $.ajax({
-               method: 'GET',
+               method: 'post',
                url: urlBtn,
-               data: {id: id.val(), _token: token},
+               data: {id: id.val(), name: name, phone: phone, email: email, job: job, desc: desc, bmc_id: bmc_id, _token: token},
 
           }).done(function(msg) {
-               // view the response with json
-               $('#Partner').append(msg['resultsBtn']);
+               kp += '<div class="callout callout-info optionsKP" data-kp="'+ msg['resultsBtn'] +'">';
+               kp += '<div class="card-optionKP">';
+               kp += '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
+               kp += '</div>';
+               kp += '<h4 class="fullName"><i class="fa fa-user"></i> '+ name +'</h4>';
+               kp += '<h4 class="num"><i class="fa fa-phone"></i> '+ phone +'</h4>';
+               kp += '<h4 class="email"><i class="fa fa-envelope"></i> '+ email +'</h4>';
+               kp +=  '<h4 class="job"><i class="fa fa-briefcase"></i> '+ job +'</h4>';
+               kp += '<p class="Desc"><i class="fa fa-black-tie"></i> '+ desc +'</p>';
+               kp += '</div>';
+
+               $('#Partner').append(kp);
+               // view the key-activity option
+               $('.optionsKP').on('mouseenter', function() {
+                   // show the card option
+                  $(this).children('.card-optionKP').slideDown(500);
+                 // hide the key-activity option
+               }).on('mouseleave', function() {
+                    // hide the card option
+                   $(this).children('.card-optionKP').slideUp(500);
+               });
+
+               // delete request
+                $('.deleteKP').on('click', function() {
+                  //id
+                  var IdDelete = $(this).parents().parents().data('kp');
+
+                  $.ajax({ //ajax call
+                    method:'get',
+                    url: KPurlBtnDelete,
+                    data:{id: IdDelete, _token: token},
+                    success: function(msg){ //success
+                      // show the success delete div
+                      $('#successDelete').slideDown(300);
+                      // put the outPut
+                      $('#successDelete').append(msg['successDelete']);
+                      //hide the success delete div
+                      $('#successDelete').delay(2000).slideUp();
+                      //reload the page after ....s
+                      setTimeout(function(){
+                        location.reload()
+                      }, 2500);
+                    }, //success
+                  });
+                });
+
           });
         });
       });
     });
+
+    // view the key-activity option
+    $('.optionsKP').on('mouseenter', function() {
+      // show the card option
+      $(this).children('.card-optionKP').slideDown(500);
+      // hide the key-activity option
+   }).on('mouseleave', function() {
+    // hide the card option
+      $(this).children('.card-optionKP').slideUp(500);
+   });
+
+    // delete request
+     $('.deleteKP').on('click', function() {
+       //id
+       var IdDelete = $(this).parents().parents().data('kp');
+
+       $.ajax({ //ajax call
+         method:'get',
+         url: KPurlBtnDelete,
+         data:{id: IdDelete, _token: token},
+         success: function(msg){ //success
+           // show the success delete div
+           $('#successDelete').slideDown(300);
+           // put the outPut
+           $('#successDelete').append(msg['successDelete']);
+           //hide the success delete div
+           $('#successDelete').delay(2000).slideUp();
+           //reload the page after ....s
+           setTimeout(function(){
+             location.reload()
+           }, 2500);
+         }, //success
+       });
+     });
 
     /*start show and hide the result element*/
    search.on('keyup', function() {

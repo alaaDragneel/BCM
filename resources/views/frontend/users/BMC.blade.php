@@ -24,20 +24,35 @@
 
         <tr>
           <td colspan="2" rowspan="2">
-               <h4
-                class="Info"
-                data-original-title="More details"
-                 data-content="this is the Key Partners search on the Partner that you don't have here"
+               <h4 class="Info"
+                 data-original-title="More details"
+                 data-content="this is the Cost Structure write the Cost Structure of your Project"
                  data-placement="right"
-                 rel="popover">Key Partners ?</h4>
+                 rel="popover" >Key Partener <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addPartnerModal"></i></h4>
                  <div class="clearfix"></div>
-               {{-- @include('frontend.includes.proSearch.searchForm') --}}
+               @include('frontend.includes.proSearch.searchForm')
                <div id="Partner" class="companies">
-                  <div class="callout callout-info">
-                    <h4>I am an info callout!</h4>
+                    @if ($KP && count($KP) > 0)
+                     @foreach ($KP as $kp)
+                       <div class="callout callout-info optionsKP" data-kp="{{ $kp->id }}">
+                            <div class="card-optionKP">
+                              <span class="pull-right deleteKP"><i class="fa fa-close"></i></span>
+                            </div>
+                            <h4 class="fullName"><i class="fa fa-user"></i>{{ $kp->kp_name }}</h4>
+                            @if ($kp->kp_num)
+                                 <h4 class="num"><i class="fa fa-phone"></i>{{ $kp->kp_num }}</h4>
+                            @endif
+                            @if ($kp->kp_email)
+                                 <h4 class="email"><i class="fa fa-envelope"></i>{{ $kp->kp_email }}</h4>
+                            @endif
+                            @if ($kp->kp_job)
+                                 <h4 class="job"><i class="fa fa-briefcase"></i>{{ $kp->kp_job }}</h4>
+                            @endif
 
-                    <p>Follow the steps to continue to payment.</p>
-                  </div>
+                            <p class="Desc"><i class="fa fa-black-tie"></i>{{ $kp->kp_desc }}</p>
+                       </div>
+                     @endforeach
+                   @endif
                </div>
           </td>
           {{--  --}}
@@ -226,6 +241,8 @@
   <script>
   var url = '{{ route('results') }}';
   var urlBtn = '{{ route('request') }}';
+  var KPurl = '{{ route('KP.store') }}';
+  var KPurlBtnDelete = '{{ route('request.delete') }}';
   var urlCustomer = '{{ route('Companies') }}';
   // key activity
   var KAurl = '{{ route('KA.store') }}';

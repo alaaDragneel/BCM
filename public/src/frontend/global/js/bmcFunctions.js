@@ -229,4 +229,72 @@
  CanvasOptions('#saveRev', '#revTitle', '#contentRev','#revContent', RSurl, '#revs', '#addRevModal', '.optionsRS', '.card-optionRS', '.deleteRS' , RSurlDelete, '.editRS', '.rs_title', '.rs_desc', '#editRevTitle', '#editRevContent','#editRevModal', '#updateRev', RSurlUpdate,'#editRevModal');
 
  /*
+
+
 */
+$('#saveKeyPartner').on('click', function()
+{
+
+   var bmc_id = $('#bizcanvas').data('id');
+   var name = $('#keyPartnerTitle');
+   var desc = $('#keyPartnerContent');
+
+   $.ajax({
+        method: 'post',
+        url:KPurl,
+        data:{bmc_id: bmc_id, name: name.val(), desc: desc.val(), _token: token},
+       success: function(msg){ //success
+         //show the succewss div
+         $('#success').slideDown(300);
+         // put the success message
+         $('#success').append(msg['success']);
+         // hide the success div
+         $('#success').delay(2500).slideUp();
+         // show the activity div
+         $('#Partner').slideDown(600);
+         // put the key activity in the activity
+         $('#Partner').append(msg['outPut']);
+         // hide the modal
+         $('#addPartnerModal').modal('hide');
+         //empty the title field
+         name.val('');
+         //empty the description field
+         desc.val('');
+
+         // view the key-activity option
+         $('.optionsKP').on('mouseenter', function() {
+            // show the card option
+          $(this).children('.card-optionKP').slideDown(500);
+         // hide the key-activity option
+         }).on('mouseleave', function() {
+              // hide the card option
+            $(this).children('.card-optionKP').slideUp(500);
+         });
+
+         // delete request
+         $('.deleteKP').on('click', function() {
+          //id
+          var IdDelete = $(this).parents().parents().data('kp');
+
+          $.ajax({ //ajax call
+              method:'get',
+              url: KPurlBtnDelete,
+              data:{id: IdDelete, _token: token},
+              success: function(msg){ //success
+               // show the success delete div
+               $('#successDelete').slideDown(300);
+               // put the outPut
+               $('#successDelete').append(msg['successDelete']);
+               //hide the success delete div
+               $('#successDelete').delay(2000).slideUp();
+               //reload the page after ....s
+               setTimeout(function(){
+                  location.reload()
+               }, 2500);
+              }, //success
+          });
+         });
+
+     }
+   });
+});

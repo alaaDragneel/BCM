@@ -293,6 +293,17 @@ h4 {
   box-shadow: 5px 5px 30px #ccc;
 }
 
+.card-optionKP{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -27px;
+  margin-right: 199px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
 .card-option{
   position: absolute;
   right: 61%;

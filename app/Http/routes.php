@@ -88,11 +88,12 @@ Route::group(['middleware' => 'usersCompany'] , function () {
               'as'    =>  'results'
           ]);
 
-          // searchBtn
-          Route::get('/getrequest', [
-              'uses'  =>  'ProSearchController@getAjaxBtnResults',
+          // searchBtn KP
+          Route::post('/getrequest', [
+              'uses'  =>  'ProSearchController@AjaxBtnResults',
               'as'    =>  'request'
           ]);
+
 
           // searchCompaniesCountry
           Route::get('/getCompanies', [
@@ -129,6 +130,19 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                'uses' => 'bmcCanvasController@getCanvas',
                'as' => 'view.canvas'
              ]);
+
+             // store KP canvas
+               Route::post('/canvas/view/KP/store', [
+                    'uses' => 'bmcCanvasController@postKP',
+                    'as' => 'KP.store'
+              ]);
+
+              // delete KP canvas
+                Route::get('/canvas/view/KP/delete', [
+                   'uses' => 'bmcCanvasController@getDeleteKP',
+                   'as' => 'request.delete'
+                 ]);
+
 
           // store KA canvas
             Route::post('/canvas/view/KA/store', [

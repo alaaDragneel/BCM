@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Html;
 use App\TeamWork;
 use App\BMC;
+use App\KeyPartener;
 use App\KeyActivity;
 use App\ValuePorposition;
 use App\CustomerRelation;
@@ -26,6 +27,7 @@ class bmcCanvasController extends Controller
   public function getCanvas($canvas_id)
   {
     $canvas = BMC::where('id', $canvas_id)->first();
+    $KP = KeyPartener::where('bmc_id', $canvas_id)->get();
     $KA = KeyActivity::where('bmc_id', $canvas_id)->get();
     $VP = ValuePorposition::where('bmc_id', $canvas_id)->get();
     $CR = CustomerRelation::where('bmc_id', $canvas_id)->get();
@@ -33,8 +35,56 @@ class bmcCanvasController extends Controller
     $CH = Chaneel::where('bmc_id', $canvas_id)->get();
     $CST = CostStructure::where('bmc_id', $canvas_id)->get();
     $RS = RevenueStream::where('bmc_id', $canvas_id)->get();
-    return view('frontend.users.bmc', compact('canvas', 'KA', 'VP', 'CR', 'KR', 'CH', 'CST', 'RS'));
+    return view('frontend.users.bmc', compact('canvas', 'KP', 'KA', 'VP', 'CR', 'KR', 'CH', 'CST', 'RS'));
   }
+
+
+      public function postKP(Request $request)
+      {
+           $success = '';
+           $KAStyle = '';
+
+        $storeCanvas = DB::table('key_parteners')->insertGetId([
+            'kp_name'  =>$request->name,
+            'kp_desc' =>$request->desc,
+            'BMC_id' => $request->bmc_id,
+        ]);
+        if ($storeCanvas) {
+         //success message
+         $success = 'the data Addedd Successfully';
+         // outputting
+         $KAStyle = '<div class="callout callout-info optionsKP" data-kp="'. $storeCanvas .'">';
+         $KAStyle .= '<div class="card-optionKP">';
+         $KAStyle .= '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
+         $KAStyle .= ' </div>';
+         $KAStyle .= '<h4 class="fullName"><i class="fa fa-user"></i>'. $request->name .'</h4>';
+         $KAStyle .= '<p class="Desc"><i class="fa fa-black-tie"></i>'. $request->desc .'</p>';
+         $KAStyle .= '</div>';
+
+         return response()->json([
+           'success' => $success,
+           'outPut' => $KAStyle,
+         ], 200);
+       }
+
+      }
+
+        /**
+        * delete the kp.
+        **/
+        public function getDeleteKP(Request $request)
+        {
+          $Kp = KeyPartener::find($request->id)->delete();
+          if ($Kp) {
+            //success message
+            $success = 'the data deleted Successfully';
+            return response()->json([
+              'successDelete' => $success,
+            ], 200);
+          }
+        }
+
+
 
   /**
    * Show the canvas Views.
