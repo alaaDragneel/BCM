@@ -43,15 +43,23 @@
 	  <div class="modal-body">
 		  {{-- stat key activity Title --}}
 	    <div class="form-group">
-	      <label for="keyActivityTitle">Title</label>
-	      <input type="text" class="form-control border-input" id="keyActivityTitle" placeholder="wirte the key activity title">
+	      <label for="keyActivityName">name</label>
+	      <input type="text" class="form-control border-input" id="keyActivityName" placeholder="wirte the key activity name OR type the member name">
 	    </div>
 	    {{-- end key activity name --}}
-
+         <div class="resultsMember"></div>
 	    {{-- stat key activity content --}}
 	 <div class="form-group" id="content">
-	   <label for="keyActivityContent">Description</label>
-	   <textarea class="form-control  border-input" id="keyActivityContent" placeholder="wirte the key activity description" rows="5"></textarea>
+	   <label for="tagMembers">Key Activity</label>
+        <div class="tagMembers" id="tagMembers">
+             @if ($KA && count($KA) > 0)
+              @foreach ($KA as $ka)
+               <div class="callout callout-info optionsKP">
+                    <i class="fa fa-user"></i> {{ $ka->ka_memper }}
+               </div>
+              @endforeach
+            @endif
+        </div>
 	 </div>
 	 {{-- end key activity content --}}
 	  </div>

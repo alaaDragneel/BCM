@@ -245,6 +245,7 @@
   var KPurlBtnDelete = '{{ route('request.delete') }}';
   var urlCustomer = '{{ route('Companies') }}';
   // key activity
+  var KAurlAjax = '{{ route('KA.response') }}';
   var KAurl = '{{ route('KA.store') }}';
   var KAurlDelete = '{{ route('KA.delete') }}';
   var KAurlUpdate = '{{ route('KA.update') }}';

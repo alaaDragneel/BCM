@@ -21,9 +21,16 @@
 				</div>
 				<div>
 					@if (Auth::check())
-						<a class="btn btn-prepend" href="{{ route('user.dashboard') }}">
-							<i class="prepended icon-append-iphone"></i>Dashboard
-						</a>
+						@if (Auth::user()->userType === 1)
+							<a class="btn btn-prepend" href="{{ route('admin.dashboard') }}">
+								<i class="prepended icon-append-iphone"></i>Dashboard
+							</a>
+						@endif
+						@if (Auth::user()->userType === 2 || Auth::user()->userType === 3)
+							<a class="btn btn-prepend" href="{{ route('user.dashboard') }}">
+								<i class="prepended icon-append-iphone"></i>Dashboard
+							</a>
+						@endif
 						<a class="btn btn-prepend" href="{{url('/logout')}}">
 							<i class="prepended icon-append-iphone"></i>logOut
 						</a>

@@ -144,6 +144,12 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                  ]);
 
 
+          // response KA canvas
+            Route::get('/canvas/view/KA/responseTeamWork', [
+               'uses' => 'bmcCanvasController@getTeamWork',
+               'as' => 'KA.response'
+             ]);
+
           // store KA canvas
             Route::post('/canvas/view/KA/store', [
                'uses' => 'bmcCanvasController@postKA',

@@ -84,41 +84,48 @@ class bmcCanvasController extends Controller
           }
         }
 
+        public function getTeamWork(Request $request)
+        {
+             $keyWord = $request->word;
+             $membersName = TeamWork::where(function($q) use($keyWord) {
+                  $q->where('name', 'LIKE', "$keyWord%");
+             })->get();
 
+             $members = '';
+
+             foreach($membersName as $member){
+                  $members .= '<div class="memberInfo">';
+                    $members .= '<input type="hidden" value="'. $member->id .'"/>';
+                    $members .= '<img class="img-responsive memberImg pull-left" width="70" src="'.asset( $member->image).'"/>';
+                    $members .= '<h4 class="pull-left memebrName"><i class="fa fa-user"></i> '. $member->name .'</h4>';
+                    $members .= '<div class="clearfix"></div>';
+                    $members .= '<p class="pull-left memebrJob"><i class="fa fa-briefcase"></i> '. $member->job .'</p>';
+                    $members .= '<div class="clearfix"></div>';
+                  $members .= '</div>';
+             }
+
+             return response()->json(['membersName' => $members]);
+        }
 
   /**
    * Show the canvas Views.
    **/
   public function postKA(Request $request)
   {
-    $this->validate($request, [
-      'title'=> 'required|max:255',
-      'description'=> 'min:4|max:500',
-    ]);
+
     $success = '';
     $KAStyle = '';
-    $canvasId = $request->id;
+    $canvasId = $request->bmc_id;
 
     $storeCanvas = DB::table('key_activity')->insertGetId([
-      'ka_title' => $request->title,
-      'ka_desc' => $request->description,
-      'bmc_id' => $canvasId,
-      'user_id' => $canvasId,
+      'ka_memper' => $request->name,
+      'ka_member_job' => $request->job,
+      'ka_memeber_id' => $request->id,
+      'BMC_id' => $canvasId,
     ]);
     if ($storeCanvas) {
-      //success message
-      $success = 'the data Addedd Successfully';
-      // outputting
-      $KAStyle = '<div class="callout callout-info options" data-ka="'. $storeCanvas .'">';
-      $KAStyle .= '<div class="card-option">';
-      $KAStyle .= '<span class="pull-right deleteKA"><i class="fa fa-close"></i></span>';
-      $KAStyle .= '<span class="pull-right editKA"><i class="fa fa-edit"></i></span>';
-      $KAStyle .= ' </div>';
-      $KAStyle .= '<h4 class="ka_title">'. $request->title .'</h4>';
-      $KAStyle .= '<p class="ka_desc">'. $request->description .'</p>';
-      $KAStyle .= '</div>';
-
-      return response()->json([
+         $KAStyle .= '<div class="callout callout-info optionsKP"><i class="fa fa-user"></i> '. $request->name .'</div>';
+        return response()->json([
         'success' => $success,
         'outPut' => $KAStyle,
       ], 200);

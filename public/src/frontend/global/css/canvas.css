@@ -383,3 +383,28 @@ h4 {
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
+.resultsMember .memberInfo:last-child {
+     border-bottom: none;
+}
+.memberImg{
+border-radius: 50%;
+}
+
+.memberInfo{
+     margin-bottom: 20px;
+     border-bottom: 1px solid #666;
+     padding: 7px;
+}
+.memberInfo:hover{
+     background-color: #4074f3;
+     color: #fff;
+     cursor: pointer;
+}
+.memebrName{
+  margin-top: 11px;
+  padding-left: 10px;
+}
+.memebrJob{
+  margin-top: -21px;
+  padding-left: 80px;
+}
