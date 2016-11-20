@@ -13,38 +13,46 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-         // admin user`
-        $user = new User();
-        $user->name = 'alaaDragneel';
-        $user->phoneNo = '01096901954';
-        $user->email = 'alaa_dragneel@yahoo.com';
-        $user->job = 'web develpment';
-        $user->image = 'src/backend/dist/img/avatar5.png';
-        $user->userType = 1;
-        $user->description = 'i\'am a web development';
-        $user->password = bcrypt('666666');
-        $user->save();
-        // individual user
-        $user = new User();
-        $user->name = 'sasuke_alaa';
-        $user->phoneNo = '01196901954';
-        $user->email = 'sasuke_alaa@yahoo.com';
-        $user->job = 'Web Design';
-        $user->image = 'src/backend/dist/img/avatar5.png';
-        $user->userType = 2;
-        $user->description = 'i\'am a graphic desgnier';
-        $user->password = bcrypt('666666');
-        $user->save();
-        // company user
-        $user = new User();
-        $user->name = 'moaalaa';
-        $user->phoneNo = '01296901954';
-        $user->email = 'moaalaa@yahoo.com';
-        $user->job = 'SEO';
-        $user->image = 'src/backend/dist/img/avatar5.png';
-        $user->userType = 3;
-        $user->description = 'i\'am a SEO';
-        $user->password = bcrypt('666666');
-        $user->save();
+      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      DB::table('users')->truncate();
+
+       $Users = [
+         [ // userType == 1 => admin
+           'id'           => 1,
+           'name'     => 'alaaDragneel',
+           'phoneNo'    => '01096901954',
+           'email'     => 'alaa_dragneel@yahoo.com',
+           'job'     => 'web develpment',
+           'image'     => 'src/backend/dist/img/avatar5.png',
+           'userType'     => 1,
+           'description'     => 'i\'am a web development',
+           'password'     => bcrypt('666666'),
+         ],
+         [ // userType == 2 => individual user
+               'id'           => 2,
+               'name'     => 'sasuke_alaa',
+               'phoneNo'    => '01196901954',
+               'email'     => 'sasuke_alaa@yahoo.com',
+               'job'     => 'Web Design',
+               'image'     => 'src/backend/dist/img/avatar5.png',
+               'userType'     => 2,
+               'description'     => 'i\'am a graphic desgnier',
+               'password'     => bcrypt('666666'),
+          ],
+         [ // userType == 3 => company user
+               'id'           => 3,
+               'name'     => 'moaalaa',
+               'phoneNo'    => '01296901954',
+               'email'     => 'moaalaa@yahoo.com',
+               'job'     => 'SEO',
+               'image'     => 'src/backend/dist/img/avatar5.png',
+               'userType'     => 3,
+               'description'     => 'i\'am a SEO',
+               'password'     => bcrypt('666666'),
+          ],
+
+
+       ];
+       DB::table('users')->insert($Users);
     }
 }

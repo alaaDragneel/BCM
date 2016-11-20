@@ -53,14 +53,6 @@ Route::group(['middleware' => 'usersCompany'] , function () {
                'as' => 'teamworks'
           ]);
 
-          // #datatable ajax
-          //
-          // Route::get('/teamworks/view/members', [
-          //      'uses' => 'HomeController@getTeamWorkData',
-          //      'as' => 'teamworks.data'
-          // ]);
-          //
-
           // teamworks add
           Route::post('/teamworks/view/store', [
                'uses' => 'HomeController@NewMember',
@@ -154,6 +146,11 @@ Route::group(['middleware' => 'usersCompany'] , function () {
             Route::post('/canvas/view/KA/store', [
                'uses' => 'bmcCanvasController@postKA',
                'as' => 'KA.store'
+             ]);
+          // store KATag canvas
+            Route::post('/canvas/view/KA/store/tag', [
+               'uses' => 'bmcCanvasController@postKATag',
+               'as' => 'KA.storeTag'
              ]);
           // delete KA canvas
             Route::get('/canvas/view/KA/delete', [

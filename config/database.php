@@ -70,7 +70,7 @@ return [
             'driver' => 'mysql',
             'host' => env('DB_HOSTP', 'localhost'),
             'port' => env('DB_PORTP', '3306'),
-            'database' => env('DB_DATABASEP', 'prosearch2'),
+            'database' => env('DB_DATABASEP', 'pro_search_adv'),
             'username' => env('DB_USERNAMEP', 'root'),
             'password' => env('DB_PASSWORDP', ''),
             'charset' => 'utf8',

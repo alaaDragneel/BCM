@@ -35,10 +35,16 @@ h1 {font-weight: 900;}
  color: #777;
  cursor: pointer;
 }
-.fa-close,.fa-edit {
+.fa-close,
+.fa-edit,
+.fa-tag,
+.fa-info {
   cursor: pointer;
 }
-.fa-close:hover,.fa-edit:hover {
+.fa-close:hover,
+.fa-edit:hover,
+.fa-info:hover,
+.fa-tag:hover {
   transition: all 0.5s ease-in-out;
   color: #ddd;
 }
@@ -407,4 +413,8 @@ border-radius: 50%;
 .memebrJob{
   margin-top: -21px;
   padding-left: 80px;
+}
+
+.details {
+  display: none;
 }

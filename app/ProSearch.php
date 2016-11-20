@@ -8,6 +8,6 @@ class ProSearch extends Model
 {
 	protected $connection = 'mysqlP';
 
-	protected $table = 'users';
+	protected $table = 'companies';
 
 }

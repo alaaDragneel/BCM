@@ -9,7 +9,7 @@ class BMC extends Model
   protected $fillable = [
     'id', 'name', 'description', 'user_id',
   ];
-  protected $table = 'bmcs';
+  protected $table = 'BMCS';
 
   public function Users()
   {

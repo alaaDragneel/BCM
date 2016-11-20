@@ -21,7 +21,8 @@ class CreateTasksTable extends Migration
             $table->foreign('BMC_id')->references('id')->on('BMCS')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('teamWork_id')->unsigned();
             $table->foreign('teamWork_id')->references('id')->on('teamWorks')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

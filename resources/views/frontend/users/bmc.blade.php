@@ -247,6 +247,7 @@
   // key activity
   var KAurlAjax = '{{ route('KA.response') }}';
   var KAurl = '{{ route('KA.store') }}';
+  var KAurlTag = '{{ route('KA.storeTag') }}';
   var KAurlDelete = '{{ route('KA.delete') }}';
   var KAurlUpdate = '{{ route('KA.update') }}';
   // value porposition

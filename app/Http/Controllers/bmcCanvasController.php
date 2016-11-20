@@ -22,8 +22,8 @@ use DB;
 class bmcCanvasController extends Controller
 {
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function getCanvas($canvas_id)
   {
     $canvas = BMC::where('id', $canvas_id)->first();
@@ -39,80 +39,79 @@ class bmcCanvasController extends Controller
   }
 
 
-      public function postKP(Request $request)
-      {
-           $success = '';
-           $KAStyle = '';
+  public function postKP(Request $request)
+  {
+    $success = '';
+    $KAStyle = '';
 
-        $storeCanvas = DB::table('key_parteners')->insertGetId([
-            'kp_name'  =>$request->name,
-            'kp_desc' =>$request->desc,
-            'BMC_id' => $request->bmc_id,
-        ]);
-        if ($storeCanvas) {
-         //success message
-         $success = 'the data Addedd Successfully';
-         // outputting
-         $KAStyle = '<div class="callout callout-info optionsKP" data-kp="'. $storeCanvas .'">';
-         $KAStyle .= '<div class="card-optionKP">';
-         $KAStyle .= '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
-         $KAStyle .= ' </div>';
-         $KAStyle .= '<h4 class="fullName"><i class="fa fa-user"></i>'. $request->name .'</h4>';
-         $KAStyle .= '<p class="Desc"><i class="fa fa-black-tie"></i>'. $request->desc .'</p>';
-         $KAStyle .= '</div>';
+    $storeCanvas = DB::table('key_parteners')->insertGetId([
+      'kp_name'  =>$request->name,
+      'kp_desc' =>$request->desc,
+      'BMC_id' => $request->bmc_id,
+    ]);
+    if ($storeCanvas) {
+      //success message
+      $success = 'the data Addedd Successfully';
+      // outputting
+      $KAStyle = '<div class="callout callout-info optionsKP" data-kp="'. $storeCanvas .'">';
+      $KAStyle .= '<div class="card-optionKP">';
+      $KAStyle .= '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
+      $KAStyle .= ' </div>';
+      $KAStyle .= '<h4 class="fullName"><i class="fa fa-user"></i>'. $request->name .'</h4>';
+      $KAStyle .= '<p class="Desc"><i class="fa fa-black-tie"></i>'. $request->desc .'</p>';
+      $KAStyle .= '</div>';
 
-         return response()->json([
-           'success' => $success,
-           'outPut' => $KAStyle,
-         ], 200);
-       }
+      return response()->json([
+        'success' => $success,
+        'outPut' => $KAStyle,
+      ], 200);
+    }
 
-      }
-
-        /**
-        * delete the kp.
-        **/
-        public function getDeleteKP(Request $request)
-        {
-          $Kp = KeyPartener::find($request->id)->delete();
-          if ($Kp) {
-            //success message
-            $success = 'the data deleted Successfully';
-            return response()->json([
-              'successDelete' => $success,
-            ], 200);
-          }
-        }
-
-        public function getTeamWork(Request $request)
-        {
-             $keyWord = $request->word;
-             $membersName = TeamWork::where(function($q) use($keyWord) {
-                  $q->where('name', 'LIKE', "$keyWord%");
-             })->get();
-
-             $members = '';
-
-             foreach($membersName as $member){
-                  $members .= '<div class="memberInfo">';
-                    $members .= '<input type="hidden" value="'. $member->id .'"/>';
-                    $members .= '<img class="img-responsive memberImg pull-left" width="70" src="'.asset( $member->image).'"/>';
-                    $members .= '<h4 class="pull-left memebrName"><i class="fa fa-user"></i> '. $member->name .'</h4>';
-                    $members .= '<div class="clearfix"></div>';
-                    $members .= '<p class="pull-left memebrJob"><i class="fa fa-briefcase"></i> '. $member->job .'</p>';
-                    $members .= '<div class="clearfix"></div>';
-                  $members .= '</div>';
-             }
-
-             return response()->json(['membersName' => $members]);
-        }
+  }
 
   /**
-   * Show the canvas Views.
-   **/
+  * delete the kp.
+  **/
+  public function getDeleteKP(Request $request)
+  {
+    $Kp = KeyPartener::find($request->id)->delete();
+    if ($Kp) {
+      //success message
+      $success = 'the data deleted Successfully';
+      return response()->json([
+      'successDelete' => $success,
+      ], 200);
+    }
+  }
+
+  public function getTeamWork(Request $request)
+  {
+    $keyWord = $request->word;
+    $membersName = TeamWork::where(function($q) use($keyWord) {
+      $q->where('name', 'LIKE', "$keyWord%");
+    })->get();
+
+    $members = '';
+
+    foreach($membersName as $member){
+      $members .= '<div class="memberInfo">';
+      $members .= '<input type="hidden" value="'. $member->id .'"/>';
+      $members .= '<img class="img-responsive memberImg pull-left" width="70" src="'.asset( $member->image).'"/>';
+      $members .= '<h4 class="pull-left memebrName"><i class="fa fa-user"></i> '. $member->name .'</h4>';
+      $members .= '<div class="clearfix"></div>';
+      $members .= '<p class="pull-left memebrJob"><i class="fa fa-briefcase"></i> '. $member->job .'</p>';
+      $members .= '<div class="clearfix"></div>';
+      $members .= '</div>';
+    }
+
+    return response()->json(['membersName' => $members]);
+  }
+
+  /**
+  * Show the canvas Views.
+  **/
   public function postKA(Request $request)
   {
-
     $success = '';
     $KAStyle = '';
     $canvasId = $request->bmc_id;
@@ -124,13 +123,29 @@ class bmcCanvasController extends Controller
       'BMC_id' => $canvasId,
     ]);
     if ($storeCanvas) {
-         $KAStyle .= '<div class="callout callout-info optionsKP"><i class="fa fa-user"></i> '. $request->name .'</div>';
-        return response()->json([
+      $KAStyle .= '<div class="callout callout-info optionsKP"><i class="fa fa-user"></i> '. $request->name .'</div>';
+      return response()->json([
         'success' => $success,
         'outPut' => $KAStyle,
       ], 200);
     }
 
+  }
+  public function postKATag(Request $request)
+  {
+    DB::statement('SET FOREIGN_KEY_CHECKS=0');
+    $this->validate($request, [
+      'title'=> 'required|max:255',
+      'desc'=> 'min:4|max:500',
+    ]);
+    $storeCanvas = DB::table('key_activity')->where(function($q) use($request) {
+      $q->where('id', $request->ka_id);
+      $q->where('BMC_id', $request->BMC_id);
+    })->update([
+      'ka_title' => $request->title,
+      'ka_desc' => $request->desc,
+    ]);
+    return response()->json(['done' => 'the info added']);
   }
 
   /**
@@ -174,8 +189,8 @@ class bmcCanvasController extends Controller
 
   }
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function postVP(Request $request)
   {
     $this->validate($request, [
@@ -209,9 +224,7 @@ class bmcCanvasController extends Controller
         'outPut' => $VPStyle,
       ], 200);
     }
-
   }
-
   /**
   * delete the ka.
   **/
@@ -253,8 +266,8 @@ class bmcCanvasController extends Controller
   }
 
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function postCR(Request $request)
   {
     $this->validate($request, [
@@ -331,8 +344,8 @@ class bmcCanvasController extends Controller
   }
 
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function postKR(Request $request)
   {
     $this->validate($request, [
@@ -380,72 +393,72 @@ class bmcCanvasController extends Controller
       $success = 'the Key Resources deleted Successfully';
       return response()->json([
         'successDelete' => $success,
-      ], 200);
+        ], 200);
+      }
     }
-  }
-  /**
-  * update the ka.
-  **/
-  public function UpdateKR(Request $request)
-  {
-    $this->validate($request, [
-      'title'=> 'required|max:255',
-      'description'=> 'min:4|max:500',
-    ]);
-    $canvas_id = $request->id;
-    // dd($canvas_id);
-    $success = '';
-    $KRUpdate = KeyResource::find($canvas_id);
-    $KRUpdate->kr_title = $request->title;
-    $KRUpdate->kr_desc = $request->description;
-    $canvasUpdate = $KRUpdate->update();
-    if($canvasUpdate){
-      $success = 'the Key Resources successfully updated';
-      return response()->json([
-        'successUpdate' => $success,
-      ], 200);
+    /**
+    * update the ka.
+    **/
+    public function UpdateKR(Request $request)
+    {
+      $this->validate($request, [
+        'title'=> 'required|max:255',
+        'description'=> 'min:4|max:500',
+      ]);
+      $canvas_id = $request->id;
+      // dd($canvas_id);
+      $success = '';
+      $KRUpdate = KeyResource::find($canvas_id);
+      $KRUpdate->kr_title = $request->title;
+      $KRUpdate->kr_desc = $request->description;
+      $canvasUpdate = $KRUpdate->update();
+      if($canvasUpdate){
+        $success = 'the Key Resources successfully updated';
+        return response()->json([
+          'successUpdate' => $success,
+        ], 200);
+      }
+
     }
 
-  }
+    /**
+    * Show the canvas Views.
+    **/
+    public function postCH(Request $request)
+    {
+      $this->validate($request, [
+        'title'=> 'required|max:255',
+        'description'=> 'min:4|max:500',
+      ]);
+      $success = '';
+      $CHStyle = '';
+      $canvasId = $request->id;
 
-  /**
-   * Show the canvas Views.
-   **/
-  public function postCH(Request $request)
-  {
-    $this->validate($request, [
-      'title'=> 'required|max:255',
-      'description'=> 'min:4|max:500',
-    ]);
-    $success = '';
-    $CHStyle = '';
-    $canvasId = $request->id;
+      $storeCanvas = DB::table('chaneels')->insertGetId([
+        'ch_title' => $request->title,
+        'ch_desc' => $request->description,
+        'BMC_id' => $canvasId,
+      ]);
+      if ($storeCanvas) {
+        //success message
+        $success = 'the channels Addedd Successfully';
+        // outputting
+        $CHStyle = '<div class="callout callout-danger optionsCH" data-vp="'. $storeCanvas .'">';
+        $CHStyle .= '<div class="card-optionCH">';
+        $CHStyle .= '<span class="pull-right deleteCH"><i class="fa fa-close"></i></span>';
+        $CHStyle .= '<span class="pull-right editCH"><i class="fa fa-edit"></i></span>';
+        $CHStyle .= ' </div>';
+        $CHStyle .= '<h4 class="ch_title">'. $request->title .'</h4>';
+        $CHStyle .= '<p class="ch_desc">'. $request->description .'</p>';
+        $CHStyle .= '</div>';
 
-    $storeCanvas = DB::table('chaneels')->insertGetId([
-      'ch_title' => $request->title,
-      'ch_desc' => $request->description,
-      'BMC_id' => $canvasId,
-    ]);
-    if ($storeCanvas) {
-      //success message
-      $success = 'the channels Addedd Successfully';
-      // outputting
-      $CHStyle = '<div class="callout callout-danger optionsCH" data-vp="'. $storeCanvas .'">';
-      $CHStyle .= '<div class="card-optionCH">';
-      $CHStyle .= '<span class="pull-right deleteCH"><i class="fa fa-close"></i></span>';
-      $CHStyle .= '<span class="pull-right editCH"><i class="fa fa-edit"></i></span>';
-      $CHStyle .= ' </div>';
-      $CHStyle .= '<h4 class="ch_title">'. $request->title .'</h4>';
-      $CHStyle .= '<p class="ch_desc">'. $request->description .'</p>';
-      $CHStyle .= '</div>';
-
-      return response()->json([
+        return response()->json([
         'success' => $success,
         'outPut' => $CHStyle,
-      ], 200);
-    }
+        ], 200);
+      }
 
-  }
+    }
 
   /**
   * delete the ka.
@@ -486,8 +499,8 @@ class bmcCanvasController extends Controller
   }
 
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function postCST(Request $request)
   {
     $this->validate($request, [
@@ -563,8 +576,8 @@ class bmcCanvasController extends Controller
   }
 
   /**
-   * Show the canvas Views.
-   **/
+  * Show the canvas Views.
+  **/
   public function postRS(Request $request)
   {
     $this->validate($request, [
@@ -594,8 +607,8 @@ class bmcCanvasController extends Controller
       $style .= '</div>';
 
       return response()->json([
-        'success' => $success,
-        'outPut' => $style,
+      'success' => $success,
+      'outPut' => $style,
       ], 200);
     }
 
@@ -638,4 +651,5 @@ class bmcCanvasController extends Controller
       ], 200);
     }
   }
+
 }
