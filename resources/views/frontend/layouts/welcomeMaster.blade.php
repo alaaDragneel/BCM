@@ -22,10 +22,13 @@
 				<a href="index.html">HOME</a> | <a href="about.html">ABOUT</a>
 			</p>
 		</div>
+		{{-- {!! Html::style('src/frontend/usersFiles/css/paper-dashboard.css') !!} --}}
+		{!! Html::style('src/frontend/usersFiles/css/themify-icons.css') !!}
 		{!! Html::script('src/frontend/welcomeFiles/js/modernizr.js') !!}
 		{!! Html::script('src/frontend/welcomeFiles/js/respond.min.js') !!}
 		{!! Html::script('src/frontend/global/js/jquery.min.js') !!} {{-- found it int the global folder --}}
 		{!! Html::script('src/frontend/global/js/bootstrap.js') !!} {{-- found it int the global folder --}}
+		<script src="{{asset('src/frontend/global/js/jquery.nicescroll.min.js')}}"></script>
 		{!! Html::script('src/frontend/welcomeFiles/js/dropdown.js') !!}
 		{!! Html::script('src/frontend/welcomeFiles/js/main.js') !!}
 		<!-- //-end- concat_js -->

@@ -57,63 +57,100 @@
 				<h1 class="mb-10 xs-mb-10 heading color-dark heading-bordered">Your App<br class=hidden-xs> Now</h1>
 			</div>
 			<div class="col-sm-5 col-sm-offset-1">
-				<h2 class="w-300 color-dark mb-10 xs-mb-10">Lorem Ipsum Dolor Sit.</h2>
+				<h2 class="w-300 color-dark mb-10 xs-mb-10">make many works with many toole\s.</h2>
 				<p class="xs-mw">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 			</div>
 		</div>
 	</div>
-	{!! Html::image('src/frontend/welcomeFiles/img/v2/iphone6.min.png') !!}
-	<div class=container>
-		<div class="row mb-90 xs-mb-0">
-
-			<div class="col-sm-1 col-sm-offset-2">
-				<i class="icon icon-check"></i>
+	{{-- {!! Html::image('src/frontend/welcomeFiles/img/v2/iphone6.min.png') !!} --}}
+	<div class="col-md-4">
+			<div class="card" style="cursor: pointer;">
+					<div class="content">
+							<div class="row">
+									<div class="col-xs-5">
+											<div class="icon-big icon-success text-center">
+													<i class="ti-wallet"></i>
+											</div>
+									</div>
+									<div class="col-xs-7">
+											<div class="numbers">
+													<p>BMC</p>
+													<a href="#main" style="text-decoration: none;" class="info">see more </a><i class="ti-plus" style="font-size: 15px;"></i>
+											</div>
+									</div>
+							</div>
+							<div class="footer">
+									<hr />
+									<div class="stats">
+											<i class="ti-calendar"></i>
+											<span style="font-size: 15px;">make an easy bmc and success your company</span>
+									</div>
+							</div>
+					</div>
 			</div>
-			<div class="col-sm-3">
-				<h3 class="mb-15">iOS Ready</h3>
-				<p class="smaller xs-mb-40 xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-			</div>
-
-			<div class="col-sm-1">
-				<i class="icon icon-calendar"></i>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mb-15">Up To Date</h3>
-				<p class="smaller xs-mb-40 xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-			</div>
-
-		</div>
-
-		<div class=row>
-
-			<div class="col-sm-1 col-sm-offset-2">
-				<i class="icon icon-user"></i>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mb-15">Multiple Users</h3>
-				<p class="smaller xs-mb-40 xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-			</div>
-
-			<div class="col-sm-1">
-				<i class="icon icon-clock"></i>
-			</div>
-			<div class="col-sm-3">
-				<h3 class="mb-15">On Time</h3>
-				<p class="smaller xs-mb-40 xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-			</div>
-
-		</div>
 	</div>
-</div>
+	<div class="col-md-4">
+			<div class="card" style="cursor: pointer;">
+					<div class="content">
+							<div class="row">
+									<div class="col-xs-5">
+											<div class="icon-big icon-danger text-center">
+													<i class="ti-pulse"></i>
+											</div>
+									</div>
+									<div class="col-xs-7">
+											<div class="numbers">
+													<p>kpIs</p>
+													see more <i class="ti-plus" style="font-size: 15px;"></i>
+											</div>
+									</div>
+							</div>
+							<div class="footer">
+									<hr />
+									<div class="stats">
+										<i class="ti-calendar"></i>
+											<span style="font-size: 15px;">make an easy kpis to your lenCanvas</span>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+	<div class="col-md-4">
+			<div class="card" style="cursor: pointer;">
+					<div class="content">
+							<div class="row">
+									<div class="col-xs-5">
+											<div class="icon-big icon-info text-center">
+													<i class="ti-twitter-alt"></i>
+											</div>
+									</div>
+									<div class="col-xs-7">
+											<div class="numbers">
+													<p>len</p>
+													see more <i class="ti-plus" style="font-size: 15px;"></i>
+											</div>
+									</div>
+							</div>
+							<div class="footer">
+									<hr />
+									<div class="stats">
+											<i class="ti-calendar"></i>
+											 <span style="font-size: 15px;">make len canvas to find the way to your problems</span>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
 
+</div>
 <div class="level level-img-right">
 
-	<div class="container xs-mb-30">
-		{!! Html::image('src/frontend/welcomeFiles/img/v2/iphone-bg-lg.min.png') !!}
+	<div class="container xs-mb-30" id="main">
+		{!! Html::image('src/frontend/welcomeFiles/img/main.png') !!}
 		<div class="row mb-60 xs-mb-20">
 			<div class="col-sm-6 col-lg-offset-1 col-lg-5">
 				<h1 class="mb-20 xs-mb-10 heading color-dark heading-bordered xl-heading-outdent">Details</h1>
-				<h2 class="w-300 color-dark mb-10">All what you want in your phone</h2>
+				<h2 class="w-300 color-dark mb-10">All what you want in one page</h2>
 				<p class=xs-mw>Now with Appi you have it on your fingertips.
 			</div>
 		</div>
@@ -128,7 +165,7 @@
 			</div>
 			<div class="col-sm-4 col-md-3">
 				<h3 class="mb-15">Worldwide</h3>
-				<p class="smaller xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				<p class="smaller xs-mw">more easy to create a bmc and contact around the world with your team.
 			</div>
 		</div>
 
@@ -138,7 +175,7 @@
 			</div>
 			<div class="col-sm-4 col-md-3">
 				<h3 class="mb-15">Privacy</h3>
-				<p class="smaller xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				<p class="smaller xs-mw">more privacy to you and your work.
 			</div>
 		</div>
 		<div class="row">
@@ -147,12 +184,13 @@
 			</div>
 			<div class="col-sm-4 col-md-3">
 				<h3 class="mb-15">Social Integration</h3>
-				<p class="smaller xs-mw">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+				<p class="smaller xs-mw">communicate and make brain storming and see the deffrient says.
 			</div>
 		</div>
 	</div>
 
 </div>
+{{--
 
 <div class="level level-outro text-center">
 	<div class=container>
@@ -189,5 +227,5 @@
 	</div>
 
 
-</div>
+</div> --}}
 @endsection
