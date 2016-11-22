@@ -34,7 +34,6 @@ $(document).ready(function () {
              var id = $(this).siblings('input');
              var bmc_id = $('#bizcanvas').data('id');
              var name = $(this).siblings('.userInfo').children('.fullName').text();
-             var phone = $(this).siblings('.userInfo').children('.num').text();
              var email = $(this).siblings('.userInfo').children('.email').text();
              var job = $(this).siblings('.userInfo').children('.job').text();
              var desc = $(this).siblings('.userInfo').children('.Desc').text();
@@ -42,7 +41,7 @@ $(document).ready(function () {
              $.ajax({
                method: 'post',
                url: urlBtn,
-               data: {id: id.val(), name: name, phone: phone, email: email, job: job, desc: desc, bmc_id: bmc_id, _token: token},
+               data: {id: id.val(), name: name, email: email, job: job, desc: desc, bmc_id: bmc_id, _token: token},
 
           }).done(function(msg) {
                kp += '<div class="callout callout-info optionsKP" data-kp="'+ msg['resultsBtn'] +'">';
@@ -50,7 +49,6 @@ $(document).ready(function () {
                kp += '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
                kp += '</div>';
                kp += '<h4 class="fullName"><i class="fa fa-user"></i> '+ name +'</h4>';
-               kp += '<h4 class="num"><i class="fa fa-phone"></i> '+ phone +'</h4>';
                kp += '<h4 class="email"><i class="fa fa-envelope"></i> '+ email +'</h4>';
                kp +=  '<h4 class="job"><i class="fa fa-briefcase"></i> '+ job +'</h4>';
                kp += '<p class="Desc"><i class="fa fa-black-tie"></i> '+ desc +'</p>';

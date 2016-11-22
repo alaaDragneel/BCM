@@ -39,9 +39,6 @@
                               <span class="pull-right deleteKP"><i class="fa fa-close"></i></span>
                             </div>
                             <h4 class="fullName"><i class="fa fa-user"></i>{{ $kp->kp_name }}</h4>
-                            @if ($kp->kp_num)
-                                 <h4 class="num"><i class="fa fa-phone"></i>{{ $kp->kp_num }}</h4>
-                            @endif
                             @if ($kp->kp_email)
                                  <h4 class="email"><i class="fa fa-envelope"></i>{{ $kp->kp_email }}</h4>
                             @endif

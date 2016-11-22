@@ -15,7 +15,6 @@ class CreateKeyPartenerTable extends Migration
         Schema::create('key_parteners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kp_name');
-            $table->string('kp_num');
             $table->string('kp_email');
             $table->string('kp_job');
             $table->text('kp_desc');
