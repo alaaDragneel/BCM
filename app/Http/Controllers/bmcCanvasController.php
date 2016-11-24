@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Html;
 use App\TeamWork;
+use App\Company;
 use App\BMC;
 use App\KeyPartener;
 use App\KeyActivity;
@@ -43,7 +44,12 @@ class bmcCanvasController extends Controller
   {
     $success = '';
     $KAStyle = '';
-
+    /*company table save*/
+      $company = new Company();
+      $company->name = $request->name;
+      $company->description = $request->desc;
+      $company->save();
+    /*company table save*/
     $storeCanvas = DB::table('key_parteners')->insertGetId([
       'kp_name'  =>$request->name,
       'kp_desc' =>$request->desc,

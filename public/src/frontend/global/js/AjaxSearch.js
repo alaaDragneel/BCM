@@ -44,17 +44,9 @@ $(document).ready(function () {
                data: {id: id.val(), name: name, email: email, job: job, desc: desc, bmc_id: bmc_id, _token: token},
 
           }).done(function(msg) {
-               kp += '<div class="callout callout-info optionsKP" data-kp="'+ msg['resultsBtn'] +'">';
-               kp += '<div class="card-optionKP">';
-               kp += '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
-               kp += '</div>';
-               kp += '<h4 class="fullName"><i class="fa fa-user"></i> '+ name +'</h4>';
-               kp += '<h4 class="email"><i class="fa fa-envelope"></i> '+ email +'</h4>';
-               kp +=  '<h4 class="job"><i class="fa fa-briefcase"></i> '+ job +'</h4>';
-               kp += '<p class="Desc"><i class="fa fa-black-tie"></i> '+ desc +'</p>';
-               kp += '</div>';
 
-               $('#Partner').append(kp);
+
+               $('#Partner').append(msg['resultsBtn']);
                // view the key-activity option
                $('.optionsKP').on('mouseenter', function() {
                    // show the card option
