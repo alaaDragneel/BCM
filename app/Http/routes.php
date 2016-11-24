@@ -38,14 +38,14 @@ Route::group(['middleware' => 'admin'], function () {
 ** start users Routes
 /**********************************************************************************************************/
 // group the routes by the users middleWare
-Route::group(['middleware' => 'usersCompany'] , function () {
+Route::group(['middleware' => 'users'] , function () {
      // add users prefix
      Route::group(['prefix' => 'users'], function () {
-          // index view
-          Route::get('/dashboard', [
-               'uses' => 'HomeController@index',
-               'as' => 'user.dashboard'
-          ]);
+       // index view
+       Route::get('/dashboard', [
+         'uses' => 'HomeController@index',
+         'as' => 'user.dashboard'
+       ]);
 
           // teamworks view
           Route::get('/teamworks/view', [
