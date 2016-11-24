@@ -70,7 +70,8 @@ class ProSearchController extends Controller
         <input type="hidden" value="'. $results->id .'"/>
         <button type="button" class="btn btn-primary btn-sm pull-right requestBtn">request</button>
         <div class="userInfo">
-        <h4 class="fullName"><i class="fa fa-user"></i> '. $results->company_name .'</h4><div class="clearfix"></div>';
+        <h4 class="fullName">
+        <i class="fa fa-user"></i> '. $results->company_name .'</h4><div class="clearfix"></div>';
 
         $AjaxResult .='<h4 class="email"><i class="fa fa-envelope"></i> '. $results->website .'</h4><div class="clearfix"></div>
         ';
@@ -107,9 +108,9 @@ class ProSearchController extends Controller
     ]);
 
     $kp .= '<div class="callout callout-info optionsKP" data-kp="'. $storeCanvas .'">';
-    $kp .= '<div class="card-optionKP">';
-    $kp .= '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
-    $kp .= '</div>';
+      $kp .= '<div class="card-optionKP">';
+        $kp .= '<span class="pull-right deleteKP"><i class="fa fa-close"></i></span>';
+      $kp .= '</div>';
     $kp .= '<h4 class="fullName"><i class="fa fa-user"></i> '.  $request->name  .'</h4>';
     if ($request->email) {
       $kp .= '<h4 class="email"><i class="fa fa-envelope"></i> '. $request->email .'</h4>';

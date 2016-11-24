@@ -22,6 +22,19 @@ $(document).ready(function() {
                     }).done(function (msg) {
 
                          $('.tagMembers').append(msg['outPut']);
+                         // info key
+                         $('.addKAInfo').on('click', function() {
+                           ka_id = $(this).parents().siblings('.memberInfoTag').data('ka-id');
+                           BMC_id = $(this).parents().siblings('.memberInfoTag').data('bmc-id');
+                            var name = $(this).parents().siblings('.memberInfoTag').children('.name').text(); // maber name
+                            var job = $(this).parents().siblings('.memberInfoTag').children('.details').children('.job').text();// maber job
+                            $('#addActivityModalInfo #memebrNameInfo').val(name); // assain the name input value
+                            $('#addActivityModalInfo #memebrjobInfo').val(job); // assain the description input value
+                         });
+
+                         $('.moreDetails').on('click', function() {
+                           $(this).parents().siblings('.memberInfoTag').children('.details').slideToggle(500);
+                         });
                     });
                });
           });

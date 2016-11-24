@@ -45,7 +45,6 @@
                             @if ($kp->kp_job)
                                  <h4 class="job"><i class="fa fa-briefcase"></i>{{ $kp->kp_job }}</h4>
                             @endif
-
                             <p class="Desc"><i class="fa fa-black-tie"></i>{{ $kp->kp_desc }}</p>
                        </div>
                      @endforeach
@@ -71,8 +70,13 @@
                          <span class="pull-right editKA"><i class="fa fa-edit"></i></span>
                        </div>
                        <div class="clearfix"></div>
-                       <h4 class="ka_title">{{ $ka->ka_title }}</h4>
-                       <p class="ka_desc">{{ $ka->ka_desc }}</p>
+                       <h4 class="ka_memper" style="margin-bottom: 20px;">{{ $ka->ka_memper }}</h4>
+                       @if ($ka->ka_title)
+                         <h4 class="ka_title">{{ $ka->ka_title }}</h4>
+                       @endif
+                       @if ($ka->ka_desc)
+                         <p class="ka_desc">{{ $ka->ka_desc }}</p>
+                       @endif
                      </div>
                    @endforeach
                  @endif

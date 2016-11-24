@@ -129,13 +129,24 @@ class bmcCanvasController extends Controller
       'BMC_id' => $canvasId,
     ]);
     if ($storeCanvas) {
-      $KAStyle .= '<div class="callout callout-info optionsKP"><i class="fa fa-user"></i> '. $request->name .'</div>';
+      $KAStyle .= '<div class="callout callout-info">';
+        $KAStyle .= '<div class="option-cardKA pull-right">';
+          $KAStyle .= '<i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i>';
+          $KAStyle .= '<i class="fa fa-close"></i>';
+          $KAStyle .= '<i class="fa fa-info moreDetails"></i>';
+        $KAStyle .= '</div>';
+        $KAStyle .= '<div class="memberInfoTag" data-ka-id="'. $storeCanvas .'" data-bmc-id="'. $canvasId .'">';
+          $KAStyle .= '<h6 class="name"><i class="fa fa-user"></i> '. $request->name .'</h6>';
+          $KAStyle .= '<div class="details">';
+            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $request->job .'</h6>';
+          $KAStyle .= '</div>';
+        $KAStyle .= '</div>';
+      $KAStyle .= '</div>';
       return response()->json([
         'success' => $success,
         'outPut' => $KAStyle,
       ], 200);
     }
-
   }
   public function postKATag(Request $request)
   {

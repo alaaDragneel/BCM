@@ -64,6 +64,14 @@
                   <h6 class="name"><i class="fa fa-user"></i> {{ $ka->ka_memper }}</h6>
                   <div class="details">
                     <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_member_job }}</h6>
+                    @if ($ka->ka_title)
+
+                      <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_title }}</h6>
+                    @endif
+                    @if ($ka->ka_desc)
+
+                      <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_desc }}</h6>
+                    @endif
                   </div>
                 </div>
               </div>
