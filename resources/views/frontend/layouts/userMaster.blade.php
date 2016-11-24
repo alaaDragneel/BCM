@@ -46,12 +46,16 @@
                         <p>Dashboard</p>
                     </a>
                </li>
-							 <li {{ Request::is('users/teamworks*') ? 'class=active' : '' }}>
-								 <a href="{{ route('teamworks') }}">
-									 <i class="fa fa-users"></i>
-									 <p>teamWorks</p>
-								 </a>
-							 </li>
+							 @if(Auth::check())
+								 @if(Auth::user()->userType === 3)
+									 <li {{ Request::is('users/teamworks*') ? 'class=active' : '' }}>
+										 <a href="{{ route('teamworks') }}">
+											 <i class="fa fa-users"></i>
+											 <p>teamWorks</p>
+										 </a>
+									 </li>
+								 @endif
+							 @endif
             	<li {{ Request::is('users/projects*') ? 'class=active' : '' }}>
                     <a href="{{ route('projects') }}">
                         <i class="fa fa-tasks"></i>
