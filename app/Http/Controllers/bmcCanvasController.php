@@ -137,21 +137,23 @@ class bmcCanvasController extends Controller
       'BMC_id' => $canvasId,
     ]);
     if ($storeCanvas) { //success message
-      $KAStyle .= '<div class="callout callout-info optionsKA">';
-        $KAStyle .= '<div class="card-option">';
-          $KAStyle .= '<span><i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i></span>';
-          $KAStyle .= '<span><i class="fa fa-close"></i></span>';
-          $KAStyle .= '<span><i class="fa fa-info moreDetails"></i></span>';
-        $KAStyle .= '</div>';
-        $KAStyle .= '<div class="memberInfoTag" data-ka-id="'. $storeCanvas .'">';
-          $KAStyle .= '<h6 class="name"><i class="fa fa-user"></i> '. $memberName .'</h6>';
-          $KAStyle .= '<div class="details">';
-            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $job .'</h6>';
-            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $ka_title .'</h6>';
-            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $ka_desc .'</h6>';
-          $KAStyle .= '</div>';
-        $KAStyle .= '</div>';
-      $KAStyle .= '</div>';
+
+         $KAStyle .= '<div class="callout callout-info optionsKA" data-ka="'. $storeCanvas .'">';
+               $KAStyle .= '<div class="card-option">';
+                    $KAStyle .= '<span><i class="fa fa-edit editKA" data-target="#editActivityModal" data-toggle="modal"></i></span>';
+                    $KAStyle .= '<span><i class="fa fa-close deleteKA"></i></span>';
+                    $KAStyle .= '<span><i class="fa fa-info moreDetails"></i></span>';
+               $KAStyle .= '</div>';
+               $KAStyle .= '<div class="memberInfoTag">';
+                    $KAStyle .= '<h5  class="name" style="font-size: 15px;"><i class="fa fa-user"></i>'.
+                    $memberName.'</h5>';
+                         $KAStyle .= '<div class="details">';
+                              $KAStyle .= '<p class="job"><i class="fa fa-briefcase"></i>'. $job .'</p>';
+                              $KAStyle .= '<p class="ka_title"><i class="fa fa-briefcase"></i>'. $ka_title .'</p>';
+                              $KAStyle .= '<p class="ka_desc"><i class="fa fa-briefcase"></i>'. $ka_desc .'</p>';
+                         $KAStyle .= '</div>';
+               $KAStyle .= '</div>';
+         $KAStyle .= '</div>';
       return response()->json([
         'success' => $success,
         'outPut' => $KAStyle,
@@ -180,15 +182,24 @@ class bmcCanvasController extends Controller
   public function UpdateKA(Request $request)
   {
     $this->validate($request, [
-      'title'=> 'required|max:255',
-      'description'=> 'min:4|max:500',
+      'ka_title'=> 'required|max:255',
+      'ka_desc'=> 'min:4|max:500',
     ]);
-    $canvas_id = $request->id;
-    // dd($canvas_id);
+    // info
+    $id         = $request->id;
+    $memberName = $request->memberName;
+    $job        = $request->job;
+    $ka_title   = $request->ka_title;
+    $ka_desc    = $request->ka_desc;
+    $member_id  = $request->member_id;
+
     $success = '';
-    $KAUpdate = KeyActivity::find($canvas_id);
-    $KAUpdate->ka_title = $request->title;
-    $KAUpdate->ka_desc = $request->description;
+    $KAUpdate = KeyActivity::find($id);
+    $KAUpdate->ka_memper = $memberName;
+    $KAUpdate->ka_member_job = $job;
+    $KAUpdate->ka_title = $ka_title;
+    $KAUpdate->ka_desc = $ka_desc;
+    $KAUpdate->ka_memeber_id = $member_id;
     $canvasUpdate = $KAUpdate->update();
     if($canvasUpdate){
       $success = 'the data successfully updated';

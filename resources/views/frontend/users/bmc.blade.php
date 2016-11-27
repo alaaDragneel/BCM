@@ -69,16 +69,20 @@
               @foreach ($KA as $ka)
                 <div class="callout callout-info optionsKA" data-ka="{{ $ka->id }}">
                   <div class="card-option">
-                    <span><i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i></span>
-                    <span><i class="fa fa-close"></i></span>
+                    <span><i class="fa fa-edit editKA" data-target="#editActivityModal" data-toggle="modal"></i></span>
+                    <span><i class="fa fa-close deleteKA"></i></span>
                     <span><i class="fa fa-info moreDetails"></i></span>
                   </div>
                   <div class="memberInfoTag">
-                    <h5  class="name" style="font-size: 15px;"><i class="fa fa-user"></i> {{ $ka->ka_memper }}</h5>
+                    <h5  class="name" style="font-size: 15px;"><i class="fa fa-user"></i>{{ $ka->ka_memper }}</h5>
                     <div class="details">
-                      <p class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_member_job }}</p>
-                      <p class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_title }}</p>
-                      <p class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_desc }}</p>
+                      <p class="job"><i class="fa fa-briefcase"></i>{{ $ka->ka_member_job }}</p>
+                      @if ($ka->ka_title)
+                           <p class="ka_title"><i class="fa fa-briefcase"></i>{{ $ka->ka_title }}</p>
+                      @endif
+                      @if ($ka->ka_desc)
+                           <p class="ka_desc"><i class="fa fa-briefcase"></i>{{ $ka->ka_desc }}</p>
+                      @endif
                     </div>
                   </div>
                 </div>
