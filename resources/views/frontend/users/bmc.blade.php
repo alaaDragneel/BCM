@@ -10,6 +10,9 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
+      @if (Session::has('success'))
+        <div class="alert alert-info">{{ Session::get('success') }}</div>
+      @endif
       <div class="alert alert-success" id="success"></div>
       <div class="alert alert-info" id="successDelete"></div>
       <div class="alert alert-danger" id="errors">
