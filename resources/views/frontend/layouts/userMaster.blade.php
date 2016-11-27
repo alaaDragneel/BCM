@@ -41,7 +41,7 @@
 
           <ul class="nav">
                <li {{ Request::is('users/dashboard') ? 'class=active' : '' }}>
-                    <a href="{{ route('user.dashboard') }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>

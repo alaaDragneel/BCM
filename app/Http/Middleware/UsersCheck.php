@@ -17,7 +17,9 @@ class UsersCheck
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->userType === 2){
+        if(Auth::user()->userType === 1){
+          return redirect()->route('admin.dashboard');
+        } elseif(Auth::user()->userType === 2){
           return $next($request);
         } elseif (Auth::user()->userType === 3) {
           return $next($request);
