@@ -146,11 +146,6 @@ Route::group(['middleware' => 'users'] , function () {
     'uses' => 'bmcCanvasController@postKA',
     'as' => 'KA.store'
     ]);
-    // store KATag canvas
-    Route::post('/canvas/view/KA/store/tag', [
-    'uses' => 'bmcCanvasController@postKATag',
-    'as' => 'KA.storeTag'
-    ]);
     // delete KA canvas
     Route::get('/canvas/view/KA/delete', [
     'uses' => 'bmcCanvasController@getDeleteKA',

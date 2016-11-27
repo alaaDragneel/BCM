@@ -32,70 +32,13 @@
   </div><!-- /.modal -->
   {{-- add new key Partner --}}
 
-  {{-- add new key activity --}}
+  {{-- add key activity --}}
   <div class="modal fade" tabindex="-1" role="dialog" id="addActivityModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">key Activity</h4>
-        </div>
-        <div class="modal-body">
-          {{-- stat key activity Title --}}
-          <div class="form-group">
-            <label for="keyActivityName">name</label>
-            <input type="text" class="form-control border-input" id="keyActivityName" placeholder="wirte the key activity name OR type the member name">
-          </div>
-          {{-- end key activity name --}}
-          <div class="resultsMember"></div>
-          {{-- stat key activity content --}}
-          <div class="form-group" id="content">
-            <label for="tagMembers">Key Activity</label>
-            <div class="tagMembers" id="tagMembers">
-              @if ($KA && count($KA) > 0)
-              @foreach ($KA as $ka)
-              <div class="callout callout-info">
-                <div class="option-cardKA pull-right">
-                  <i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i>
-                  <i class="fa fa-close"></i>
-                  <i class="fa fa-info moreDetails"></i>
-                </div>
-                <div class="memberInfoTag" data-ka-id="{{ $ka->id }}" data-bmc-id="{{$ka->BMC_id}}">
-                  <h6 class="name"><i class="fa fa-user"></i> {{ $ka->ka_memper }}</h6>
-                  <div class="details">
-                    <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_member_job }}</h6>
-                    @if ($ka->ka_title)
-
-                      <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_title }}</h6>
-                    @endif
-                    @if ($ka->ka_desc)
-
-                      <h6 class="job"><i class="fa fa-briefcase"></i> {{ $ka->ka_desc }}</h6>
-                    @endif
-                  </div>
-                </div>
-              </div>
-              @endforeach
-              @endif
-            </div>
-          </div>
-          {{-- end key activity content --}}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  {{-- add new key activity --}}
-
-  {{-- edit key activity --}}
-  <div class="modal fade" tabindex="-1" role="dialog" id="addActivityModalInfo">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Edit key Activity</h4>
+          <h4 class="modal-title">add key Activity</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -103,20 +46,29 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Member Name</label>
-                <input type="text" class="form-control border-input" disabled placeholder="Member Name" id="memebrNameInfo">
+                <input type="text" class="form-control border-input" id="keyActivityName" placeholder="Write Member Name">
               </div>
             </div>
+
             <!-- member name -->
             <!-- member job -->
             <div class="col-md-6">
               <div class="form-group">
                 <label>Member Job</label>
-                <input type="text" class="form-control border-input" disabled placeholder="Member Job" id="memebrJobInfo">
+                <input type="text" class="form-control border-input" placeholder="Member Job" id="memebrJobInfo">
+              </div>
+            </div>
+            <!-- member job -->
+            <!-- member job -->
+            <div class="col-md-12">
+              <div class="form-group">
+                <label id="label">Member</label>
+                <div class="resultsMember"></div>
               </div>
             </div>
             <!-- member job -->
             <!-- key activity title -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label>Key Activity Title</label>
                 <input type="text" name="ka_title" id="ka_title" class="form-control border-input" placeholder="write the Key Activity title here">
@@ -146,6 +98,78 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="addKeyActivity">add key Actvity</button>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{{-- add new key activity --}}
+
+  {{-- edit key activity --}}
+  <div class="modal fade" tabindex="-1" role="dialog" id="editActivityModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">edit key Activity</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <!-- member name -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Edit Member Name</label>
+                <input type="text" class="form-control border-input" id="editKeyActivityName" placeholder="Write Member Name">
+              </div>
+            </div>
+            <!-- member name -->
+            <!-- member job -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Member Job</label>
+                <input type="text" class="form-control border-input" placeholder="Member Job" id="editMemebrJobInfo">
+              </div>
+            </div>
+            <!-- member job -->
+            <!-- member job -->
+            <div class="col-md-12">
+              <div class="form-group">
+                <label id="label">Member</label>
+                <div class="resultsMember"></div>
+              </div>
+            </div>
+            <!-- member job -->
+            <!-- key activity title -->
+            <div class="col-md-12">
+              <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label>Key Activity Title</label>
+                <input type="text" name="ka_title" id="editKa_title" class="form-control border-input" placeholder="write the Key Activity title here">
+                @if ($errors->has('name'))
+                <span class="help-block">
+                  <strong style="color:#a94442;">{{ $errors->first('name') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+            <!-- key activity title -->
+            <!-- key activity Description -->
+            <div class="col-md-12">
+              <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                <label>Description</label>
+                <textarea name="ka_desc" id="editKa_desc" class="form-control border-input" rows="5" placeholder="Write the Key Activity Description"></textarea>
+                @if ($errors->has('description'))
+                <span class="help-block">
+                  <strong style="color:#a94442;">{{ $errors->first('description') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+            <!-- key activity Description -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="editKeyActivity">edit key Actvity</button>
         </div>
       </div>
     </div><!-- /.modal-content -->

@@ -103,9 +103,9 @@ class bmcCanvasController extends Controller
       $members .= '<div class="memberInfo">';
       $members .= '<input type="hidden" value="'. $member->id .'"/>';
       $members .= '<img class="img-responsive memberImg pull-left" width="70" src="'.asset( $member->image).'"/>';
-      $members .= '<h4 class="pull-left memebrName"><i class="fa fa-user"></i> '. $member->name .'</h4>';
+      $members .= '<h4 class="pull-left memebrName"><i class="fa fa-user"></i>'. $member->name .'</h4>';
       $members .= '<div class="clearfix"></div>';
-      $members .= '<p class="pull-left memebrJob"><i class="fa fa-briefcase"></i> '. $member->job .'</p>';
+      $members .= '<p class="pull-left memebrJob"><i class="fa fa-briefcase"></i>'. $member->job .'</p>';
       $members .= '<div class="clearfix"></div>';
       $members .= '</div>';
     }
@@ -120,25 +120,35 @@ class bmcCanvasController extends Controller
   {
     $success = '';
     $KAStyle = '';
-    $canvasId = $request->bmc_id;
-
+    // info
+    $id         = $request->id;
+    $memberName = $request->memberName;
+    $job        = $request->job;
+    $ka_title   = $request->ka_title;
+    $ka_desc    = $request->ka_desc;
+    $canvasId   = $request->bmc_id;
+    //store
     $storeCanvas = DB::table('key_activity')->insertGetId([
-      'ka_memper' => $request->name,
-      'ka_member_job' => $request->job,
-      'ka_memeber_id' => $request->id,
+      'ka_memper'     => $memberName,
+      'ka_member_job' => $job,
+      'ka_memeber_id' => $id,
+      'ka_title' => $ka_title,
+      'ka_desc' => $ka_desc,
       'BMC_id' => $canvasId,
     ]);
-    if ($storeCanvas) {
-      $KAStyle .= '<div class="callout callout-info">';
-        $KAStyle .= '<div class="option-cardKA pull-right">';
-          $KAStyle .= '<i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i>';
-          $KAStyle .= '<i class="fa fa-close"></i>';
-          $KAStyle .= '<i class="fa fa-info moreDetails"></i>';
+    if ($storeCanvas) { //success message
+      $KAStyle .= '<div class="callout callout-info optionsKA">';
+        $KAStyle .= '<div class="card-option">';
+          $KAStyle .= '<span><i class="fa fa-tag addKAInfo" data-target="#addActivityModalInfo" data-toggle="modal"></i></span>';
+          $KAStyle .= '<span><i class="fa fa-close"></i></span>';
+          $KAStyle .= '<span><i class="fa fa-info moreDetails"></i></span>';
         $KAStyle .= '</div>';
-        $KAStyle .= '<div class="memberInfoTag" data-ka-id="'. $storeCanvas .'" data-bmc-id="'. $canvasId .'">';
-          $KAStyle .= '<h6 class="name"><i class="fa fa-user"></i> '. $request->name .'</h6>';
+        $KAStyle .= '<div class="memberInfoTag" data-ka-id="'. $storeCanvas .'">';
+          $KAStyle .= '<h6 class="name"><i class="fa fa-user"></i> '. $memberName .'</h6>';
           $KAStyle .= '<div class="details">';
-            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $request->job .'</h6>';
+            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $job .'</h6>';
+            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $ka_title .'</h6>';
+            $KAStyle .= '<h6 class="job"><i class="fa fa-briefcase"></i> '. $ka_desc .'</h6>';
           $KAStyle .= '</div>';
         $KAStyle .= '</div>';
       $KAStyle .= '</div>';
@@ -148,23 +158,6 @@ class bmcCanvasController extends Controller
       ], 200);
     }
   }
-  public function postKATag(Request $request)
-  {
-    DB::statement('SET FOREIGN_KEY_CHECKS=0');
-    $this->validate($request, [
-      'title'=> 'required|max:255',
-      'desc'=> 'min:4|max:500',
-    ]);
-    $storeCanvas = DB::table('key_activity')->where(function($q) use($request) {
-      $q->where('id', $request->ka_id);
-      $q->where('BMC_id', $request->BMC_id);
-    })->update([
-      'ka_title' => $request->title,
-      'ka_desc' => $request->desc,
-    ]);
-    return response()->json(['done' => 'the info added']);
-  }
-
   /**
   * delete the ka.
   **/
