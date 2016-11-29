@@ -8,7 +8,8 @@
 		<meta name="description" content="BlackTie Free Bootstrap Theme">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>@yield('title')</title>
+		<title>@yield('title', 'Ilgudi.com')</title>
+		{!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
 		{!! Html::style('src/frontend/welcomeFiles/css/main.css') !!}
 		<!--[if lte IE 8]>
 		{!! Html::style('src/frontend/welcomeFiles/css/ie.css') !!}
@@ -19,7 +20,7 @@
 		@yield('content')
 		<div class="footer text-center">
 			<p class="fmenu">
-				<a href="index.html">HOME</a> | <a href="about.html">ABOUT</a>
+				<a href="{{ route('welcome') }}">HOME</a>
 			</p>
 		</div>
 		{{-- {!! Html::style('src/frontend/usersFiles/css/paper-dashboard.css') !!} --}}

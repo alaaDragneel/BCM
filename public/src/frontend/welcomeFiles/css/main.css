@@ -487,34 +487,6 @@ input.text:focus {
 	height: 5px;
 }
 
-.btn {
-	display: inline-block;
-	line-height: 1;
-	font-size: 14px;
-	letter-spacing: -0.035em;
-	background: #fff;
-	color: #2a2a2a;
-	cursor: pointer;
-	padding: 17px 20px;
-	position: relative;
-	z-index: 2;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-.btn:hover {
-	color: #42A5F5;
-}
-
-@media ( min-width: 768px ) {
-	.btn {
-		font-size: .909rem;
-		padding: 25px 50px;
-		padding: 1.136rem 1.364rem;
-		text-align: center;
-	}
-
-}
-
 /* padding before icon */
 .btn-prepend,
 .btn-append,
@@ -925,27 +897,6 @@ input.text:focus {
 	padding: 0;
 	border: 0;
 	text-align: left;
-}
-
-.level-hero .btn {
-	min-width: 110px;
-}
-
-@media ( min-width: 768px ) {
-
-	.level-hero.hero-home .btn {
-		min-width: 153px;
-		text-align: left;
-	}
-
-}
-
-@media ( min-width: 1350px ) {
-
-	.level-hero .btn {
-		min-width: 200px;
-	}
-
 }
 
 .hero-after {
@@ -2918,4 +2869,8 @@ p {
 
 .icon-info {
     color: #68B3C8;
+}
+
+.front-text {
+	margin: 20px 0 !important;
 }
