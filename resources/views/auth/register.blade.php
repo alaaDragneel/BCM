@@ -2,26 +2,33 @@
 @section('content')
 
   <div class="social-icons">
+    <div class="row">
+      {{-- facebook --}}
+      <div class="col-md-6">
+        <a class="btn btn-block btn-lg btn-social btn-facebook">
+          <span class="fa fa-facebook"></span> Sign in with Facebook
+        </a>
+      </div>
+      {{-- twitter --}}
+      <div class="col-md-6">
+        <a class="btn btn-block btn-lg btn-social btn-twitter">
+          <span class="fa fa-twitter"></span> Sign in with Twitter
+        </a>
+      </div>
+      <div style="height: 36px; clear: both;"></div>
+      {{-- linkedin --}}
+      <div class="col-md-6">
+        <a class="btn btn-block btn-lg btn-social btn-linkedin">
+          <span class="fa fa-linkedin"></span> Sign in with Linkedin
+        </a>
+      </div>
+      {{-- google --}}
+      <div class="col-md-6">
+        <a class="btn btn-block btn-lg btn-social btn-google">
+          <span class="fa fa-google"></span> Sign in with Google
+        </a>
+      </div>
 
-    <div class="col_1_of_f span_1_of_f">
-      <a href="#">
-        <ul class='facebook'>
-          <i class="fb" style="background:url({{ asset('src/frontend/global/img/fb.png') }});"></i>
-          <li>Connect with Facebook</li>
-          <div class='clear'> </div>
-        </ul>
-      </a>
-    </div>
-
-    <div class="col_1_of_f span_1_of_f">
-      <a href="#">
-        <ul class='twitter'>
-          <i class="tw" style="background:url({{ asset('src/frontend/global/img/tw.png') }});"></i>
-          <li>Connect with Twitter</li>
-          <div class='clear'></div>
-        </ul>
-      </a>
-    </div>
 
     <div class="clear"> </div>
   </div>
