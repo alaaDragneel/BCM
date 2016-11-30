@@ -19,6 +19,7 @@ return array(
     'CreateMessagesTable' => $baseDir . '/database/migrations/2016_10_27_132821_create_messages_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRevenueStreamsTable' => $baseDir . '/database/migrations/2016_10_30_150136_create_revenue_streams_table.php',
+    'CreateSocialUsersTable' => $baseDir . '/database/migrations/2016_11_30_115434_create_social_users_table.php',
     'CreateTasksTable' => $baseDir . '/database/migrations/2016_10_27_132509_create_tasks_table.php',
     'CreateTeamWorksTable' => $baseDir . '/database/migrations/2016_10_27_131311_create_teamWorks_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

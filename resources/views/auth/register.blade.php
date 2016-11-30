@@ -5,26 +5,26 @@
     <div class="row">
       {{-- facebook --}}
       <div class="col-md-6">
-        <a class="btn btn-block btn-lg btn-social btn-facebook">
+        <a href="{{ url('/redirect/facebook') }}" class="btn btn-block btn-lg btn-social btn-facebook">
           <span class="fa fa-facebook"></span> Sign in with Facebook
         </a>
       </div>
       {{-- twitter --}}
       <div class="col-md-6">
-        <a class="btn btn-block btn-lg btn-social btn-twitter">
+        <a href="{{ url('/redirect/twitter') }}" class="btn btn-block btn-lg btn-social btn-twitter">
           <span class="fa fa-twitter"></span> Sign in with Twitter
         </a>
       </div>
       <div style="height: 36px; clear: both;"></div>
       {{-- linkedin --}}
       <div class="col-md-6">
-        <a class="btn btn-block btn-lg btn-social btn-linkedin">
+        <a href="{{ url('/redirect/linkedin') }}" class="btn btn-block btn-lg btn-social btn-linkedin">
           <span class="fa fa-linkedin"></span> Sign in with Linkedin
         </a>
       </div>
       {{-- google --}}
       <div class="col-md-6">
-        <a class="btn btn-block btn-lg btn-social btn-google">
+        <a href="{{ url('/redirect/google') }}" class="btn btn-block btn-lg btn-social btn-google">
           <span class="fa fa-google"></span> Sign in with Google
         </a>
       </div>
@@ -125,6 +125,7 @@
     <div class="submit">
       <input type="submit" value="Create account">
     </div>
+    <h3>Alredy Have An Accoutn<span class="term"> <a href="{{url('/login')}}">Login With A Gudi Account Now!</a></span></h3>
     <div class="clear"></div>
   </form>
 @endsection

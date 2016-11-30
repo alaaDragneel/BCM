@@ -16,7 +16,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('name');
             $table->string('email')->unique();
+            $table->string('account_type')->default('gudiAcount');
+            $table->string('sns_account_id');
             $table->string('phoneNo');
             $table->string('image');
             $table->string('job');

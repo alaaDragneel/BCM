@@ -10,6 +10,16 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('/redirect/{provider}', [
+  'uses' => 'SocialAuthController@redirectFaceBook',
+  'as' => 'redirect.facebook'
+]);
+
+Route::get('/callback/{provider}', [
+  'uses' => 'SocialAuthController@callbackFaceBook',
+  'as' => 'callback.facebook'
+]);
+
 /**********************************************************************************************************
 ** end globals Routes
 /**********************************************************************************************************/

@@ -1,76 +1,82 @@
-@extends('frontend.layouts.master')
-
-@section('styles')
-{!! Html::style('src/frontend/global/css/customStyle.css') !!}
-@endsection
-
+@extends('layouts.registers')
 @section('content')
-  <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="row logsHead">
-          <div class="col-md-6">
-            <div class="badge loginText">LogIn</div>
-          </div>
-          <div class="col-md-6">
-            <div class="badge Text"><a href="{{url('/register')}}">register</a></div>
-          </div>
-        </div>
-          <div class="panel panel-primary login">
-              <div class="panel-heading">Login</div>
-              <div class="panel-body">
-                  <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                      {{ csrf_field() }}
 
-                      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                          <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                          <div class="col-md-6">
-                              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                              @if ($errors->has('email'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('email') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                          <label for="password" class="col-md-4 control-label">Password</label>
-
-                          <div class="col-md-6">
-                              <input id="password" type="password" class="form-control" name="password">
-
-                              @if ($errors->has('password'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('password') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-md-6 col-md-offset-4">
-                              <div class="checkbox">
-                                  <label>
-                                      <input type="checkbox" name="remember"> Remember Me
-                                  </label>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-md-6 col-md-offset-4">
-                              <button type="submit" class="btn btn-primary">
-                                  <i class="fa fa-btn fa-sign-in"></i> Login
-                              </button>
-
-                              <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-          </div>
+  <div class="social-icons">
+    <div class="row">
+      {{-- facebook --}}
+      <div class="col-md-6">
+        <a href="{{ url('/redirect/facebook') }}" class="btn btn-block btn-lg btn-social btn-facebook">
+          <span class="fa fa-facebook"></span> Sign in with Facebook
+        </a>
       </div>
+      {{-- twitter --}}
+      <div class="col-md-6">
+        <a href="{{ url('/redirect/twitter') }}" class="btn btn-block btn-lg btn-social btn-twitter">
+          <span class="fa fa-twitter"></span> Sign in with Twitter
+        </a>
+      </div>
+      <div style="height: 36px; clear: both;"></div>
+      {{-- linkedin --}}
+      <div class="col-md-6">
+        <a href="{{ url('/redirect/linkedin') }}" class="btn btn-block btn-lg btn-social btn-linkedin">
+          <span class="fa fa-linkedin"></span> Sign in with Linkedin
+        </a>
+      </div>
+      {{-- google --}}
+      <div class="col-md-6">
+        <a href="{{ url('/redirect/google') }}" class="btn btn-block btn-lg btn-social btn-google">
+          <span class="fa fa-google"></span> Sign in with Google
+        </a>
+      </div>
+
+
+    <div class="clear"> </div>
   </div>
+
+  <h2>Or Signin with gudi account</h2>
+
+  <form method="POST" action="{{ url('/login') }}">
+    {{ csrf_field() }}
+    <div class="lable-2">
+      <div>
+      <input
+        type="email"
+        class="text{{ $errors->has('email') ? ' error' : '' }}"
+        placeholder="your@email.com "
+        name="email"
+        value="{{ old('email') }}"
+        onfocus="this.placeholder = '';"
+        onblur="if (this.placeholder == '')
+        {this.placeholder = 'your@email.com ';}">
+        <div class="clear"> </div>
+
+        @if ($errors->has('email'))
+            <span class="help-block error">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+      </div>
+      <input
+        type="password"
+        class="text{{ $errors->has('password') ? ' error' : '' }}"
+        placeholder="Password "
+        name="password"
+        onfocus="this.placeholder = '';"
+        onblur="if (this.placeholder == '')
+        {this.placeholder = 'Password ';}">
+        <div class="clear"> </div>
+
+        @if ($errors->has('password'))
+            <span class="help-block error">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
+    </div>
+    <div class="clear"></div>
+    <div class="submit">
+      <input type="submit" value="Login">
+    </div>
+    <h3>Don't Have An Accoutn<span class="term"> <a href="{{url('/register')}}">Create A Gudi Account For Free Now!</a></span></h3>
+    <div class="clear"></div>
+  </form>
 @endsection

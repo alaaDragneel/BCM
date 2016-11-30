@@ -10,8 +10,11 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
@@ -65,6 +68,7 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -73,13 +77,21 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         ),
         'L' => 
         array (
+            'League\\OAuth1\\' => 14,
             'League\\Fractal\\' => 15,
             'League\\Flysystem\\' => 17,
+            'Laravel\\Socialite\\' => 18,
             'Laracasts\\Generators\\' => 21,
         ),
         'I' => 
         array (
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -207,6 +219,10 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -214,6 +230,10 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'League\\OAuth1\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth1-client/src',
         ),
         'League\\Fractal\\' => 
         array (
@@ -223,6 +243,10 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Laravel\\Socialite\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/socialite/src',
+        ),
         'Laracasts\\Generators\\' => 
         array (
             0 => __DIR__ . '/..' . '/laracasts/generators/src',
@@ -230,6 +254,18 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Faker\\' => 
         array (
@@ -351,6 +387,7 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_132821_create_messages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRevenueStreamsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_30_150136_create_revenue_streams_table.php',
+        'CreateSocialUsersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_30_115434_create_social_users_table.php',
         'CreateTasksTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_132509_create_tasks_table.php',
         'CreateTeamWorksTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_131311_create_teamWorks_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -895,6 +932,7 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
+        'teamWorkTableSeeder' => __DIR__ . '/../..' . '/database/seeds/teamWorkTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

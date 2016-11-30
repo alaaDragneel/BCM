@@ -35,4 +35,27 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+      'client_id' => env('FACEBOOK_CLIENT_ID'),
+      'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+      'redirect' => env('FACEBOOK_REDIRECT'),
+    ],
+
+    'twitter' => [
+      'client_id' => env('TWITTER_CLIENT_ID'),
+      'client_secret' => env('TWITTER_CLIENT_SECRET'),
+      'redirect' => env('TWITTER_REDIRECT'),
+    ],
+
+    'google' => [
+      'client_id' => env('GOOGLE_CLIENT_ID'),
+      'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+      'redirect' => env('GOOGLE_REDIRECT'),
+    ],
+
+    'linkedin' => [
+      'client_id' => env('LINKEDIN_CLIENT_ID'),
+      'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+      'redirect' => env('LINKEDIN_REDIRECT'),
+    ],
 ];
