@@ -160,10 +160,20 @@ class HomeController extends Controller
     ]);
 
     if($saveCanvas){
-      $success= 'the canvas created Successfully Do Greate Job ;)';
+      $success= 'the canvas created Successfully Do Greate Job';
       return redirect()->route('view.canvas', [$this->id => $saveCanvas])->with(['success' => $success]);
     }
     $fail = 'there are some Errors the canvas Didn\'t created Successfully';
     return redirect()->route('dashboard')->with(['fail' => $fail]);
+  }
+
+  public function register_profile()
+  {
+    return view('frontend.users.profile');
+  }
+
+  public function profile()
+  {
+    return view('frontend.users.profile');
   }
 }

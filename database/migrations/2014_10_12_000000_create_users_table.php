@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('sns_account_id');
             $table->string('phoneNo');
             $table->string('image');
+            $table->string('back_image');
             $table->string('job');
             $table->text('description');
             $table->string('address');

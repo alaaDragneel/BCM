@@ -1,4 +1,4 @@
-@extends('frontend.layouts.userMaster')
+@extends('frontend.layouts.adminMaster')
 
 @section('title')
 	TeamWorks
@@ -12,7 +12,7 @@
 @section('content')
 	    <!-- Content -->
 	<div class="content" style="overflow: hidden">
-		<div class="info"></div>
+		<div class="information"></div>
 		<div class="panel panel-default" style="overflow:scroll">
 		  <div class="panel-heading">
 		    <h3 class="panel-title pull-left">TeamWorks</h3>
@@ -24,13 +24,13 @@
       		<thead>
       			<tr role="row">
 							<th>#ID</th>
-							<th > Name</th>
+							<th >Name</th>
 							<th >Email</th>
-							<th > phoneNo</th>
+							<th >phoneNo</th>
 							<th >job</th>
 							<th >image</th>
 							<th >Created At</th>
-							<th > Actions</th>
+							<th >Actions</th>
 						</tr>
       		</thead>
 	            <tbody>
@@ -66,32 +66,5 @@
 	var editUrl = '{{route('edit.member')}}';
 	var deleteUrl = '{{route('delete.member')}}';
 	var token = '{{ Session::token() }}';
-
-	//  var lastIdx = null;
-	//
-	// $('#myTableData tfoot th').each( function () {
-	// 	var classname = 'form-control'
-	//  if($(this).index()  < 6 ){
-	// 	var title = $(this).html();
-	// 	$(this).html( '<input type="text" class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" search by '+title+'" />');
-	// }
-	// });
-	// var tableUrl = '{{-- route('teamworks.data') --}}';
-	// var table = $('#myTableData').DataTable({
-	//  processing: true,
-	//  serverSide: true,
-	//  ajax: tableUrl,
-	//  columns: [
-	// 	{data: 'id', name: 'id'},
-	// 	{data: 'name', name: 'name'},
-	// 	{data: 'email', name: 'email'},
-	// 	{data: 'phoneNo', name: 'phoneNo'},
-	// 	{data: 'image', name: ''},
-	// 	{data: 'created_at', name: ''},
-	// 	{data: 'actions', name: ''},
-	//
-	//  ],
-	//  	});
-
 	</script>
 @endsection

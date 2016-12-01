@@ -47,14 +47,24 @@ Route::group(['middleware' => 'admin'], function () {
 ** start users Routes
 /**********************************************************************************************************/
 // group the routes by the users middleWare
-Route::group(['middleware' => 'users'] , function () {
-  // index view
-  Route::get('/dashboard', [
-    'uses' => 'HomeController@index',
-    'as' => 'dashboard'
-  ]);
-  // add users prefix
   Route::group(['prefix' => 'users'], function () {
+    // register info profile view
+    Route::get('/profile', [
+      'uses' => 'HomeController@register_profile',
+      'as' => 'register.info'
+    ]);
+  Route::group(['middleware' => 'users'] , function () {
+    // index view
+    Route::get('/dashboard', [
+      'uses' => 'HomeController@index',
+      'as' => 'dashboard'
+    ]);
+
+  // profile view
+  Route::get('/profile', [
+    'uses' => 'HomeController@profile',
+    'as' => 'profile'
+  ]);
 
     // teamworks view
     Route::get('/teamworks/view', [

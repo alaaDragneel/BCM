@@ -761,3 +761,6 @@ function _init() {
     });
   };
 }(jQuery));
+$(document).ready(function() {
+  // $('.fileinput').fileinput();
+});

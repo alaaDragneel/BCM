@@ -20,10 +20,10 @@ $(document).ready(function() {
         url: url ,
 			data:{name: name.val(), phoneNo: phoneNo.val(), job: job.val(), email: email.val(), password: password.val(), _token: token },
 		}).done(function(msg) {
-			$('.info').slideDown();
-			$('.info').html(msg['success']);
+			$('.information').slideDown();
+			$('.information').html(msg['success']);
 			$('#addMemberModal').modal('hide');
-			$('.info').delay(2000).slideUp();
+			$('.information').delay(2000).slideUp();
 			setTimeout(function(){
 	    	location.reload();
 			}, 2500);
@@ -38,15 +38,15 @@ $(document).ready(function() {
 	      url: deleteUrl ,
 				data:{id: id, _token: token },
 			}).done(function(msg) {
-				$('.info').slideDown();
+				$('.information').slideDown();
 				if(msg['successDelete']){
-					$('.info').html(msg['successDelete']);
+					$('.information').html(msg['successDelete']);
 				}
 				if(msg['fail']){
-					$('.info').html(msg['fail']);
+					$('.information').html(msg['fail']);
 				}
 				$('#addMemberModal').modal('hide');
-				$('.info').delay(2000).slideUp();
+				$('.information').delay(2000).slideUp();
 				setTimeout(function(){
 		    	location.reload();
 				}, 2500);
@@ -82,15 +82,15 @@ $(document).ready(function() {
 	      url: editUrl ,
 				data:{id: id, name: newName.val(), phoneNo: newPhone.val(), job: newJob.val(), email: newEmail.val(), password: newpass.val(), _token: token },
 			}).done(function(msg) {
-				$('.info').slideDown();
+				$('.information').slideDown();
 				if(msg['successEdit']){
-					$('.info').html(msg['successEdit']);
+					$('.information').html(msg['successEdit']);
 				}
 				if(msg['fail']){
-					$('.info').html(msg['fail']);
+					$('.information').html(msg['fail']);
 				}
 				$('#addMemberModal').modal('hide');
-				$('.info').delay(2000).slideUp();
+				$('.information').delay(2000).slideUp();
 				setTimeout(function(){
 		    	location.reload();
 				}, 2500);

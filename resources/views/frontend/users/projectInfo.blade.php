@@ -1,4 +1,8 @@
-@extends('frontend.layouts.userMaster')
+@extends('frontend.layouts.adminMaster')
+
+@section('title')
+	Canvas Info
+@endsection
 @section('content')
   <div class="content">
       <div class="container-fluid">
