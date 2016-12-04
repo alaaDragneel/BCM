@@ -10,6 +10,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>@yield('title', 'Ilgudi.com')</title>
 		{!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
+		{{-- google fonts --}}
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
+
 		{!! Html::style('src/frontend/welcomeFiles/css/main.css') !!}
 		<!--[if lte IE 8]>
 		{!! Html::style('src/frontend/welcomeFiles/css/ie.css') !!}

@@ -18,7 +18,8 @@
     {!! Html::style('src/frontend/usersFiles/css/paper-dashboard.css') !!}
     <!--  Fonts and icons     -->
     {!! Html::style('src/frontend/global/css/font-awesome.min.css') !!}
-    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+		{{-- google fonts --}}
+	  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
     {!! Html::style('src/frontend/usersFiles/css/themify-icons.css') !!}
 	@yield('styles')
 </head>

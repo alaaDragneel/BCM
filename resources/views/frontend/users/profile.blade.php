@@ -120,7 +120,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Company</label>
-                        <input type="text" class="form-control " placeholder="Company" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                        <input type="text" class="form-control " placeholder="Company" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}" id="name">
                       </div>
                     </div>
                   @endif
@@ -129,7 +129,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control " placeholder="Username" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                        <input type="text" class="form-control " placeholder="Username" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}" id="name">
                       </div>
                     </div>
                   @endif
@@ -137,7 +137,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control " placeholder="Email" value="{{ Auth::user()->email !== '' ? Auth::user()->email : ''}}">
+                      <input type="email" class="form-control " placeholder="Email" value="{{ Auth::user()->email !== '' ? Auth::user()->email : ''}}" id="email">
                     </div>
                   </div>
                 </div>
@@ -146,13 +146,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" class="form-control " placeholder="First Name" value="{{ Auth::user()->firstName !== '' ? Auth::user()->firstName : ''}}">
+                      <input type="text" class="form-control " placeholder="First Name" value="{{ Auth::user()->firstName !== '' ? Auth::user()->firstName : ''}}" id="firstName">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Last Name</label>
-                      <input type="text" class="form-control " placeholder="Last Name" value="{{ Auth::user()->lastName !== '' ? Auth::user()->lastName : ''}}">
+                      <input type="text" class="form-control " placeholder="Last Name" value="{{ Auth::user()->lastName !== '' ? Auth::user()->lastName : ''}}" id="lastName">
                     </div>
                   </div>
                 </div>
@@ -161,7 +161,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Address</label>
-                      <input type="text" class="form-control " placeholder="Home Address" value="{{ Auth::user()->address !== '' ? Auth::user()->address : ''}}">
+                      <input type="text" class="form-control " placeholder="Home Address" value="{{ Auth::user()->address !== '' ? Auth::user()->address : ''}}" id="address">
                     </div>
                   </div>
                 </div>
@@ -170,34 +170,31 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Job</label>
-                      <input type="text" class="form-control " placeholder="Job" value="{{ Auth::user()->job !== '' ? Auth::user()->job : ''}}">
+                      <input type="text" class="form-control " placeholder="Job" value="{{ Auth::user()->job !== '' ? Auth::user()->job : ''}}" id="job">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>Country</label>
-                      <input type="text" class="form-control " placeholder="Country" value="Australia">
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
                       <label>Phone Number</label>
-                      <input type="number" class="form-control " placeholder="Phone Number" value="{{ Auth::user()->phoneNo !== '' ? Auth::user()->phoneNo : ''}}">
+                      <input type="number" class="form-control " placeholder="Phone Number" value="{{ Auth::user()->phoneNo !== '' ? Auth::user()->phoneNo : ''}}" id="phoneNo">
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Company Start Date</label>
-                      <input type="number" class="form-control " placeholder="Company Start Date" value="{{ Auth::user()->companyStartFrom !== '' ? Auth::user()->companyStartFrom : ''}}">
+                      <input type="number" class="form-control " placeholder="Company Start Date" value="{{ Auth::user()->companyStartFrom !== '' ? Auth::user()->companyStartFrom : ''}}" id="companyStartFrom">
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label>Account Type</label>
                       <select class="form-control " name="userType">
-                        <option>Choose</option>
-                        <option value="2">Startup</option>
-                        <option value="3">Company</option>
+                        <option value="2" @if (Auth::user()->userType === 2)
+                          selected="selected"
+                        @endif>Startup</option>
+                        <option value="3" @if (Auth::user()->userType === 3)
+                          selected="selected"
+                        @endif>Company</option>
                       </select>
                     </div>
                   </div>
