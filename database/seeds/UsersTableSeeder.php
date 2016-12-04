@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
         'email'         => 'sasuke_alaa@yahoo.com',
         'job'           => 'SEO',
         'image'         => 'src/backend/dist/img/avatar3.png',
-        'back_image'    => 'src/backend/dist/img/photo4.png',
+        'back_image'    => 'src/backend/dist/img/photo4.jpg',
         'userType'      => 3,
         'description'   => 'i\'am a SEO',
         'password'      => bcrypt('666666'),
