@@ -210,4 +210,102 @@ class HomeController extends Controller
   {
     return view('frontend.users.profile');
   }
+
+  public function profile_update(Request $request)
+  {
+    // define the fields
+    $name              = $request->name;
+    $email             = $request->email;
+    $firstName         = $request->firstName;
+    $lastName          = $request->lastName;
+    $password          = $request->password;
+    $phoneNo           = $request->phoneNo;
+    $userType          = $request->userType;
+    $address           = $request->address;
+    $job               = $request->job;
+    $companyStartFrom  = $request->companyStartFrom;
+    $description = $request->description;
+    $image = ''; //image var
+    $back_image = ''; //image var
+    if (isset($request->image)) {
+      $image = $this->upload($request->image);
+    }
+    if (isset($request->back_image)) {
+      $back_image = $this->upload($request->back_image);
+    }
+
+    $this->validate($request, [
+      'name' => 'required|min:4|max:255',
+      'firstName' => 'required|min:4|max:255',
+      'lastName' => 'required|min:4|max:255',
+      'email' => 'required|email|max:255',
+      'userType'  =>  'required|numeric',
+      'phoneNo'   =>  'required|numeric',
+      'job' => 'max:255',
+      'companyStartFrom' => 'date',
+      'description' => 'min:4',
+    ]);
+
+
+    $user = User::findOrFail(\Auth::user()->id);
+    if (!empty($name)) {
+      $user->name = $name;
+    }
+    if (!empty($email)) {
+      $user->email = $email;
+    }
+    if (!empty($firstName)) {
+      $user->firstName = $firstName;
+    }
+    if (!empty($lastName)) {
+      $user->lastName = $lastName;
+    }
+    if (!empty($password)) {
+      $user->password = bcrypt($password);
+    }
+    if (!empty($phoneNo)) {
+      $user->phoneNo = $phoneNo;
+    }
+    if (!empty($image)) {
+      unlink(\Auth::user()->image); // remove the old image
+      $user->image = $image;
+    }
+    if (!empty($back_image)) {
+      unlink(\Auth::user()->back_image); // remove the old image
+      $user->back_image = $back_image;
+    }
+    if (!empty($companyStartFrom)) {
+      $user->companyStartFrom = $companyStartFrom;
+    }
+    if (!empty($description)) {
+      $user->description = $description;
+    }
+    if (!empty($address)) {
+      $user->address = $address;
+    }
+    if (!empty($job)) {
+      $user->job = $job;
+    }
+    if (!empty($companyStartFrom)) {
+      $user->companyStartFrom = $companyStartFrom;
+    }
+    if (!empty($userType)) {
+      $user->userType = $userType;
+    }
+    $user->update();
+    if ($user->update() === true) {
+      return redirect()->route('profile')->with(['success' => 'the Profile Updated Successfully']);
+    } else {
+      return redirect()->route('profile')->with(['fail' => 'there are some problem try again later']);
+    }
+  }
+
+  public function upload($file){
+    $extension = $file->getClientOriginalExtension();
+    $sha1 = sha1($file->getClientOriginalName());
+    $filename = date('Y-m-d-h-i-s')."_".$sha1.".".$extension;
+    $path = public_path('src/backend/dist/usersImage/');
+    $file->move($path, $filename);
+    return 'src/backend/dist/usersImage/'.$filename;
+  }
 }
