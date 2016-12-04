@@ -10,19 +10,22 @@
         <div class="col-lg-4 col-md-5">
           <div class="card card-user">
             <div class="image">
-              <img src="{{asset('src/backend/dist/img/background.jpg')}}" alt="...">
+              <img src="{{asset(Auth::user()->back_image)}}" alt="...">
             </div>
             <div class="content">
               <div class="author">
-                <img class="avatar border-white" src="{{asset('src/backend/dist/img//face-2.jpg')}}" alt="...">
-                <h4 class="title">Chet Faker<br>
-                  <a href="#"><small>@chetfaker</small></a>
+                <img class="avatar border-white" src="{{asset(Auth::user()->image)}}" alt="...">
+                <h4 class="title">{{ Auth::user()->name }}<br>
                 </h4>
               </div>
               <p class="description text-center">
-                "I like the way you work it <br>
-                No diggity <br>
-                I wanna bag it up"
+                <?php
+                  // truncate string
+                  $strDesc = substr(Auth::user()->description, 0, 70);
+                  // make sure it ends in a word so assassinate doesn't become ass...
+                  $string = substr($strDesc, 0, strrpos($strDesc, ' ')).'...';
+                ?>
+                "{{ $string }}"
               </p>
             </div>
             <hr>
@@ -112,20 +115,24 @@
             <div class="content">
               <form>
                 <div class="row">
-                  {{-- check if company or startup --}}
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Company</label>
-                      <input type="text" class="form-control " placeholder="Company" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                  @if (\Auth::user()->userType === 3)
+                    {{-- check if company or startup --}}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" class="form-control " placeholder="Company" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                      </div>
                     </div>
-                  </div>
-                  {{-- check if company or startup --}}
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Username</label>
-                      <input type="text" class="form-control " placeholder="Username" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                  @endif
+                  @if (\Auth::user()->userType === 2)
+                    {{-- check if company or startup --}}
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control " placeholder="Username" value="{{ Auth::user()->name !== '' ? Auth::user()->name : Auth::user()->firstName .' '. Auth::user()->lastName}}">
+                      </div>
                     </div>
-                  </div>
+                  @endif
                   {{-- check if company or startup --}}
                   <div class="col-md-6">
                     <div class="form-group">
@@ -139,7 +146,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" class="form-control " placeholder="Company" value="{{ Auth::user()->firstName !== '' ? Auth::user()->firstName : ''}}">
+                      <input type="text" class="form-control " placeholder="First Name" value="{{ Auth::user()->firstName !== '' ? Auth::user()->firstName : ''}}">
                     </div>
                   </div>
                   <div class="col-md-6">

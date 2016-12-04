@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Html;
 use App\TeamWork;
+use App\User;
 use App\BMC;
 use DB;
 
@@ -54,9 +55,9 @@ class HomeController extends Controller
     $memberSave = $member->save();
     if($memberSave){
       $success .= '<div class="alert alert-success">';
-      $success .= '<button type="button" aria-hidden="true" class="close">×</button>';
-      $success .= '<span><b> Success - </b> the Member Successfully Join To Your Team A message Will Arrive o Him Mail Soon</span>';
-      $success .= '</div>';
+        $success .= '<button type="button" aria-hidden="true" class="close">×</button>';
+        $success .= '<span><b> Success - </b> the Member Successfully Join To Your Team A message Will Arrive o Him Mail Soon</span>';
+        $success .= '</div>';
 
       return response()->json(['success' => $success], 200);
     }
@@ -169,7 +170,40 @@ class HomeController extends Controller
 
   public function register_profile()
   {
-    return view('frontend.users.profile');
+    if (\Auth::user()->userType === 2 || \Auth::user()->userType === 3) {
+      return redirect()->route('dashboard');
+    }
+    $warning = 'Please Add This information to can Contaniue';
+    return view('frontend.users.profileInfo', compact('warning'));
+  }
+  public function register_profile_update(Request $request)
+  {
+    $role = [];
+    if (isset($request->email)) {
+      $role['email']  = 'required|email|max:255|unique:users';
+    }
+    if (isset($request->userType)) {
+      $role['userType'] = 'required|numeric';
+    }
+    if (isset($request->phoneNo)) {
+      $role['phoneNo'] = 'required|numeric|unique:users';
+    }
+    $this->validate($request, $role);
+    // // update the user type
+    $user = User::findOrFail(\Auth::user()->id);
+    if (isset($request->email)) {
+      $user->email = $request->email;
+    }
+    $user->userType = $request->userType;
+    $user->phoneNo = $request->phoneNo;
+    $user->update();
+    if($user) {
+      $msg = 'Welcome With As '.\Auth::user()->name;
+    } else {
+      $msg = 'something goes wrong try again after few minutes';
+    }
+
+    return redirect()->route('dashboard')->with(['msg' => $msg]);
   }
 
   public function profile()

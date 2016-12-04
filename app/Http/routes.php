@@ -49,10 +49,13 @@ Route::group(['middleware' => 'admin'], function () {
 // group the routes by the users middleWare
   Route::group(['prefix' => 'users'], function () {
     // register info profile view
-    // middleware here
-    Route::get('/profile', [
+    Route::get('/profileInfo', [
       'uses' => 'HomeController@register_profile',
       'as' => 'register.info'
+    ]);
+    Route::post('/profileInfo/update', [
+      'uses' => 'HomeController@register_profile_update',
+      'as' => 'register.info.update'
     ]);
   Route::group(['middleware' => 'users'] , function () {
     // index view

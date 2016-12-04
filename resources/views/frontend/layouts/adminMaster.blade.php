@@ -19,7 +19,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('src/backend/dist/css/AdminLTE.css')}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+  folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset('src/backend/dist/css/skins/_all-skins.min.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,9 +36,9 @@
       <!-- Logo -->
       <a href="{{ route('dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>c</b>P</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>c</b>Panel</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
@@ -258,153 +258,154 @@
                     <small>Member since {{ Auth::user()->created_at->format('Y.m.d') }}</small>
                   </p>
                 </li>
-                </li>
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Sign out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{asset(Auth::user()->image)}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ Auth::user()->name }}</p>
+        </div>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="header text-uppercase">MAIN NAVIGATION</li>
+        <li>
+          <a href="{{ route('dashboard') }}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="sidebar-menu">
+        <li class="header text-uppercase">Projects NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-paperclip"></i> <span>Projects</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('create.projects') }}"><i class="fa fa-plus"></i> Create Project Canvas</a></li>
+            <li><a href="{{ route('projects') }}"><i class="fa fa-eye"></i> View Project/s Canvas</a></li>
           </ul>
-        </div>
+        </li>
+      </ul>
+      <ul class="sidebar-menu">
+        <li class="header text-uppercase">Team Work NAVIGATION</li>
 
-      </nav>
-    </header>
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <img src="{{asset(Auth::user()->image)}}" class="img-circle" alt="User Image">
-          </div>
-          <div class="pull-left info">
-            <p>Alexander Pierce</p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-          </div>
-        </div>
-        <ul class="sidebar-menu">
-          <li class="header text-uppercase">MAIN NAVIGATION</li>
-          <li>
-            <a href="{{ route('dashboard') }}">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="sidebar-menu">
-          <li class="header text-uppercase">Projects NAVIGATION</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-paperclip"></i> <span>Projects</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="{{ route('create.projects') }}"><i class="fa fa-plus"></i> Create Project Canvas</a></li>
-              <li><a href="{{ route('projects') }}"><i class="fa fa-eye"></i> View Project/s Canvas</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="sidebar-menu">
-          <li class="header text-uppercase">Team Work NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Team Work</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('teamworks') }}"><i class="fa fa-users"></i> View Team Work</a></li>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> members Attendance</a></li>
+            <li><a href="#"><i class="fa fa-clock-o"></i> members Active/Lazy</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="sidebar-menu">
+        <li class="header text-uppercase">Rate NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-star-half-o"></i> <span>Rate Members</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-star"></i> rate members behaviore</a></li>
+            <li><a href="#"><i class="fa fa-star-half-o"></i> rate members productivity</a></li>
+            <li><a href="#"><i class="fa fa-star-o"></i> rate members Co.Work</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="sidebar-menu">
+        <li class="header text-uppercase">Quick NAVIGATION</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Quick Links</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('dashboard') }}"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li><a href="{{ route('projects') }}"><i class="fa fa-paperclip"></i> Projects</a></li>
+            <li><a href="{{ route('teamworks') }} "><i class="fa fa-users"></i> Team Work</a></li>
+            <li><a href="#"><i class="fa fa-star-half-o"></i> Rate Members</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    @include('frontend.includes.boxs')
 
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-users"></i> <span>Team Work</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="{{ route('teamworks') }}"><i class="fa fa-users"></i> View Team Work</a></li>
-              <li><a href="#"><i class="fa fa-arrow-down"></i> members Attendance</a></li>
-              <li><a href="#"><i class="fa fa-clock-o"></i> members Active/Lazy</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="sidebar-menu">
-          <li class="header text-uppercase">Rate NAVIGATION</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-star-half-o"></i> <span>Rate Members</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-star"></i> rate members behaviore</a></li>
-              <li><a href="#"><i class="fa fa-star-half-o"></i> rate members productivity</a></li>
-              <li><a href="#"><i class="fa fa-star-o"></i> rate members Co.Work</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="sidebar-menu">
-          <li class="header text-uppercase">Quick NAVIGATION</li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-dashboard"></i> <span>Quick Links</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="{{ route('dashboard') }}"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-              <li><a href="{{ route('projects') }}"><i class="fa fa-paperclip"></i> Projects</a></li>
-              <li><a href="{{ route('teamworks') }} "><i class="fa fa-users"></i> Team Work</a></li>
-              <li><a href="#"><i class="fa fa-star-half-o"></i> Rate Members</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-      <!-- /.sidebar -->
-    </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
     @yield('content')
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.7
     </div>
-    <!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.7
-        </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
-      </footer>
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
 
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
 
-    </div>
-    <!-- ./wrapper -->
-    <!-- jQuery 2.2.3 -->
-    <script src="{{asset('src/backend/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
-    <!-- Bootstrap 3.3.6 -->
-    <script src="{{asset('src/backend/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!-- FastClick -->
-    <script src="{{asset('src/backend/plugins/fastclick/fastclick.js')}}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('src/backend/dist/js/app.js')}}"></script>
-    <!-- Sparkline -->
-    <script src="{{asset('src/backend/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-    <!-- jvectormap -->
-    <script src="{{asset('src/backend/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-    <script src="{{asset('src/backend/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="{{asset('src/backend/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
-    <!-- ChartJS 1.0.1 -->
-    <script src="{{asset('src/backend/plugins/chartjs/Chart.min.js')}}"></script>
-    <script src="{{asset('src/backend/dist/js/jasny-bootstrap.js')}}"></script>
+</div>
+<!-- ./wrapper -->
+<!-- jQuery 2.2.3 -->
+<script src="{{asset('src/backend/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{{asset('src/backend/bootstrap/js/bootstrap.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('src/backend/plugins/fastclick/fastclick.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('src/backend/dist/js/app.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{asset('src/backend/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+<!-- jvectormap -->
+<script src="{{asset('src/backend/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('src/backend/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="{{asset('src/backend/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="{{asset('src/backend/plugins/chartjs/Chart.min.js')}}"></script>
+<script src="{{asset('src/backend/dist/js/jasny-bootstrap.js')}}"></script>
 
 
 
-    @yield('scripts')
-  </body>
+@yield('scripts')
+</body>
 </html>

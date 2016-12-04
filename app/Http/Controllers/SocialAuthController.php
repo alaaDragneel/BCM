@@ -23,18 +23,25 @@ class SocialAuthController extends Controller
   public function callbackFaceBook($provider)
   {
     $user = Socialite::driver($provider)->user();
-    $checklUser = $this->findOrCreate($provider, $user->id, $user);
+    $checklUser = $this->findOrCreate($provider, $user->id, $user->email, $user);
 
     Auth::login($checklUser);
     return redirect()->route('dashboard');
   }
 
-  public function findOrCreate($type, $id, $userObj)
+  public function findOrCreate($type, $id, $email,$userObj)
   {
-
-    $user = User::where('account_type', $type)
-    ->where('sns_account_id', $id)
-    ->first();
+    if ($type === 'twitter') {
+      $user = User::where('account_type', $type)
+      ->where('sns_account_id', $id)
+      ->first();
+    } else {
+      $user = User::where('account_type', $type)
+      ->where('sns_account_id', $id)
+      ->where('email', $email)
+      ->first();
+    }
+    // dd($user);
     // if user existing
     if($user){
       return $user;

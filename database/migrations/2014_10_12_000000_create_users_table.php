@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('account_type')->default('gudiAcount');
             $table->string('sns_account_id');
             $table->string('phoneNo');
@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('companyStartFrom');
             $table->boolean('userType');
+            $table->boolean('premium')->default(0); // free 0, premium 1
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();

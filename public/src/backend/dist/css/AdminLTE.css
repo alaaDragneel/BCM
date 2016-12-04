@@ -5115,6 +5115,7 @@ table.text-center th {
  }
  .card-user .description {
    margin-top: 10px;
+   word-break: break-all;
  }
  .card-user .content {
    min-height: 200px;
