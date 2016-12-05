@@ -5162,13 +5162,13 @@ table.text-center th {
     width: 18.2%;
     height: 100%;
 }
-.main-info .row .col-md-4 .col-md-12 {
+/*.main-info .row .col-md-4 .col-md-12 {
      position: absolute;
      background-color: rgba(85, 85, 85, 0.62);
      width: 94%;
      height: 100%;
-     
-}
+
+}*/
 .hiddenDiv {
      position: absolute;
      background-color: rgba(85, 85, 85, 0.62);
@@ -5179,8 +5179,8 @@ table.text-center th {
 .profile-img {
      position: absolute !important;
      background-color: transparent !important;
-     width: 94% !important;
-    height: 18% !important;
+     width: 100% !important;
+     height: 12% !important;
     top: 53px !important;
     border: 1px solid #00f !important;
     box-shadow: 10px 10px 30px #ccc !important;
@@ -5188,26 +5188,30 @@ table.text-center th {
 .dashboard {
      position: absolute !important;
     background-color: transparent !important;
-    width: 94% !important;
-    height: 15% !important;
-    top: 150px !important;
+    width: 100% !important;
+height: 15% !important;
+top: 117px !important;
     border: 1px solid #00f !important;
     box-shadow: 10px 10px 30px #ccc !important;
 }
-/*.projects {
-     position: absolute;
-     background-color: rgba(85, 85, 85, 0.62);
-
-    height: 18%;
-    top: 217px;
+.projects {
+  position: absolute !important;
+ background-color: transparent !important;
+ width: 100% !important;
+     height: 15% !important;
+     top: 197px !important;
+ border: 1px solid #00f !important;
+ box-shadow: 10px 10px 30px #ccc !important;
 }
 .teamwork {
-     position: absolute;
-     background-color: rgba(85, 85, 85, 0.62);
-
-    height: 18%;
-    top: 217px;
-}*/
+  position: absolute !important;
+ background-color: transparent !important;
+ width: 100% !important;
+     height: 15% !important;
+    top: 276px !important;
+ border: 1px solid #00f !important;
+ box-shadow: 10px 10px 30px #ccc !important;
+}
 .main-info .row .col-md-8 {
      position: absolute;
     background: #fff;
