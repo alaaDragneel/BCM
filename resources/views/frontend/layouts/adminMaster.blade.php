@@ -36,18 +36,61 @@
      <div class="main-info">
           <div class="row">
                <div class="col-md-4">
-                    <div class="col-md-12"></div>
-                    <div class="col-md-12"></div>
-                    <div class="col-md-12"></div>
-                    <div class="col-md-12 teamwork"></div>
-                    <div class="col-md-12 rateMember"></div>
-                    <div class="col-md-12 quick"></div>
-                    <div class="col-md-12 back-div"></div>
+                    <div class="col-md-12 profile-imgHid" id="profile-img" data-name="profile-img"></div>
+                    <div class="col-md-12 dashboardHid" id="dashboard" data-name="dashboard"></div>
+                    <div class="col-md-12 projectsHid" id="projects" data-name="projects"></div>
+                    <div class="col-md-12 projectsInfoHid" id="projectsInfo" data-name="projectsInfo"></div>
+                    <div class="col-md-12 teamworkHid" id="teamwork" data-name="teamwork"></div>
+                    <div class="col-md-12 teamworkInfoHid" id="teamworkInfo" data-name="teamworkInfo"></div>
+                    <div class="col-md-12 rateMemberHid" id="rateMember" data-name="rateMember"></div>
+                    <div class="col-md-12 rateMemberInfoHid" id="rateMemberInfo" data-name="rateMemberInfo"></div>
+                    <div class="col-md-12 quickHid" id="quick" data-name="quick"></div>
+                    <div class="col-md-12 quickInfoHid" id="quickInfo" data-name="quickInfo"></div>
+                    <div class="col-md-12 back-div" id="back-div" data-name="back"></div>
                </div>
                <div class="col-md-8">
-
+                 <div class="col-md-12 home" id="home" data-name="home">
+                   <h1 class="conHeading">Welcome TO Ilgudi</h1>
+                   <h2 class="conHeading2">Welcome To Our Website for bussniss</h2>
+                   <p class="conParph">This Will Be the gide that will help you for Know What You Need To Know</p>
+                   <p class="conBtn">Just Click Next TO contaniue Or Finish If You Are Not Enteristed</p>
+                   <button type='button' class='btn btn-lg btn-default ' id="startInfo" style="position: absolute;left: 67%;">Start</button>
+                 </div>
+                 <div class="col-md-12 profile-imgConHid" id="profile-imgCon" data-name="profile-imgCon">
+                   <h1 class="conHeading">Welcome TO profile</h1>
+                 </div>
+                 <div class="col-md-12 dashboardConHid" id="dashboardCon" data-name="dashboardCon">
+                   <h1 class="conHeading">Welcome TO dashboard</h1>
+                 </div>
+                 <div class="col-md-12 projectsConHid" id="projectsCon" data-name="projectsCon">
+                   <h1 class="conHeading">Welcome TO projects</h1>
+                 </div>
+                 <div class="col-md-12 projectsInfoConHid" id="projectsInfoCon" data-name="projectsInfoCon">
+                   <h1 class="conHeading">Welcome TO projectsInfo</h1>
+                 </div>
+                 <div class="col-md-12 teamworkConHid" id="teamworkCon" data-name="teamworkCon">
+                   <h1 class="conHeading">Welcome TO teamwork</h1>
+                 </div>
+                 <div class="col-md-12 teamworkInfoConHid" id="teamworkInfoCon" data-name="teamworkInfoCon">
+                   <h1 class="conHeading">Welcome TO teamworkInfo</h1>
+                 </div>
+                 <div class="col-md-12 rateMemberConHid" id="rateMemberCon" data-name="rateMemberCon">
+                   <h1 class="conHeading">Welcome TO rateMember</h1>
+                 </div>
+                 <div class="col-md-12 rateMemberInfoConHid" id="rateMemberInfoCon" data-name="rateMemberInfoCon">
+                   <h1 class="conHeading">Welcome TO rateMemberInfo</h1>
+                 </div>
+                 <div class="col-md-12 quickConHid" id="quickCon" data-name="quickCon">
+                   <h1 class="conHeading">Welcome TO quick</h1>
+                 </div>
+                 <div class="col-md-12 quickInfoConHid" id="quickInfoCon" data-name="quickInfoCon">
+                   <h1 class="conHeading">Welcome TO quickInfo</h1>
+                 </div>
+                 <div class="col-md-12 back-Condiv" id="back-Condiv" data-name="backCon"></div>
                </div>
-               <div class="col-md-12">
+               <div class="col-md-12" id="btns">
+                 <button type='button' class='btn btn-lg btn-primary ' id="nextInfo">Next</button>
+                 <button type='button' class='btn btn-lg btn-danger ' id="finishInfo"> Finish</button>
 
                </div>
           </div>
@@ -319,7 +362,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Projects NAVIGATION</li>
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-paperclip"></i> <span>Projects</span>
             <span class="pull-right-container">
@@ -335,7 +378,7 @@
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Team Work NAVIGATION</li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-users"></i> <span>Team Work</span>
             <span class="pull-right-container">
@@ -351,7 +394,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Rate NAVIGATION</li>
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-star-half-o"></i> <span>Rate Members</span>
             <span class="pull-right-container">
@@ -367,7 +410,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Quick NAVIGATION</li>
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Quick Links</span>
             <span class="pull-right-container">
@@ -414,6 +457,7 @@
 <script src="{{asset('src/backend/plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('src/backend/dist/js/app.js')}}"></script>
+<script src="{{asset('src/backend/dist/js/mainInfo.js')}}"></script>
 <!-- Sparkline -->
 <script src="{{asset('src/backend/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
 <!-- jvectormap -->

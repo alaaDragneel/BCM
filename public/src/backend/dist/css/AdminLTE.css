@@ -5170,54 +5170,251 @@ table.text-center th {
 
 }*/
 .hiddenDiv {
-     position: absolute;
-     background-color: rgba(85, 85, 85, 0.62);
-     width: 94%;
-     height: 20%;
-     top: 50px;
+  position: absolute;
+  background-color: rgba(85, 85, 85, 0.62);
+  width: 94%;
+  height: 20%;
+  top: 50px;
 }
 .profile-img {
-     position: absolute !important;
-     background-color: transparent !important;
-     width: 100% !important;
-     height: 12% !important;
-    top: 53px !important;
-    border: 1px solid #00f !important;
-    box-shadow: 10px 10px 30px #ccc !important;
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 12% !important;
+  top: 50px !important;
+  /*border: 1px solid #00f !important;*/
+      /*box-shadow: 0px 7px 30px #2d2b2b !important;*/
+}
+.profile-imgHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 12% !important;
+  top: 51px !important;
+
 }
 .dashboard {
-     position: absolute !important;
-    background-color: transparent !important;
-    width: 100% !important;
-height: 15% !important;
-top: 117px !important;
-    border: 1px solid #00f !important;
-    box-shadow: 10px 10px 30px #ccc !important;
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 117px !important;
+  /*border: 1px solid #00f !important;*/
+      /*box-shadow: 0px 7px 30px #2d2b2b !important;*/
+}
+.dashboardHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 114px !important;
+
 }
 .projects {
   position: absolute !important;
- background-color: transparent !important;
- width: 100% !important;
-     height: 15% !important;
-     top: 197px !important;
- border: 1px solid #00f !important;
- box-shadow: 10px 10px 30px #ccc !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 197px !important;
+  /*border: 1px solid #00f !important;*/
+      /*box-shadow: 0px 7px 30px #2d2b2b !important;*/
+}
+.projectsHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 193px !important;
+
+}
+.projectsInfo {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 283px !important;
+
+}
+.projectsInfoHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 272px !important;
+
 }
 .teamwork {
   position: absolute !important;
- background-color: transparent !important;
- width: 100% !important;
-     height: 15% !important;
-    top: 276px !important;
- border: 1px solid #00f !important;
- box-shadow: 10px 10px 30px #ccc !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 276px !important;
+  /*border: 1px solid #00f !important;*/
+      /*box-shadow: 0px 7px 30px #2d2b2b !important;*/
+}
+.teamworkHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 339px !important;
+
+}
+.teamworkInfo {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 276px !important;
+  /*border: 1px solid #00f !important;*/
+      /*box-shadow: 0px 7px 30px #2d2b2b !important;*/
+}
+.teamworkInfoHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 424px !important
+
+}
+.rateMember {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 545px !important;
+
+}
+.rateMemberHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 513px !important;
+
+}
+.rateMemberInfo {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 358px !important;
+
+}
+.rateMemberInfoHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 595px !important;
+
+}
+.quick {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 438px !important;
+
+}
+.quickHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 15% !important;
+  top: 680px !important;
+
+}
+.quick {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100% !important;
+  height: 15% !important;
+  top: 438px !important;
+
+}
+.quickInfoHid {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 21% !important;
+      top: 765px !important;
+
+}
+.back-div {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 100% !important;
+  height: 100% !important;
+  top: 880px !important;
 }
 .main-info .row .col-md-8 {
-     position: absolute;
-    background: #fff;
-    background-color: rgba(85, 85, 85, 0.62);
+  position: absolute;
+  background: #fff;
+  background-color: rgba(0, 0, 0, 0.81);
 
-    width: 100%;
-    height: 100%;
-    left: 231px;
+  width: 100%;
+  height: 373%;
+  left: 231px;
+}
+
+.conHeading {
+  margin: 5% 35%;
+  color: #fff;
+  margin-bottom: -2%;
+}
+.conHeading2 {
+  margin: 5% 35%;
+  color: #fff;
+  margin-bottom: -2%;
+
+}
+.conParph {
+  margin: 5% 35%;
+  color: #fff;
+  font-size: 25px;
+    margin-bottom: -2%;
+}
+.conBtn {
+  margin: 5% 35%;
+  color: #fff;
+  font-size: 15px;
+}
+.profile-imgConHid {
+  display: none;
+}
+.dashboardConHid {
+  display: none;
+}
+.projectsConHid {
+  display: none;
+}
+.projectsInfoConHid {
+  display: none;
+}
+.teamworkConHid {
+  display: none;
+}
+.teamworkInfoConHid {
+  display: none;
+}
+.rateMemberConHid {
+  display: none;
+}
+.rateMemberInfoConHid {
+  display: none;
+}
+.quickConHid {
+  display: none;
+}
+.quickInfoConHid {
+  display: none;
+}
+#btns {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 80%;
+  left: 84%;
+  display: none;
 }

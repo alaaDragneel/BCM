@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('companyStartFrom');
             $table->boolean('userType');
             $table->boolean('premium')->default(0); // free 0, premium 1
+            $table->boolean('cPanelInfo')->default(0); // didi't see the info 0, see the info 1
             $table->string('password');
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
