@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +33,36 @@
   @yield('styles')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+     <div class="main-info">
+          <div class="row">
+               <div class="col-md-4">
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-md-12 dashboard">
+
+                    </div>
+                    <div class="col-md-12 projects">
+
+                    </div>
+                    <div class="col-md-12 teamwork">
+
+                    </div>
+                    <div class="col-md-12 rateMember">
+
+                    </div>
+                    <div class="col-md-12 quick">
+
+                    </div>
+               </div>
+               <div class="col-md-8">
+
+               </div>
+               <div class="col-md-12">
+
+               </div>
+          </div>
+     </div>
   <div class="wrapper">
     <header class="main-header">
       <!-- Logo -->
