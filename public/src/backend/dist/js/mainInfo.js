@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //  cpanel
   $('#profile-img').addClass('activeInfo');
   $('#profile-img').next().addClass('nextElm');
   $('#profile-imgCon').addClass('activeInfoCon');
@@ -43,5 +44,20 @@ $(document).ready(function () {
 
   $('#finishInfo').on('click', function () {
     $('.main-info').remove();
+    $.ajax({
+      method: 'POST',
+      url: urlInfoCpanel,
+      data: {_token: token},
+    });
+  });
+  // create projects
+  $('#startInfoProject').on('click', function () {
+    $(this).slideUp(500, function() {
+      $(this).remove();
+    });
+    $('#btnsProject').slideDown(1000);
+    $('#homeProject').slideUp(500);
+  $(this).parents().siblings('#bmcCon').slideDown(500);   // $('#profile-imgCon').slideDown(500);
+  $('.bmc').removeClass('bmc').addClass('bmcHid');
   });
 });

@@ -74,6 +74,11 @@ Route::group(['middleware' => 'admin'], function () {
     'uses' => 'HomeController@profile_update',
     'as' => 'profile.update'
   ]);
+  // profile view
+  Route::post('/info/update', [
+    'uses' => 'HomeController@info_update',
+    'as' => 'info.update'
+  ]);
 
     // teamworks view
     Route::get('/teamworks/view', [

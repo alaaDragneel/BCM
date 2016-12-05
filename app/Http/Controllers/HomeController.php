@@ -299,6 +299,12 @@ class HomeController extends Controller
       return redirect()->route('profile')->with(['fail' => 'there are some problem try again later']);
     }
   }
+  public function info_update(Request $request)
+  {
+    $user = User::findOrFail(\Auth::user()->id);
+    $user->cPanelInfo = 1;
+    $user->update();
+  }
 
   public function upload($file){
     $extension = $file->getClientOriginalExtension();

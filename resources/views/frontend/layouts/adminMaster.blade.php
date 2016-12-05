@@ -33,6 +33,8 @@
   @yield('styles')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+  <?php $cPanelInfo = Auth::user()->cPanelInfo; ?>
+  @if ($cPanelInfo === 0)
      <div class="main-info">
           <div class="row">
                <div class="col-md-4">
@@ -94,7 +96,29 @@
 
                </div>
           </div>
-     </div>
+        </div>
+  @endif
+  {{-- <div class="projects-info">
+       <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+              <div class="col-md-12">
+                <div id="homeProject">
+                  <h1>Welcome to the Create Projects Page</h1>
+                  <button type='button' class='btn btn-lg btn-default ' id="startInfoProject" style="position: absolute;left: 67%;top: 5%;">Start</button>
+                </div>
+                <div id="bmcCon">
+                  <h1>Welcome to the BMC</h1>
+                </div>
+              </div>
+              <div class="col-md-12 bmc"></div>
+            </div>
+            <div class="col-md-12" id="btnsProject">
+              <button type='button' class='btn btn-lg btn-primary ' id="nextInfoProject">Next</button>
+              <button type='button' class='btn btn-lg btn-danger ' id="finishInfoProject"> Finish</button>
+            </div>
+       </div>
+     </div> --}}
   <div class="wrapper">
     <header class="main-header">
       <!-- Logo -->
@@ -362,7 +386,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Projects NAVIGATION</li>
-        <li class="treeview active">
+        <li class="treeview {{$cPanelInfo === 0 ? 'active' : ''}}">
           <a href="#">
             <i class="fa fa-paperclip"></i> <span>Projects</span>
             <span class="pull-right-container">
@@ -378,7 +402,7 @@
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Team Work NAVIGATION</li>
 
-        <li class="treeview active">
+        <li class="treeview {{$cPanelInfo === 0 ? 'active' : ''}}">
           <a href="#">
             <i class="fa fa-users"></i> <span>Team Work</span>
             <span class="pull-right-container">
@@ -394,7 +418,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Rate NAVIGATION</li>
-        <li class="treeview active">
+        <li class="treeview {{$cPanelInfo === 0 ? 'active' : ''}}">
           <a href="#">
             <i class="fa fa-star-half-o"></i> <span>Rate Members</span>
             <span class="pull-right-container">
@@ -410,7 +434,7 @@
       </ul>
       <ul class="sidebar-menu">
         <li class="header text-uppercase">Quick NAVIGATION</li>
-        <li class="treeview active">
+        <li class="treeview {{$cPanelInfo === 0 ? 'active' : ''}}">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Quick Links</span>
             <span class="pull-right-container">
@@ -468,7 +492,10 @@
 <!-- ChartJS 1.0.1 -->
 <script src="{{asset('src/backend/plugins/chartjs/Chart.min.js')}}"></script>
 <script src="{{asset('src/backend/dist/js/jasny-bootstrap.js')}}"></script>
-
+<script type="text/javascript">
+  var urlInfoCpanel = '{{ route('info.update') }}';
+  var token = '{{ csrf_token() }}';
+</script>
 
 
 @yield('scripts')

@@ -5162,13 +5162,6 @@ table.text-center th {
     width: 18.2%;
     height: 100%;
 }
-/*.main-info .row .col-md-4 .col-md-12 {
-     position: absolute;
-     background-color: rgba(85, 85, 85, 0.62);
-     width: 94%;
-     height: 100%;
-
-}*/
 .hiddenDiv {
   position: absolute;
   background-color: rgba(85, 85, 85, 0.62);
@@ -5410,6 +5403,9 @@ table.text-center th {
 .quickInfoConHid {
   display: none;
 }
+#bmcCon{
+  display: none;
+}
 #btns {
   position: absolute;
   width: 100%;
@@ -5417,4 +5413,81 @@ table.text-center th {
   top: 80%;
   left: 84%;
   display: none;
+}
+#btnsProject {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 80%;
+  left: 84%;
+  display: none;
+}
+.icon-primary {
+  color: #7A9E9F;
+}
+
+.icon-info {
+  color: #68B3C8;
+}
+
+.icon-success {
+  color: #7AC29A;
+}
+
+.icon-warning {
+  color: #F3BB45;
+}
+
+.icon-danger {
+  color: #EB5E28;
+}
+
+.projects-info {
+     width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+}
+.projects-info .row .col-md-4 {
+     position: absolute;
+    width: 18.2%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.81);
+    left: 1px;
+}
+.projects-info .row .col-md-8 {
+  position: absolute;
+  width: 100%;
+  height: 373%;
+  left: 230px;
+}
+.projects-info .row .col-md-8 .bmc{
+  position: absolute;
+  top: 30px;
+  left: 0%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 30%;
+  height: 100%;
+
+}
+.projects-info .row .col-md-8 .bmcHid{
+  position: absolute;
+      top: 208px;
+      left: 0%;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.81);
+      width: 20%;
+      height: 8%;
+
+}
+.projects-info .row .col-md-8 .col-md-12:first-child{
+  position: absolute;
+  top: 30px;
+  left: 30%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.81);
+  width: 52%;
+  height: 100%;
+
 }
