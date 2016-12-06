@@ -167,6 +167,49 @@ class HomeController extends Controller
     $fail = 'there are some Errors the canvas Didn\'t created Successfully';
     return redirect()->route('dashboard')->with(['fail' => $fail]);
   }
+  /**
+  * Update canvas .
+  **/
+  public function postCanvasUpdate(Request $request)
+  {
+    $this->validate($request, [
+      'name' => 'required|min:4|max:255',
+      'desc' => 'required|min:4|max:500',
+    ]);
+    $success = '';
+    $fail = '';
+    $canvasId = $request->id;
+    $name = $request->name;
+    $desc = $request->desc;
+    $canvas = BMC::findOrFail($canvasId);
+    $canvas->name = $name;
+    $canvas->description = $desc;
+    $canvas->update();
+    if($canvas){
+      $success = 'the canvas updated Successfully';
+      return response()->json(['success' => $success], 200);
+    }
+    $fail = 'there are some Errors the canvas Didn\'t created Successfully';
+    return redirect()->route('dashboard')->with(['fail' => $fail]);
+  }
+  /**
+  * Delete canvas .
+  **/
+  public function CanvasDelete(Request $request)
+  {
+
+    $canvasId = $request->id;
+
+    $canvas = BMC::findOrFail($canvasId);
+
+    $canvas->delete();
+    if($canvas){
+      $success = 'the canvas deleted Successfully';
+      return response()->json(['success' => $success], 200);
+    }
+    $fail = 'there are some Errors the canvas Didn\'t created Successfully';
+    return redirect()->route('dashboard')->with(['fail' => $fail]);
+  }
 
   public function register_profile()
   {

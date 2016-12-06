@@ -154,6 +154,16 @@ Route::group(['middleware' => 'admin'], function () {
     'uses' => 'HomeController@postCanvasStore',
     'as' => 'store.canvas'
     ]);
+    // update canvas
+    Route::post('/canvas/update', [
+    'uses' => 'HomeController@postCanvasUpdate',
+    'as' => 'update.canvas'
+    ]);
+    // update canvas
+    Route::get('/canvas/delete', [
+    'uses' => 'HomeController@CanvasDelete',
+    'as' => 'delete.canvas'
+    ]);
 
     // get canvas
     Route::get('/canvas/view/{canvas_id}', [

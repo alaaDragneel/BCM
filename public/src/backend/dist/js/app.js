@@ -770,4 +770,108 @@ $(document).ready(function() {
     // hide the card option
     $(this).children('.card-option').slideUp(500);
   });
+  // view the diescription
+  $('.moreDetails').on('click', function() {
+    // get the canvas name
+    canvasName = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('p');
+    canvasId = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('p').data('id');
+    // get the canvas desc
+    canvasDesc = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('textarea');
+    // assain the values
+    $('#viewName').val(canvasName.text());
+    $('#viewDesc').val(canvasDesc.text());
+  });
+  // view the diescription
+  $('.deleteCanvas').on('click', function() {
+    // get the canvas id
+    canvasId = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('p').data('id');
+    $(this).parents('.optionsCanvas').slideUp(500, function() {
+      $(this).remove();
+    });
+    $.ajax({
+      method: 'get',
+      url: deleteUrl,
+      data:{id: canvasId, _token: token},
+    }).done(function(msg) {
+      // view the response with json
+      $('#success').html('');
+      // show the success delete div
+      $('#success').slideDown(300);
+      // put the outPut
+      $('#success').append(msg['success']);
+      //hide the success delete div
+      $('#success').delay(2000).slideUp();
+      $('#viewModal').modal('hide');
+    }).fail(function (xhr){
+      $('#viewModal').modal('hide');
+      var errors = xhr.responseJSON;
+      $.each(errors ,function(key, value) {
+        $('#errors ul').html('');
+        // show the success delete div
+        $('#errors').slideDown(500);
+        // put the outPut
+        $('#errors ul').append('<li>'+value+'</li>');
+        //hide the success delete div
+        $('#errors').delay(2000).slideUp();
+      });
+    });
+  });
+  // edit key
+  $('.editCanvas').on('click', function() {
+    // get the canvas name
+    canvasName = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('p');
+    canvasId = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('p').data('id');
+    // get the canvas desc
+    canvasDesc = $(this).parents().siblings('.card').children()
+    .children().children().siblings('.col-xs-7')
+    .children().children('textarea');
+    // assain the values
+    $('#editName').val(canvasName.text());
+    $('#editDesc').val(canvasDesc.text());
+  });
+  $('#save').on('click', function() {
+    var newName = $('#editName').val();
+    var newDesc = $('#editDesc').val();
+    $.ajax({
+      method: 'POST',
+      url: url,
+      data:{id: canvasId, name: newName, desc: newDesc, _token: token},
+    }).done(function(msg) {
+      // view the response with json
+      canvasName.text(newName);
+      canvasDesc.text(newDesc);
+      $('#success').html('');
+      // show the success delete div
+      $('#success').slideDown(300);
+      // put the outPut
+      $('#success').append(msg['success']);
+      //hide the success delete div
+      $('#success').delay(2000).slideUp();
+      $('#editModal').modal('hide');
+    }).fail(function (xhr){
+      $('#editModal').modal('hide');
+      var errors = xhr.responseJSON;
+      $.each(errors ,function(key, value) {
+        $('#errors ul').html('');
+        // show the success delete div
+        $('#errors').slideDown(500);
+        // put the outPut
+        $('#errors ul').append('<li>'+value+'</li>');
+        //hide the success delete div
+        $('#errors').delay(2000).slideUp();
+      });
+    });
+  });
 });
