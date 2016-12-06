@@ -16,7 +16,7 @@ class CountriesTableSeeder extends Seeder
 
        $Countries = [
          [
-          'name' => 'مصر',
+          'name' => 'Egypt',
          ],
        ];
        DB::table('countries')->insert($Countries);

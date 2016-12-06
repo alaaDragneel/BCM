@@ -15,113 +15,82 @@ class GovernoratesTableSeeder extends Seeder
     DB::table('governorates')->truncate();
     $governorates = [
       [
-        'name'     => 'الأقصر',
-        'country_name' => 'مصر',
+        'name'     => 'Luxor',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الإسكندرية',
-        'country_name' => 'مصر',
+        'name'     => 'Alexandria',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الشرقية',
-        'country_name' => 'مصر',
+        'name'     => 'Eastern',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'أسيوط',
-        'country_name' => 'مصر',
+        'name'     => 'Asyut',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'البحيرة',
-        'country_name' => 'مصر',
+        'name'     => 'the lake',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'القاهرة',
-        'country_name' => 'مصر',
+        'name'     => 'Cairo',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'دمياط',
-        'country_name' => 'مصر',
+        'name'     => 'Damietta',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'كفر الشيخ',
-        'country_name' => 'مصر',
+        'name'     => 'Kafr el Sheikh',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'المنوفية',
-        'country_name' => 'مصر',
+        'name'     => 'Monoufia',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'المنيا',
-        'country_name' => 'مصر',
+        'name'     => 'Minya',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'بورسعيد',
-        'country_name' => 'مصر',
+        'name'     => 'Port Said',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'القليوبية',
-        'country_name' => 'مصر',
+        'name'     => 'Qaliubiya',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'أسوان',
-        'country_name' => 'مصر',
+        'name'     => 'Aswan',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الإسماعيلية',
-        'country_name' => 'مصر',
+        'name'     => 'Ismailia',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'بني سويف',
-        'country_name' => 'مصر',
+        'name'     => 'Bani Sweif',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الدقهلية',
-        'country_name' => 'مصر',
+        'name'     => 'Dakahlia',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الفيوم',
-        'country_name' => 'مصر',
+        'name'     => 'Fayoum',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الغربية',
-        'country_name' => 'مصر',
+        'name'     => 'Western',
+        'country_id' => '1',
       ],
       [
-        'name'     => 'الجيزة',
-        'country_name' => 'مصر',
+        'name'     => 'Giza',
+        'country_id' => '1',
       ],
-      [
-        'name'     => 'البحر الأحمر',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'قنا',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'جنوب سيناء',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'شمال سيناء',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'السويس',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'سوهاج',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'الوادي الجديد',
-        'country_name' => 'مصر',
-      ],
-      [
-        'name'     => 'مطروح',
-        'country_name' => 'مصر',
-      ],
+
     ];
     DB::table('governorates')->insert($governorates);
   }

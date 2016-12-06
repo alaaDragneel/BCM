@@ -5491,3 +5491,37 @@ table.text-center th {
   height: 100%;
 
 }
+.fa-plus {
+ color: #999;
+}
+
+.fa-plus:hover {
+ color: #777;
+ cursor: pointer;
+}
+.fa-close,
+.fa-edit,
+.fa-tag,
+.fa-info {
+  cursor: pointer;
+}
+.fa-close:hover,
+.fa-edit:hover,
+.fa-info:hover,
+.fa-tag:hover {
+  transition: all 0.5s ease-in-out;
+  color: #ddd;
+}
+.card-option{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -11px;
+  margin-right: -148px;
+  box-shadow: 2px 2px 5px #666;
+  z-index: 99;
+  color: #fff;
+  display: none;
+}

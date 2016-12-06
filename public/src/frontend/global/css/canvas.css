@@ -59,94 +59,6 @@ h1 {font-weight: 900;}
 .costs, .revs{
   height: 200px !important;
 }
-/*
-.keyInfo,
-.valueInfo,
-.RelationInfo,
-.ResourceInfo,
-.ChaneelInfo,
-.CostInfo,
-.RevInfo {
-  background-color: #f1f1f1;
-}*/
-
-/*
-.keyInfo .keyTitle h6,
-.valueInfo .valueTitle h6,
-.RelationInfo .RelationTitle h6,
-.ResourceInfo .ResourceTitle h6,
-.ChaneelInfo .ChaneelTitle h6,
-.CostInfo .CostTitle h6,
-.RevInfo .RevTitle h6 {
-     font-size: 15px;
-     font-weight: bold;
-     color: #434A48;
-     padding: 0 7px
-}*/
-/*
-.keyInfo span,
-.valueInfo span,
-.RelationInfo span,
-.ResourceInfo span,
-.ChaneelInfo span,
-.CostInfo span,
-.RevInfo span {
-     color: #434A48;
-     padding: 0 5px;
-     line-height: 2.5
-}*/
-
-/*.keyInfo span .fa,
-.valueInfo span .fa,
-.RelationInfo span .fa,
-.ResourceInfo span .fa,
-.ChaneelInfo span .fa,
-.CostInfo span .fa,
-.RevInfo span .fa {
-  color: #999;
-}*/
-
-/*.keyInfo span .fa:hover,
-.valueInfo span .fa:hover,
-.RelationInfo span .fa:hover,
-.ResourceInfo span .fa:hover,
-.ChaneelInfo span .fa:hover,
-.CostInfo span .fa:hover,
-.RevInfo span .fa:hover {
-     color: #777;
-     cursor: pointer;
-}*/
-
-.keyInfo .editKey,
-.keyInfo .editKeyDesc,
-.valueInfo .editvalue,
-.valueInfo .editValueDesc,
-.RelationInfo .editRelation,
-.RelationInfo .editRelationDesc,
-.ResourceInfo .editResource,
-.ResourceInfo .editResourceDesc,
-.ChaneelInfo .editChaneel,
-.ChaneelInfo .editChaneelDesc,
-.CostInfo .editCost,
-.CostInfo .editCostDesc,
-.RevInfo .editRev,
-.RevInfo .editRevDesc {
-     display: none;
-}
-
-
-/*.keyInfo .keyDesc p,
-.valueInfo .valueDesc p,
-.RelationInfo .RelationDesc p,
-.ResourceInfo .ResourceDesc p,
-.ChaneelInfo .ChaneelDesc p,
-.CostInfo .CostDesc p,
-.RevInfo .RevDesc p {
-     font-size: 20px;
-     font-weight: bold;
-     color: #777;
-     padding: 0 7px 7px;
-}*/
 
 .searchBox{
   border-color: #aaa;
@@ -189,29 +101,6 @@ h1 {font-weight: 900;}
      color: #f4f4f4;
      display: none;
 }
-/*.companies {
-
-  background: #fff;
-  width: auto;
-  border: 1px solid #fff;
-  border-radius: 4px;
-}
-
-.companies .fullName{
-  padding: 10px 0 0 10px;
-  font-size: 15px;
-  color: #555;
-}
-
-.companies .num,
-.companies .email,
-.companies .job,
-.companies .Desc {
-  font-size: 13px;
-  color: #666;
-  margin: 10px;
-  padding: 3px;
-}*/
 
 h4 {
   float: left;
@@ -309,7 +198,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -27px;
-  margin-right: 199px;
+  margin-right: 54px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -320,7 +209,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -10px;
+  margin-right: -148px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -331,7 +220,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -204px;
+  margin-right: -348px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 
@@ -344,7 +233,18 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -393px;
+  margin-right: -549px;
+  display: none;
+  box-shadow: 2px 2px 5px #666;
+}
+.card-optionCS{
+  position: absolute;
+  right: 61%;
+  background: #666;
+  padding: 5px;
+  border-radius: 14px;
+  margin-top: -31px;
+  margin-right: -749px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -355,7 +255,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -9px;
+  margin-right: -148px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -366,7 +266,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -393px;
+  margin-right: -550px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -377,7 +277,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -105px;
+  margin-right: -226px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -388,7 +288,7 @@ h4 {
   padding: 5px;
   border-radius: 14px;
   margin-top: -31px;
-  margin-right: -582px;
+  margin-right: -725px;
   display: none;
   box-shadow: 2px 2px 5px #666;
 }
@@ -424,4 +324,7 @@ border-radius: 50%;
 .content{
    min-height: 0px;
    padding: 0px;
+}
+.infoCSDiv{
+  display: none;
 }

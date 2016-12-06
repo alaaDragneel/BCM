@@ -6,12 +6,18 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    @if (Session::has('success'))
+    {{-- @if (Session::has('success'))
       <div class="alert alert-info">{{ Session::get('success') }}</div>
-    @endif
+    @endif --}}
     <div class="row">
         @foreach ($projects as $canvas)
-          <div class="col-lg-3 col-sm-6">
+
+          <div class="col-lg-3 col-sm-6 optionsCanvas" data-canvas="{{ $canvas->id }}">
+						<div class="card-option">
+							<span><i class="fa fa-edit editKA" data-target="#editActivityModal" data-toggle="modal"></i></span>
+							<span><i class="fa fa-close deleteKA"></i></span>
+							<span><i class="fa fa-info moreDetails"></i></span>
+						</div>
               <div class="card">
                   <div class="content" style="min-height: 160px;">
                       <div class="row">

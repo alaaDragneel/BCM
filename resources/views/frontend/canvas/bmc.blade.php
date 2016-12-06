@@ -10,8 +10,8 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      @if (Session::has('success'))
-        <div class="alert alert-info">{{ Session::get('success') }}</div>
+      @if (Session::has('successCanvas'))
+        <div class="alert alert-info">{{ Session::get('successCanvas') }}</div>
       @endif
       <div class="alert alert-success" id="success"></div>
       <div class="alert alert-info" id="successDelete"></div>
@@ -42,11 +42,14 @@
                       <span class="pull-right deleteKP"><i class="fa fa-close"></i></span>
                     </div>
                     <h4 class="fullName"><i class="fa fa-user"></i>{{ $kp->kp_name }}</h4>
+                    <div class="clearfix"></div>
                     @if ($kp->kp_email)
                       <h4 class="email"><i class="fa fa-envelope"></i>{{ $kp->kp_email }}</h4>
+                      <div class="clearfix"></div>
                     @endif
                     @if ($kp->kp_job)
                       <h4 class="job"><i class="fa fa-briefcase"></i>{{ $kp->kp_job }}</h4>
+                      <div class="clearfix"></div>
                     @endif
                     <p class="Desc"><i class="fa fa-black-tie"></i>{{ $kp->kp_desc }}</p>
                   </div>
@@ -72,13 +75,17 @@
                     <span><i class="fa fa-edit editKA" data-target="#editActivityModal" data-toggle="modal"></i></span>
                     <span><i class="fa fa-close deleteKA"></i></span>
                     <span><i class="fa fa-info moreDetails"></i></span>
+                    <span class="hidden" id="membersId">{{ $ka->ka_memeber_id }}</span>
                   </div>
                   <div class="memberInfoTag">
                     <h5  class="name" style="font-size: 15px;"><i class="fa fa-user"></i>{{ $ka->ka_memper }}</h5>
+                    <div class="clearfix"></div>
                     <div class="details">
                       <p class="job"><i class="fa fa-briefcase"></i>{{ $ka->ka_member_job }}</p>
+                      <div class="clearfix"></div>
                       @if ($ka->ka_title)
                            <p class="ka_title"><i class="fa fa-briefcase"></i>{{ $ka->ka_title }}</p>
+                           <div class="clearfix"></div>
                       @endif
                       @if ($ka->ka_desc)
                            <p class="ka_desc"><i class="fa fa-briefcase"></i>{{ $ka->ka_desc }}</p>
@@ -108,6 +115,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="vp_title">{{ $vp->vp_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="vp_desc">{{ $vp->vp_desc }}</p>
                 </div>
               @endforeach
@@ -131,6 +139,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="cr_title">{{ $cr->cr_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="cr_desc">{{ $cr->cr_desc }}</p>
                 </div>
               @endforeach
@@ -144,7 +153,44 @@
           data-placement="bottom"
           rel="popover" >Customer Segments <i class="fa fa-plus" id="keyActivity" data-toggle="modal" data-target="#addSegmentsModal"></i></h4>
           <div class="clearfix"></div>
-          <div id="Segments" class="companies"></div>
+          <div id="Segments" class="companies">
+            @if ($CS && count($CS) > 0)
+              @foreach ($CS as $cs)
+                <div class="callout callout-danger optionsCS" data-cs="{{ $cs->id }}">
+                  <div class="card-optionCS">
+                    <span class="pull-right infoCS"><i class="fa fa-info"></i></span>
+                    <span class="pull-right deleteCS"><i class="fa fa-close"></i></span>
+                    <span class="pull-right editCS"><i class="fa fa-edit"></i></span>
+                  </div>
+                  <h4 class="titles">gender</h4>
+                  <div class="clearfix"></div>
+                  <div class="infoCSDiv">
+                    <p class="genderVal">{{ $cs->gender }}</p>
+                    <div class="clearfix"></div>
+                    <h4 class="titles">ageFrom</h4>
+                    <div class="clearfix"></div>
+                    <p class="ageFrom">{{ $cs->ageFrom }}</p>
+                    <div class="clearfix"></div>
+                    <h4 class="titles">Age To</h4>
+                    <div class="clearfix"></div>
+                    <p class="ageTo">{{ $cs->ageTo }}</p>
+                    <div class="clearfix"></div>
+                    <h4 class="titles">Country</h4>
+                    <div class="clearfix"></div>
+                    <p class="country">{{ $cs->country }}</p>
+                    <div class="clearfix"></div>
+                    <h4 class="titles">governorate</h4>
+                    <div class="clearfix"></div>
+                    <p class="governorate">{{ $cs->governorate }}</p>
+                    <div class="clearfix"></div>
+                    <h4 class="titles">city</h4>
+                    <div class="clearfix"></div>
+                    <p class="city">{{ $cs->city }}</p>
+                  </div>
+                </div>
+              @endforeach
+            @endif
+          </div>
         </td>
       </tr>
       <tr>
@@ -165,6 +211,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="kr_title">{{ $kr->kr_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="kr_desc">{{ $kr->kr_desc }}</p>
                 </div>
               @endforeach
@@ -188,6 +235,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="ch_title">{{ $ch->ch_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="ch_desc">{{ $ch->ch_desc }}</p>
                 </div>
               @endforeach
@@ -213,6 +261,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="cst_title">{{ $cst->cst_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="cst_desc">{{ $cst->cst_desc }}</p>
                 </div>
               @endforeach
@@ -236,6 +285,7 @@
                   </div>
                   <div class="clearfix"></div>
                   <h4 class="rs_title">{{ $rs->rs_title }}</h4>
+                  <div class="clearfix"></div>
                   <p class="rs_desc">{{ $rs->rs_desc }}</p>
                 </div>
               @endforeach
@@ -252,7 +302,8 @@
   var urlBtn = '{{ route('request') }}';
   var KPurl = '{{ route('KP.store') }}';
   var KPurlBtnDelete = '{{ route('request.delete') }}';
-  var urlCustomer = '{{ route('Companies') }}';
+  var urlCustomer = '{{ route('governorates') }}';
+  var urlCustomerCities = '{{ route('cities') }}';
   // key activity
   var KAurlAjax = '{{ route('KA.response') }}';
   var KAurl = '{{ route('KA.store') }}';

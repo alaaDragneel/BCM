@@ -121,9 +121,14 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     // searchCompaniesCountry
-    Route::get('/getCompanies', [
-    'uses'  =>  'ProSearchController@getAjaxCompanies',
-    'as'    =>  'Companies'
+    Route::get('/governorates', [
+    'uses'  =>  'ProSearchController@getAjaxGovernorates',
+    'as'    =>  'governorates'
+    ]);
+    // searchCompaniesCountry
+    Route::get('/cities', [
+    'uses'  =>  'ProSearchController@getAjaxCities',
+    'as'    =>  'cities'
     ]);
 
     // projects view

@@ -16,188 +16,44 @@ class CitiesTableSeeder extends Seeder
 
     $cities = [
       [
-        'name' => 'حي الزيتون',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Zeitoun ',
+        'governorates_id' =>  '6'
       ],
       [
-        'name' => ' حي الزاوية الحمراء',
-        'governorate_name' =>  'القاهره'
+        'name' => 'the red corner',
+        'governorates_id' =>  '6'
       ],
       [
-        'name' => 'حي حدائق القبة',
-        'governorate_name' =>  'القاهره'
+        'name' => 'gardens dome',
+        'governorates_id' =>  '6'
       ],
       [
-        'name' => 'حي الشرابية',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Sharabiya',
+        'governorates_id' =>  '6'
       ],
       [
-        'name' => 'حي الساحل',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Warraq',
+        'governorates_id' => '19',
       ],
       [
-        'name' => 'حي شبرا',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Bulaq Dakrur',
+        'governorates_id' => '19',
       ],
       [
-        'name' => ' حي روض الفرج',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Dokki',
+        'governorates_id' => '19',
       ],
       [
-        'name' => 'حي الأميرية',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Agouza ',
+        'governorates_id' => '19',
       ],
       [
-        'name' => 'حي السلام أول',
-        'governorate_name' =>  'القاهره'
+        'name' => 'Urban ',
+        'governorates_id' => '19',
       ],
       [
-        'name' => 'حي السلام ثان',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي المرج',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي المطرية',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => ' حي عين شمس',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي النزهة',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي مصر الجديدة',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي شرق مدينة نصر',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي غرب مدينة نصر',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي الوايلي',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي منشأة ناصر',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي وسط',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي باب الشعرية',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي الأزبكية',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي بولاق',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي الموسكي',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي عابدين',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي غرب',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي المقطم',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي الخليفة',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => ' حي السيدة زينب',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي مصر القديمة',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي دار السلام',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي البساتين',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي المعادي',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي طره',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي المعصرة',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي 15 مايو',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي حلوان',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي التبين',
-        'governorate_name' =>  'القاهره'
-      ],
-      [
-        'name' => 'حي شمال',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي الوراق',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي بولاق الدكرور',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي الدقي',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي العجوزة',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي العمرانية',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي الهرم',
-        'governorate_name' => 'الجيزه',
-      ],
-      [
-        'name' => 'حي جنوب',
-        'governorate_name' => 'الجيزه',
+        'name' => 'the pyramid',
+        'governorates_id' => '19',
       ],
     ];
     DB::table('cities')->insert($cities);

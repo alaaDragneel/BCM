@@ -84,6 +84,7 @@ $(document).ready(function() {
                // edit the KA
                $('.editKA').on('click', function() {
                     id = $(this).parents().parents().parents().data('ka'); // id of card
+                    idMember = $(this).siblings('#membersId').text();
                     bmc_id = $('#bizcanvas').data('id');
                     name = $(this).parents().parents().siblings('.memberInfoTag').children('.name');
                     job = $(this).parents().parents().siblings('.memberInfoTag').children('.details').children('.job');
@@ -115,6 +116,17 @@ $(document).ready(function() {
                          ka_title.text(inputTitle.val());
                          ka_desc.text(inputDesc.val());
                          $('#editActivityModal').modal('hide');
+                    }).fail(function (xhr){
+                      $('#editActivityModal').modal('hide');
+                      var errors = xhr.responseJSON;
+                      $.each(errors ,function(key, value) {
+                        // show the success delete div
+                        $('#errors').slideDown(500);
+                        // put the outPut
+                        $('#errors ul').append('<li>'+value+'</li>');
+                        //hide the success delete div
+                        $('#errors').delay(2000).slideUp();
+                      });
                     });
                });
                // delete the KA
@@ -132,6 +144,17 @@ $(document).ready(function() {
                          },
                     });
                });
+          }).fail(function (xhr){
+            $('#addActivityModal').modal('hide');
+            var errors = xhr.responseJSON;
+            $.each(errors ,function(key, value) {
+              // show the success delete div
+              $('#errors').slideDown(500);
+              // put the outPut
+              $('#errors ul').append('<li>'+value+'</li>');
+              //hide the success delete div
+              $('#errors').delay(2000).slideUp();
+            });
           });
      });
      // view the key-activity option
@@ -172,6 +195,7 @@ $(document).ready(function() {
      // edit the KA
      $('.editKA').on('click', function() {
           id = $(this).parents().parents().parents().data('ka'); // id of card
+          idMember = $(this).siblings('#membersId').text();
           bmc_id = $('#bizcanvas').data('id');
           name = $(this).parents().parents().siblings('.memberInfoTag').children('.name');
           job = $(this).parents().parents().siblings('.memberInfoTag').children('.details').children('.job');
@@ -203,6 +227,17 @@ $(document).ready(function() {
                ka_title.text(inputTitle.val());
                ka_desc.text(inputDesc.val());
                $('#editActivityModal').modal('hide');
+          }).fail(function (xhr){
+            $('#editActivityModal').modal('hide');
+            var errors = xhr.responseJSON;
+            $.each(errors ,function(key, value) {
+              // show the success delete div
+              $('#errors').slideDown(500);
+              // put the outPut
+              $('#errors ul').append('<li>'+value+'</li>');
+              //hide the success delete div
+              $('#errors').delay(2000).slideUp();
+            });
           });
      });
      // delete the KA

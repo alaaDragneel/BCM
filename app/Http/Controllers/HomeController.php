@@ -162,7 +162,7 @@ class HomeController extends Controller
 
     if($saveCanvas){
       $success= 'the canvas created Successfully Do Greate Job';
-      return redirect()->route('view.canvas', [$this->id => $saveCanvas])->with(['success' => $success]);
+      return redirect()->route('view.canvas', [$this->id => $saveCanvas])->with(['successCanvas' => $success]);
     }
     $fail = 'there are some Errors the canvas Didn\'t created Successfully';
     return redirect()->route('dashboard')->with(['fail' => $fail]);

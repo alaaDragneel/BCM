@@ -115,6 +115,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
+            <input type="hidden" id="member_id">
             <!-- member name -->
             <div class="col-md-6">
               <div class="form-group">
@@ -255,7 +256,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-6 col-md-offset-1 genders">
-                <button type="button" class="btn btn-default gender" value="All" clicked>All</button>
+                <button type="button" class="btn btn-default gender" value="All">All</button>
 
                 <button type="button" class="btn btn-default gender" value="Male">Male</button>
 
@@ -282,16 +283,17 @@
                 <div class="hr2"></div>
               </div>
               <div class="col-md-6 col-md-offset-1 location">
-                <select class='form-control'>
-                  <option value="Egypt">Egypt</option>
-                  <option value="cairo">cairo</option>
-                  <option value="Giza">Giza</option>
-                  <option value="Imbaba">Imbaba</option>
-                  <option value="Nasr City">Nasr City</option>
-                  <option value="Japan">Japan</option>
+                <select class='form-control' id="getCountries">
+                  <option>select</option>
+                  @if (!empty($contries))
+                    @foreach ($contries as $country)
+                      <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    @endforeach
+                  @endif
                 </select>
               </div>
-              <div class="col-md-6 col-md-offset-1 peoples"></div>
+              <div class="col-md-6 col-md-offset-1 governorates"></div>
+              <div class="col-md-6 col-md-offset-1 cities"></div>
             </div>
           </div>
         </div>
@@ -304,6 +306,74 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 {{-- end Segments --}}
+
+{{-- edit Segments --}}
+<div class="modal fade" tabindex="-1" role="dialog" id="editSegmentsModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">edit Customer Segments
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Choose the Information</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-1 gendersEdit">
+                <button type="button" class="btn btn-default gender" value="All">All</button>
+
+                <button type="button" class="btn btn-default gender" value="Male">Male</button>
+
+                <button type="button" class="btn btn-default gender" value="Female">Female</button>
+              </div>
+              <div class="hr"></div>
+              <div class="col-md-6 col-md-offset-1 ageEdit">
+                <div class="row">
+                  <div class="col-md-5 col-md-offset-1">
+                    From: <select class='form-control fromEdit'>
+                      @for ($i=16; $i <= 65 ; $i++)
+                      <option value="{{ $i }}">{{ $i }}</option>
+                      @endfor
+                    </select>
+                  </div>
+                  <div class="col-md-5 col-md-offset-1 toContEdit">
+                    To: <select class='form-control to'>
+                      @for ($i=16; $i <= 65 ; $i++)
+                      <option value="{{ $i }}">{{ $i }}</option>
+                      @endfor
+                    </select>
+                  </div>
+                </div>
+                <div class="hr2"></div>
+              </div>
+              <div class="col-md-6 col-md-offset-1 location">
+                <select class='form-control' id="getCountries">
+                  <option>select</option>
+                  @if (!empty($contries))
+                    @foreach ($contries as $country)
+                      <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    @endforeach
+                  @endif
+                </select>
+              </div>
+              <div class="col-md-6 col-md-offset-1 governorates"></div>
+              <div class="col-md-6 col-md-offset-1 cities"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="updateSegments">Update Customer Segments</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{{-- edit Segments --}}
 
 {{-- new customer relation --}}
 <div class="modal fade" tabindex="-1" role="dialog" id="addRelationModal">

@@ -762,5 +762,12 @@ function _init() {
   };
 }(jQuery));
 $(document).ready(function() {
-  // $('.fileinput').fileinput();
+  $('.optionsCanvas').on('mouseenter', function() {
+    // show the card option
+    $(this).children('.card-option').slideDown(500);
+    // hide the key-activity option
+  }).on('mouseleave', function() {
+    // hide the card option
+    $(this).children('.card-option').slideUp(500);
+  });
 });
