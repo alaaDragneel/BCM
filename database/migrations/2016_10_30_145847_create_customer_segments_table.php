@@ -14,8 +14,12 @@ class CreateCustomerSegmentsTable extends Migration
     {
         Schema::create('customer_segments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cs_title');
-            $table->text('cs_desc');
+            $table->string('gender');
+            $table->integer('ageFrom');
+            $table->integer('ageTo');
+            $table->string('country');
+            $table->string('governorate');
+            $table->string('city');
             $table->integer('BMC_id')->unsigned();
             $table->foreign('BMC_id')->references('id')->on('BMCS')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();

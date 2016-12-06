@@ -36,7 +36,7 @@ class bmcCanvasController extends Controller
     $CH = Chaneel::where('bmc_id', $canvas_id)->get();
     $CST = CostStructure::where('bmc_id', $canvas_id)->get();
     $RS = RevenueStream::where('bmc_id', $canvas_id)->get();
-    return view('frontend.users.bmc', compact('canvas', 'KP', 'KA', 'VP', 'CR', 'KR', 'CH', 'CST', 'RS'));
+    return view('frontend.canvas.bmc', compact('canvas', 'KP', 'KA', 'VP', 'CR', 'KR', 'CH', 'CST', 'RS'));
   }
 
 
@@ -173,7 +173,7 @@ class bmcCanvasController extends Controller
         'successDelete' => $success,
       ], 200);
     }
-    return view('frontend.users.bmc', compact('canvas', 'KA'));
+    return view('frontend.canvas.bmc', compact('canvas', 'KA'));
   }
 
   /**
@@ -259,7 +259,7 @@ class bmcCanvasController extends Controller
         'successDelete' => $success,
       ], 200);
     }
-    return view('frontend.users.bmc', compact('canvas', 'KA', 'vp'));
+    return view('frontend.canvas.bmc', compact('canvas', 'KA', 'vp'));
   }
   /**
   * update the ka.

@@ -251,6 +251,21 @@ Route::group(['middleware' => 'admin'], function () {
     'uses' => 'bmcCanvasController@UpdateCH',
     'as' => 'CH.update'
     ]);
+    // store CS canvas
+    Route::post('/canvas/view/CS/store', [
+    'uses' => 'bmcCanvasController@postCS',
+    'as' => 'CS.store'
+    ]);
+    // delete CS canvas
+    Route::get('/canvas/view/CS/delete', [
+    'uses' => 'bmcCanvasController@getDeleteCS',
+    'as' => 'CS.delete'
+    ]);
+    // update CS canvas
+    Route::post('/canvas/view/CS/update', [
+    'uses' => 'bmcCanvasController@UpdateCS',
+    'as' => 'CS.update'
+    ]);
     // store CST canvas
     Route::post('/canvas/view/CST/store', [
     'uses' => 'bmcCanvasController@postCST',

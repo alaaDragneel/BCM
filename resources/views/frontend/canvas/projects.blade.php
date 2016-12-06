@@ -13,7 +13,7 @@
         @foreach ($projects as $canvas)
           <div class="col-lg-3 col-sm-6">
               <div class="card">
-                  <div class="content">
+                  <div class="content" style="min-height: 160px;">
                       <div class="row">
                           <div class="col-xs-5">
                               <div class="icon-big icon-warning text-center">

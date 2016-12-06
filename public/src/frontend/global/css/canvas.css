@@ -1,3 +1,6 @@
+html {
+  overflow-y: scroll !important;
+}
 body {font-family: Verdana, Geneva, sans-serif;}
 
 h1 {font-weight: 900;}
@@ -417,4 +420,8 @@ border-radius: 50%;
 
 .details {
   display: none;
+}
+.content{
+   min-height: 0px;
+   padding: 0px;
 }

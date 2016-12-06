@@ -123,7 +123,7 @@ class HomeController extends Controller
   {
     $AuthUser = \Auth::user()->id;
     $projects = BMC::where('user_id', $AuthUser)->orderBy('id', 'DESC')->get();
-    return view('frontend.users.projects', compact('projects'));
+    return view('frontend.canvas.projects', compact('projects'));
   }
 
   /**
@@ -131,7 +131,7 @@ class HomeController extends Controller
   **/
   public function getCreateProjects()
   {
-    return view('frontend.users.createProject');
+    return view('frontend.canvas.createProject');
   }
 
   /**
@@ -139,7 +139,7 @@ class HomeController extends Controller
   **/
   public function getCreateInfoProjects()
   {
-    return view('frontend.users.projectInfo');
+    return view('frontend.canvas.projectInfo');
   }
 
   /**

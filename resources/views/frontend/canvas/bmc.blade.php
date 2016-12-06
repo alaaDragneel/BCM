@@ -1,4 +1,4 @@
-@extends('frontend.layouts.userMaster')
+@extends('frontend.layouts.adminMaster')
 @section('title')
   BMC
 @endsection
@@ -274,6 +274,10 @@
   var CHurl = '{{ route('CH.store') }}';
   var CHurlDelete = '{{ route('CH.delete') }}';
   var CHurlUpdate = '{{ route('CH.update') }}';
+  // ker resource
+  var CSurl = '{{ route('CS.store') }}';
+  var CSurlDelete = '{{ route('CS.delete') }}';
+  var CSurlUpdate = '{{ route('CS.update') }}';
   // cost structure
   var CSTurl = '{{ route('CST.store') }}';
   var CSTurlDelete = '{{ route('CST.delete') }}';
@@ -291,5 +295,6 @@
   <script src="{{asset('src/frontend/global/js/canvas.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/AjaxSearch.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/keyActivity.js')}}"></script>
+  <script src="{{asset('src/frontend/global/js/customerSegments.js')}}"></script>
   <script src="{{asset('src/frontend/global/js/bmcFunctions.js')}}"></script>
 @endsection
