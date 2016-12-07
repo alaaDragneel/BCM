@@ -34,4 +34,13 @@ class User extends Authenticatable
   {
     return $this->hasMany('App\TeamWork');
   }
+
+  public function Log()
+  {
+    return $this->hasMany('App\entrance_logs');
+  }
+  public function hour()
+  {
+    return $this->hasMany('App\login_hours');
+  }
 }
