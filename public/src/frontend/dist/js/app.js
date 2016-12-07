@@ -763,10 +763,10 @@ function _init() {
 }(jQuery));
 $(document).ready(function() {
   var calc = $('.stillCalc');
-  calc.each(function(index, item) {
-    var is_last_item = (index == (calc.length - 1));
-    if (is_last_item === true) {
-      $(this).attr('colspan', '3');
+  calc.each(function(index, item) { // select evry element
+    var is_last_item = (index == (calc.length - 1)); // check if is last index
+    if (is_last_item === true) { // if true
+      $(this).attr('colspan', '5'); // add attr
     }
   });
   $('.optionsCanvas').on('mouseenter', function() {

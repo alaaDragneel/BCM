@@ -28,7 +28,7 @@ class HomeController extends Controller
   public function logs()
   {
     $userLogs = User::where('id', Auth::user()->id)->get();
-    return view('frontend.users.logs', compact('userLogs'));
+    return view('frontend.logsTimer.logs', compact('userLogs'));
   }
 
   /**
