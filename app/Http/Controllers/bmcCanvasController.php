@@ -30,6 +30,7 @@ class bmcCanvasController extends Controller
   public function getCanvas($canvas_id)
   {
     $canvas = BMC::where('id', $canvas_id)->first();
+    $this->authorize('modify', $canvas);
     $KP = KeyPartener::where('bmc_id', $canvas_id)->get();
     $KA = KeyActivity::where('bmc_id', $canvas_id)->get();
     $VP = ValuePorposition::where('bmc_id', $canvas_id)->get();
