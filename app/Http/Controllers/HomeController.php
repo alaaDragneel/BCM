@@ -9,6 +9,8 @@ use App\TeamWork;
 use App\User;
 use App\BMC;
 use DB;
+use Auth;
+use App\entrance_logs;
 
 class HomeController extends Controller
 {
@@ -19,6 +21,14 @@ class HomeController extends Controller
   public function index()
   {
     return view('frontend.users.index');
+  }
+  /**
+  * Show the logs.
+  **/
+  public function logs()
+  {
+    $userLogs = User::where('id', Auth::user()->id)->get();
+    return view('frontend.users.logs', compact('userLogs'));
   }
 
   /**

@@ -762,6 +762,13 @@ function _init() {
   };
 }(jQuery));
 $(document).ready(function() {
+  var calc = $('.stillCalc');
+  calc.each(function(index, item) {
+    var is_last_item = (index == (calc.length - 1));
+    if (is_last_item === true) {
+      $(this).attr('colspan', '3');
+    }
+  });
   $('.optionsCanvas').on('mouseenter', function() {
     // show the card option
     $(this).children('.card-option').slideDown(500);

@@ -10,4 +10,9 @@ class entrance_logs extends Model
   {
     return $this->belongsTo('App\User');
   }
+
+  public function hours()
+  {
+    return $this->hasMany('App\login_hours', 'log_id');
+  }
 }

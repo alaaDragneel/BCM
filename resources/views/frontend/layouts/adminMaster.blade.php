@@ -447,6 +447,7 @@
             <li><a href="{{ route('projects') }}"><i class="fa fa-paperclip"></i> Projects</a></li>
             <li><a href="{{ route('teamworks') }} "><i class="fa fa-users"></i> Team Work</a></li>
             <li><a href="#"><i class="fa fa-star-half-o"></i> Rate Members</a></li>
+            <li><a href="{{ route('logs') }} "><i class="fa fa-arrow-circle-down"></i> Logs</a></li>
           </ul>
         </li>
       </ul>

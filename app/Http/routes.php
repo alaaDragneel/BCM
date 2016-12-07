@@ -63,6 +63,11 @@ Route::group(['middleware' => 'admin'], function () {
       'uses' => 'HomeController@index',
       'as' => 'dashboard'
     ]);
+    // index view
+    Route::get('/logs', [
+      'uses' => 'HomeController@logs',
+      'as' => 'logs'
+    ]);
 
   // profile view
   Route::get('/profile', [

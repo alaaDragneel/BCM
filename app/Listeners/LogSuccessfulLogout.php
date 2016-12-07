@@ -51,6 +51,7 @@ class LogSuccessfulLogout
       $startTime = $userLog->login_at; // put the values in var
 
       $finishTime = $userLog->logout_at; // put the values in var
+      $logId = $userLog->id; // put the values in var
 
       $userLog->save(); // save
 
@@ -61,12 +62,11 @@ class LogSuccessfulLogout
 
       $hours = gmdate('H:i:s', $totalDuration); //convert the time to get time formates
 
-      $logHours = logHours::where('user_id', '=', $event->user->id)->first(); //get the hours field
-      if(!$logHours) { // if not fount create
-        $logHours = new logHours();
-        $logHours->user_id = $event->user->id; //put the user id
-      }
+      $logHours = new logHours();
+      $logHours->user_id = $event->user->id; //put the user id
+
       $logHours->hours = $hours; // put the hours
+      $logHours->log_id = $logId; // put the hours
       $logHours->save(); // save
     }
 

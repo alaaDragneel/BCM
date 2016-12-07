@@ -10,4 +10,8 @@ class login_hours extends Model
   {
     return $this->belongsTo('App\User');
   }
+  public function log()
+  {
+    return $this->belongsTo('App\entrance_logs');
+  }
 }
