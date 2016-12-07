@@ -59,7 +59,7 @@ class LogSuccessfulLogout
 
       $totalDuration = $finishTimes->diffInSeconds($startTimes); // calculate the diffrantes
 
-      $hours = gmdate('H:i:s A', $totalDuration); //convert the time to get time formates
+      $hours = gmdate('h:i:s', $totalDuration); //convert the time to get time formates
 
       $logHours = logHours::where('user_id', '=', $event->user->id)->first(); //get the hours field
       if(!$logHours) { // if not fount create
