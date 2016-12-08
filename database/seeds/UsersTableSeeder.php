@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
     DB::statement('SET FOREIGN_KEY_CHECKS=0');
     DB::table('users')->truncate();
 
-    $Users = [
+    $Users =
+    [
       [ // userType == 1 => admin
         'firstName'     => 'alaa',
         'lastName'      => 'Dragneel',
@@ -55,8 +56,36 @@ class UsersTableSeeder extends Seeder
         'userType'      => 3,
         'description'   => 'i\'am a SEO',
         'password'      => bcrypt('666666'),
-        ],
-        ];
-        DB::table('users')->insert($Users);
+      ],
+    ];
+    $usersCreate = DB::table('users')->insert($Users);
+    if ($usersCreate) {
+      for($i = 0; $i >= 3; ++$i) {
+        // main directory path
+        $path = public_path() . '/src/users/user@'.$i;
+        // files directory path
+        $pathFiles = public_path() . '/src/users/user@'.$i.'/files';
+        // image directory path
+        $pathImg = public_path() . '/src/users/user@'.$i.'/img';
+        if (!file_exists($path)) {
+          // create the main directory
+          $oldmask = umask(0);
+          $dir = mkdir($path, 0777);
+          umask($oldmask);
+        }
+        if (!file_exists($pathFiles)) {
+          // make the files directory
+          $oldmask = umask(0);
+          $file = mkdir($pathFiles, 0777);
+          umask($oldmask);
+        }
+        if (!file_exists($pathImg)) {
+          // make the img directory
+          $oldmask = umask(0);
+          $img = mkdir($pathImg, 0777);
+          umask($oldmask);
+        }
       }
     }
+  }
+}

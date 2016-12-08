@@ -55,7 +55,7 @@
                   <div class="row">
                     <div class="col-xs-3">
                       <div class="avatar">
-                        <img src="{{asset('src/backend/dist/img//face-0.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        <img src="{{asset('src/frontend/dist/img//face-0.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                       </div>
                     </div>
                     <div class="col-xs-6">
@@ -73,7 +73,7 @@
                   <div class="row">
                     <div class="col-xs-3">
                       <div class="avatar">
-                        <img src="{{asset('src/backend/dist/img//face-1.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        <img src="{{asset('src/frontend/dist/img//face-1.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                       </div>
                     </div>
                     <div class="col-xs-6">
@@ -91,7 +91,7 @@
                   <div class="row">
                     <div class="col-xs-3">
                       <div class="avatar">
-                        <img src="{{asset('src/backend/dist/img//face-3.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                        <img src="{{asset('src/frontend/dist/img//face-3.jpg')}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                       </div>
                     </div>
                     <div class="col-xs-6">
@@ -331,7 +331,4 @@
       </div>
     </div>
   </div>
-@endsection
-@section('scripts')
-  <script src="{{asset('src/backend/dist/js/profile.js')}}"></script>
 @endsection

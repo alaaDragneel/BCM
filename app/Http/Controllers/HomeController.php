@@ -320,12 +320,25 @@ class HomeController extends Controller
       $user->phoneNo = $phoneNo;
     }
     if (!empty($image)) {
-      unlink(\Auth::user()->image); // remove the old image
-      $user->image = $image;
+      if ($user->image === 'src/frontend/dist/img/avatar1.png'
+        || $user->image === 'src/frontend/dist/img/avatar2.png'
+        || $user->image === 'src/frontend/dist/img/avatar3.png'
+        || $user->image === 'src/frontend/dist/img/avatar4.png'
+        || $user->image === 'src/frontend/dist/img/avatar5.png') {
+        $user->image = $image;
+      } else {
+        unlink($user->image); // remove the old image
+        $user->image = $image;
+      }
     }
     if (!empty($back_image)) {
-      unlink(\Auth::user()->back_image); // remove the old image
-      $user->back_image = $back_image;
+      if ($user->back_image === 'src/frontend/dist/img/photo1.png'
+        || $user->back_image === 'src/frontend/dist/img/photo2.png') {
+        $user->back_image = $back_image;
+      } else {
+        unlink($user->back_image); // remove the old image
+        $user->back_image = $back_image;
+      }
     }
     if (!empty($companyStartFrom)) {
       $user->companyStartFrom = $companyStartFrom;
@@ -359,12 +372,13 @@ class HomeController extends Controller
     $user->update();
   }
 
-  public function upload($file){
+  public function upload($file)
+  {
     $extension = $file->getClientOriginalExtension();
     $sha1 = sha1($file->getClientOriginalName());
     $filename = date('Y-m-d-h-i-s')."_".$sha1.".".$extension;
-    $path = public_path('src/backend/dist/usersImage/');
+    $path = public_path("src/users/user@".Auth::user()->id."/img");
     $file->move($path, $filename);
-    return 'src/backend/dist/usersImage/'.$filename;
+    return "src/users/user@".Auth::user()->id."/img".'/'.$filename;
   }
 }

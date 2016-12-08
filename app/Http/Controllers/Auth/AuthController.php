@@ -49,8 +49,8 @@ class AuthController extends Controller
   protected function validator(array $data)
   {
     return Validator::make($data, [
-    'firstName' => 'required|max:255',
-    'lastName' => 'required|max:255',
+    'firstName' => 'required|min:4|max:255',
+    'lastName' => 'required|min:4|max:255',
     'email' => 'required|email|max:255|unique:users',
     'password' => 'required|min:6|confirmed',
     ]);
@@ -64,13 +64,55 @@ class AuthController extends Controller
   */
   protected function create(array $data)
   {
-    return User::create([
+    $user = User::create([
     'firstName' => $data['firstName'],
     'lastName' => $data['lastName'],
     'name' => $data['firstName'] .' '. $data['lastName'],
     'email' => $data['email'],
-    'image' => 'src/backend/dist/img/avatar5.png',
+    'image' => 'src/frontend/dist/img/avatar'.rand(1,5).'.png',
+    'back_image' => 'src/frontend/dist/img/photo'.rand(1,2).'.png',
     'password' => bcrypt($data['password']),
     ]);
+    $this->userDirs($user); // run the userrs directiry function
+    return $user;
+  }
+
+  /**
+  * Create a fresh directories for the registered user.
+  *
+  * @param  Object  $user
+  * @var make the main and nested dirs
+  * @var Main directory => contain all the users Directories and files
+  * @var files directory => contain all the files
+  * @var img directory => contain all the image files
+  */
+  protected function userDirs($user)
+  {
+    if ($user) {
+      // main directory path
+      $path = public_path() . '/src/users/user@'.$user->id;
+      // files directory path
+      $pathFiles = public_path() . '/src/users/user@'.$user->id.'/files';
+      // image directory path
+      $pathImg = public_path() . '/src/users/user@'.$user->id.'/img';
+      if (!file_exists($path)) {
+        // create the main directory
+        $oldmask = umask(0);
+        $dir = mkdir($path, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathFiles)) {
+        // make the files directory
+        $oldmask = umask(0);
+        $file = mkdir($pathFiles, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathImg)) {
+        // make the img directory
+        $oldmask = umask(0);
+        $img = mkdir($pathImg, 0777);
+        umask($oldmask);
+      }
+    }
   }
 }
