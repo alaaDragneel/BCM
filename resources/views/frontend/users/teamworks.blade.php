@@ -62,6 +62,7 @@
 	{!! Html::script('src/frontend/usersFiles/js/teamwork.js') !!}
 	{!! Html::script('https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js') !!}
 	<script>
+	$('#myTableData').DataTable();
 		var url = '{{ route('create.member') }}';
 		var editUrl = '{{route('edit.member')}}';
 		var deleteUrl = '{{route('delete.member')}}';

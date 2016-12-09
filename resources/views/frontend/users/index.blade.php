@@ -1,8 +1,5 @@
 @extends('frontend.layouts.adminMaster')
 
-@section('title')
-	Create Canvas
-@endsection
 @section('content')
       <!-- Content Header (Page header) -->
       <section class="content-header">

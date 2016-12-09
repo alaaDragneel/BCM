@@ -55,7 +55,7 @@ class HomeController extends Controller
     $success = '';
     $td = '';
     $member = new TeamWork();
-    $member->name = $request->name;
+    $member->name = $request->name.'@'.Auth::user()->name.'.gudi';
     $member->job = $request->job;
     $member->phoneNo = $request->phoneNo;
     $member->email = $request->email;
