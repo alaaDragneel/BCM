@@ -6,7 +6,7 @@
 // index view
 Route::get('/', function () {
   return view('welcome');
-})->name('welcome');
+})->name('welcome')->middleware('isGuest');
 
 Route::auth();
 

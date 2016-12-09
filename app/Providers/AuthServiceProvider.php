@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\BMC' => 'App\Policies\canvasPolicy',
+        'App\TeamWork' => 'App\Policies\teamPolicy',
     ];
 
     /**

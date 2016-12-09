@@ -53,7 +53,7 @@ class HomeController extends Controller
       'email' => 'required|email|unique:teamworks',
     ]);
     $success = '';
-
+    $td = '';
     $member = new TeamWork();
     $member->name = $request->name;
     $member->job = $request->job;
@@ -68,14 +68,27 @@ class HomeController extends Controller
         $success .= '<button type="button" aria-hidden="true" class="close">×</button>';
         $success .= '<span><b> Success - </b> the Member Successfully Join To Your Team A message Will Arrive o Him Mail Soon</span>';
         $success .= '</div>';
+        //add the new record
+        $td .= '<td data-id="'.$member->id.'">'.$member->id.'</td>';
+        $td .= '<td data-name="'.$member->name.'">'.$member->name.'</td>';
+        $td .= '<td data-email="'.$member->email.'">'.$member->email.'</td>';
+        $td .= '<td data-phoneNo="'. $member->phoneNo .'">'. $member->phoneNo .'</td>';
+        $td .= '<td data-job="'. $member->job .'">'. $member->job .'</td>';
+        $td .= '<td>'. Html::image($member->image) .'</td>';
+        $td .= ' <td>'. $member->created_at->format("Y.m.d") .'</td>';
+        $td .= '<td>';
+        $td .= '<span class="btn btn-info btn-block editTeam"><i class="fa fa-edit"></i>Edit</span>';
+        $td .= '<span class="btn btn-danger btn-block deleteMember"><i class="fa fa-close"></i>delete</span>';
+        $td .= '</td>';
 
-      return response()->json(['success' => $success], 200);
+      return response()->json(['success' => $success, 'user' => $td], 200);
     }
   }
 
   public function editMember(Request $request)
   {
     $member = TeamWork::find($request->id);
+    $this->authorize('modifyTeam', $member);
     $this->validate($request, [
       'name' => 'required|min:4|max:255',
       'job' => 'required|min:4|max:255',
@@ -107,7 +120,7 @@ class HomeController extends Controller
     $success = '';
     $fail = '';
     $member = TeamWork::find($id);
-
+    $this->authorize('modifyTeam', $member);
     if(!$member){
       $fail .= '<div class="alert alert-danger">';
       $fail .= '<button type="button" aria-hidden="true" class="close">×</button>';
@@ -192,6 +205,8 @@ class HomeController extends Controller
     $name = $request->name;
     $desc = $request->desc;
     $canvas = BMC::findOrFail($canvasId);
+    // add the policy
+    $this->authorize('modify', $canvas);
     $canvas->name = $name;
     $canvas->description = $desc;
     $canvas->update();
@@ -211,7 +226,8 @@ class HomeController extends Controller
     $canvasId = $request->id;
 
     $canvas = BMC::findOrFail($canvasId);
-
+    // add the policy
+    $this->authorize('modify', $canvas);
     $canvas->delete();
     if($canvas){
       $success = 'the canvas deleted Successfully';

@@ -10,46 +10,54 @@ $(document).ready(function() {
 
 	$('#addMemberBtn').on('click', function () {
 		var name = $("#name");
-		var job = $("#job");//
+		var job = $("#job");
 		var phoneNo = $("#phoneNo");
 		var email = $("#email");
 		var password = $("#password");
 
 		$.ajax({
-        method:'post',
-        url: url ,
+			method:'post',
+			url: url ,
 			data:{name: name.val(), phoneNo: phoneNo.val(), job: job.val(), email: email.val(), password: password.val(), _token: token },
 		}).done(function(msg) {
+			name.val('');
+			phoneNo.val('');
+			job.val('');
+			email.val('');
+			password.val('');
+			$('#team').prepend(msg['user']);
 			$('.information').slideDown();
 			$('.information').html(msg['success']);
 			$('#addMemberModal').modal('hide');
 			$('.information').delay(2000).slideUp();
-			setTimeout(function(){
-	    	location.reload();
-			}, 2500);
+			memberEdition();
+		}).fail(function (xhr){
+			var errors = xhr.responseJSON;
+			$.each(errors ,function(key, value) {
+				$('#' + key).closest('.form-group').addClass('has-error').append('<span class="help-block"><strong>' + value + '</strong></span>');
+			});
 		});
 	});
-
+	function memberEdition(){
 		$('.deleteMember').on('click', function() {
-
 			id = $(this).parents().parents().children('td[data-id]').data('id');
+			$(this).parents().parents('tr').hide(500, function() {
+				$(this).remove();
+			});
 			$.ajax({
-	      method:'get',
-	      url: deleteUrl ,
+				method:'get',
+				url: deleteUrl ,
 				data:{id: id, _token: token },
 			}).done(function(msg) {
-				$('.information').slideDown();
+				$('.information').slideDown(500);
 				if(msg['successDelete']){
-					$('.information').html(msg['successDelete']);
+					$('.information').html(msg['success']);
 				}
 				if(msg['fail']){
 					$('.information').html(msg['fail']);
 				}
-				$('#addMemberModal').modal('hide');
-				$('.information').delay(2000).slideUp();
-				setTimeout(function(){
-		    	location.reload();
-				}, 2500);
+
+				$('.information').delay(2000).slideUp(500);
 			});
 		});
 
@@ -64,10 +72,15 @@ $(document).ready(function() {
 			var phoneNo = $(this).parents().parents().children().eq(3);
 			var job = $(this).parents().parents().children().eq(4);
 
-			newName = $('#nameEdit').val(name.data('name'))
-			newEmail = $('#emailEdit').val(email.data('email'))
- 			newPhone = $('#phoneNoEdit').val(phoneNo.text())
- 			 newJob = $('#jobEdit').val(job.text())
+			nameView = $(this).parents().siblings('td[data-name]');
+			emailView = $(this).parents().siblings('td[data-email]');
+			phoneNoView = $(this).parents().parents().children().eq(3);
+			jobView = $(this).parents().parents().children().eq(4);
+
+			newName = $('#nameEdit').val(name.text())
+			newEmail = $('#emailEdit').val(email.text())
+			newPhone = $('#phoneNoEdit').val(phoneNo.text())
+			newJob = $('#jobEdit').val(job.text())
 
 
 		});
@@ -76,12 +89,15 @@ $(document).ready(function() {
 			if(newpass.val() !== ''){
 				newpass.val()
 			}
-			// console.log(newName.val()+"<br>"+newEmail.val()+"<br>"+newName.val()+"<br>"+newName.val()+"<br>"+);
 			$.ajax({
-	      method:'post',
-	      url: editUrl ,
+				method:'post',
+				url: editUrl ,
 				data:{id: id, name: newName.val(), phoneNo: newPhone.val(), job: newJob.val(), email: newEmail.val(), password: newpass.val(), _token: token },
 			}).done(function(msg) {
+				nameView.text(newName.val());
+				emailView.text(newEmail.val());
+				phoneNoView.text(newPhone.val());
+				jobView.text(newJob.val());
 				$('.information').slideDown();
 				if(msg['successEdit']){
 					$('.information').html(msg['successEdit']);
@@ -89,13 +105,14 @@ $(document).ready(function() {
 				if(msg['fail']){
 					$('.information').html(msg['fail']);
 				}
-				$('#addMemberModal').modal('hide');
+				$('#editMemberModal').modal('hide');
 				$('.information').delay(2000).slideUp();
-				setTimeout(function(){
-		    	location.reload();
-				}, 2500);
+
 			});
-			// // console.log(newpass.val());
+
 		});
+
+	}
+	memberEdition();
 
 });

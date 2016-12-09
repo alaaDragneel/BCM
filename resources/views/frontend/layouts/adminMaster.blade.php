@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="{{asset('src/frontend/dist/css/AdminLTE.css')}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset('src/frontend/dist/css/skins/_all-skins.css')}}">
+  <link rel="stylesheet" href="{{asset('src/frontend/dist/css/skins/skin-blue.css')}}">
   {{-- google fonts --}}
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -41,6 +41,10 @@ class Kernel extends HttpKernel
              \App\Http\Middleware\UsersCheck::class,
         ],
 
+        'isGuest' => [
+             \App\Http\Middleware\isGuest::class,
+        ],
+
         'api' => [
             'throttle:60,1',
         ],
