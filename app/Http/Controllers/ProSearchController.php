@@ -23,8 +23,9 @@ class ProSearchController extends Controller
     * @return the companies By Business Type Or By Company Name
     * @return Objects
     */
-    $searchResultsWithAjax = ProSearch::where("business_type" , 'like', "$searchWordWithAjax%")
-    ->orWhere("company_name", 'like', "$searchWordWithAjax%")
+    $searchResultsWithAjax = ProSearch::where("business_type" , 'like', "%$searchWordWithAjax%")
+    ->orWhere("company_name", 'like', "%$searchWordWithAjax%")
+    ->orWhere("username", 'like', "%$searchWordWithAjax%")
     ->orderBy('company_name', 'ASC')
     ->get();
     /**
@@ -36,7 +37,7 @@ class ProSearchController extends Controller
       * @return the companies By name Type
       * @return Objects
       */
-      $searchResultsWithAjax = Company::where("name" , 'like', "$searchWordWithAjax%")
+      $searchResultsWithAjax = Company::where("name" , 'like', "%$searchWordWithAjax%")
       ->orderBy('name', 'ASC')
       ->get();
 
