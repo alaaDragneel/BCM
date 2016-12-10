@@ -63,7 +63,48 @@ class SocialAuthController extends Controller
       'account_type' => $authType,
     ];
 
-    return User::create($userData);
+    $user = User::create($userData);
+    $this->userDirs($user);
+    return $user;
+  }
+  
+  /**
+  * Create a fresh directories for the registered user.
+  *
+  * @param  Object  $user
+  * @var make the main and nested dirs
+  * @var Main directory => contain all the users Directories and files
+  * @var files directory => contain all the files
+  * @var img directory => contain all the image files
+  */
+  protected function userDirs($user)
+  {
+    if ($user) {
+      // main directory path
+      $path = '/home7/deziquec/public_html/ilgudi/src/users/user@'.$user->id;
+      // files directory path
+      $pathFiles = '/home7/deziquec/public_html/ilgudi/src/users/user@'.$user->id.'/files';
+      // image directory path
+      $pathImg = '/home7/deziquec/public_html/ilgudi/src/users/user@'.$user->id.'/img';
+      if (!file_exists($path)) {
+        // create the main directory
+        $oldmask = umask(0);
+        $dir = mkdir($path, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathFiles)) {
+        // make the files directory
+        $oldmask = umask(0);
+        $file = mkdir($pathFiles, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathImg)) {
+        // make the img directory
+        $oldmask = umask(0);
+        $img = mkdir($pathImg, 0777);
+        umask($oldmask);
+      }
+    }
   }
 
 }

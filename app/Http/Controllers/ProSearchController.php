@@ -80,7 +80,7 @@ class ProSearchController extends Controller
           ';
           if($results->business_type){
             $AjaxResult .= '
-            <h4 class="job"><i class="fa fa-briefcase"></i> '. $results->business_type .'</h4><div class="clearfix"></div>
+            <h4 class="job"><i class="fa fa-briefcase"></i> '. \App\bussness_types::where('id', $results->business_type)->first()->bussness_type.'</h4><div class="clearfix"></div>
             ';
           }
 
