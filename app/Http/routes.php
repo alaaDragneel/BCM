@@ -68,7 +68,14 @@ Route::group(['middleware' => 'admin'], function () {
       'uses' => 'HomeController@logs',
       'as' => 'logs'
     ]);
-    // index view
+
+    // noty view
+    Route::get('/notification/view', [
+      'uses' => 'HomeController@notificationView',
+      'as' => 'all.noty'
+    ]);
+
+    // noty update
     Route::post('/notification/readed', [
       'uses' => 'HomeController@notification',
       'as' => 'noty.update'

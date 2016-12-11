@@ -32,6 +32,14 @@ class HomeController extends Controller
     return view('frontend.logsTimer.logs', compact('userLogs'));
   }
   /**
+  * view the notification.
+  **/
+  public function notificationView()
+  {
+    $userNoty = noty::where('user_id', Auth::user()->id)->get();
+    return view('frontend.noty.notyTimeLine', compact('userNoty'));
+  }
+  /**
   * update the notification status.
   **/
   public function notification(Request $request)

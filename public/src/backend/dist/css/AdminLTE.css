@@ -2171,7 +2171,6 @@ a:focus {
   top: 0;
 }
 .timeline > .time-label > span {
-  font-weight: 600;
   padding: 5px;
   display: inline-block;
   background-color: #fff;

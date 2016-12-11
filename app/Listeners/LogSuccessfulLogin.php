@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\entrance_logs as Entrance;
 use Carbon\Carbon;
 use App\Notification;
+use App\notyDate;
 use Auth;
 class LogSuccessfulLogin
 {
@@ -36,10 +37,15 @@ class LogSuccessfulLogin
     $userLog->login_at = $time; // save the data
     $userLog->save();
 
-    Notification::create([
+    $noty = Notification::create([
       'user_id' => Auth::user()->id,
       'action' => 'Welcome To Ilgudi You Login On ' . $time,
       'type' => 'user',
+    ]);
+
+    notyDate::create([
+      'add_at' => $time,
+      'notification_id' => $noty->id,
     ]);
   }
 }
