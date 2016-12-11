@@ -68,6 +68,11 @@ Route::group(['middleware' => 'admin'], function () {
       'uses' => 'HomeController@logs',
       'as' => 'logs'
     ]);
+    // index view
+    Route::post('/notification/readed', [
+      'uses' => 'HomeController@notification',
+      'as' => 'noty.update'
+    ]);
 
   // profile view
   Route::get('/profile', [

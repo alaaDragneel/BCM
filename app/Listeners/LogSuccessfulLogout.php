@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\entrance_logs as Entrance;
 use App\login_hours as logHours;
 use Carbon\Carbon;
+use App\Notification;
 class LogSuccessfulLogout
 {
   /**
@@ -68,7 +69,12 @@ class LogSuccessfulLogout
       $logHours->hours = $hours; // put the hours
       $logHours->log_id = $logId; // put the hours
       $logHours->save(); // save
-    }
 
+      Notification::create([
+        'user_id' =>$event->user->id,
+        'action' => 'You Logged Out on ' . $time,
+        'type' => 'user',
+      ]);
+    }
   }
 }

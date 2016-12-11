@@ -149,7 +149,8 @@
                 <li>
                   <!-- inner menu: contains the actual data -->
                   <ul class="menu">
-                    <li><!-- start message -->
+                    <!-- start message -->
+                    <li>
                       <a href="#">
                         <div class="pull-left">
                           <img src="{{asset('src/frontend/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
@@ -218,20 +219,37 @@
             <!-- Notifications: style can be found in dropdown.less -->
             <li class="dropdown notifications-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">10</span>
+                <i class="fa fa-bell-o"></i> {{-- get the notification --}}
+                <?php $countNotify = Auth::user()->Notifications()->where('read', '0')->count();?>
+                @if ($countNotify > 0)
+                  <span class="label label-warning" id="countLable">{{ $countNotify }}</span>
+                @endif
               </a>
               <ul class="dropdown-menu">
-                <li class="header">You have 10 notifications</li>
+                @if ($countNotify > 0)
+                  <li class="header" id="countHeader">You have {{ $countNotify }} notifications unreaded</li>
+                @endif
                 <li>
                   <!-- inner menu: contains the actual data -->
                   <ul class="menu">
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                  @foreach (Auth::user()->Notifications()->orderBy('created_at', 'DESC')->get() as $notify)
+                    <!-- start message -->
+                    <li class="Noty {{ $notify->read === 0 ? 'unReadNoty' : 'readNoty' }}">
+                      <a href="#" class="notyPlace">
+                        <div class="pull-left">
+                          <img src="{{asset('src/frontend/dist/img/user2-160x160.jpg')}}" class="img-circle Notyimg" alt="User Image">
+                        </div>
+                        <h4 class="notyInfo {{ $notify->read === 0 ? 'notyUnReadInfo' : 'notyReadInfo' }}" data-id="{{ $notify->id }}">
+                          <span class="notiyFrom">{{ $notify->added_by }}</span>
+                          <small class="notyDate"><i class="fa fa-clock-o"></i> {{ $notify->created_at->format('h:i A') }}</small>
+                        </h4>
+                        <p class="notyAction {{ $notify->read === 0 ? 'unReadNotyAction' : 'notyReadAction' }}">
+                          <i class="fa fa-{{ $notify->type }} text-aqua"></i> {{ $notify->action }}</p>
                       </a>
                     </li>
-                    <li>
+                    <!-- end message -->
+                  @endforeach
+                    {{-- <li>
                       <a href="#">
                         <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
                         page and may cause design problems
@@ -251,7 +269,7 @@
                       <a href="#">
                         <i class="fa fa-user text-red"></i> You changed your username
                       </a>
-                    </li>
+                    </li> --}}
                   </ul>
                 </li>
                 <li class="footer"><a href="#">View all</a></li>
@@ -476,6 +494,28 @@
 
 </div>
 <!-- ./wrapper -->
+<div class="modal fade" tabindex="-1" role="dialog" id="notifyModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="notifyTitle"></h4>
+      </div>
+      <div class="modal-body">
+        <small id="notyDate" class="pull-right"></small>
+        <div class="clearfix"></div>
+        <p id="notifyAction"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+var notyUpdateUrl = '{{ route('noty.update') }}';
+var token = '{{ csrf_token() }}';
+</script>
 <!-- jQuery 2.2.3 -->
 <script src="{{asset('src/frontend/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -484,6 +524,7 @@
 <script src="{{asset('src/frontend/plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('src/frontend/dist/js/app.js')}}"></script>
+<script src="{{asset('src/frontend/dist/js/noty.js')}}"></script>
 <script src="{{asset('src/frontend/dist/js/mainInfo.js')}}"></script>
 <!-- Sparkline -->
 <script src="{{asset('src/frontend/plugins/sparkline/jquery.sparkline.min.js')}}"></script>

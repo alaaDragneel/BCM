@@ -8,6 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\entrance_logs as Entrance;
 use Carbon\Carbon;
+use App\Notification;
+use Auth;
 class LogSuccessfulLogin
 {
   /**
@@ -33,5 +35,11 @@ class LogSuccessfulLogin
     $userLog->user_id = $event->user->id; // save the data
     $userLog->login_at = $time; // save the data
     $userLog->save();
+
+    Notification::create([
+      'user_id' => Auth::user()->id,
+      'action' => 'Welcome To Ilgudi You Login On ' . $time,
+      'type' => 'user',
+    ]);
   }
 }

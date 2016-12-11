@@ -11,6 +11,7 @@ use App\BMC;
 use DB;
 use Auth;
 use App\entrance_logs;
+use App\Notification as noty;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,23 @@ class HomeController extends Controller
   {
     $userLogs = User::where('id', Auth::user()->id)->get();
     return view('frontend.logsTimer.logs', compact('userLogs'));
+  }
+  /**
+  * update the notification status.
+  **/
+  public function notification(Request $request)
+  {
+    $this->id = $request->id;
+    $noty = noty::findOrFail($this->id);
+    $noty->read = 1;
+    $noty->update();
+
+    return response()->json(
+      [
+        'readNoty' => 'readNoty',
+        'readAction' => 'notyReadAction',
+        'readFrom' => 'notyReadInfo',
+      ], 200);
   }
 
   /**

@@ -43,4 +43,8 @@ class User extends Authenticatable
   {
     return $this->hasMany('App\login_hours');
   }
+  public function Notifications()
+  {
+    return $this->hasMany('App\Notification');
+  }
 }
