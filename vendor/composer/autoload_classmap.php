@@ -24,6 +24,7 @@ return array(
     'CreateKeyResourcesTable' => $baseDir . '/database/migrations/2016_10_30_145922_create_key_resources_table.php',
     'CreateLoginHoursTable' => $baseDir . '/database/migrations/2016_12_07_132618_create_login_hours_table.php',
     'CreateMessagesTable' => $baseDir . '/database/migrations/2016_10_27_132821_create_messages_table.php',
+    'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_12_11_115416_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRevenueStreamsTable' => $baseDir . '/database/migrations/2016_10_30_150136_create_revenue_streams_table.php',
     'CreateTasksTable' => $baseDir . '/database/migrations/2016_10_27_132509_create_tasks_table.php',

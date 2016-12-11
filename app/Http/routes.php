@@ -93,19 +93,19 @@ Route::group(['middleware' => 'admin'], function () {
 
     // teamworks add
     Route::post('/teamworks/view/store', [
-    'uses' => 'HomeController@NewMember',
+    'uses' => 'TeamWorks\AuthController@create',
     'as' => 'create.member'
     ]);
 
     // teamworks edit
     Route::post('/teamworks/view/update', [
-    'uses' => 'HomeController@editMember',
+    'uses' => 'TeamWorks\AuthController@editMember',
     'as' => 'edit.member'
     ]);
 
     // teamworks delete
     Route::get('/teamworks/view/delete/', [
-    'uses' => 'HomeController@getTeamWorkDelete',
+    'uses' => 'TeamWorks\AuthController@getTeamWorkDelete',
     'as' => 'delete.member'
     ]);
     /**********************************************************************************************************

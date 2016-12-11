@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'teamWorks' => [
+            'driver' => 'session',
+            'provider' => 'teamWorks',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -68,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'teamWorks' => [
+            'driver' => 'eloquent',
+            'model' => App\TeamWork::class,
         ],
 
         // 'users' => [
@@ -98,6 +108,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'teamWorks' => [
+            'provider' => 'teamWorks',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,

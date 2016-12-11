@@ -392,6 +392,7 @@ class ComposerStaticInit5822a9b31df6765217e105c80a0e719c
         'CreateKeyResourcesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_30_145922_create_key_resources_table.php',
         'CreateLoginHoursTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_07_132618_create_login_hours_table.php',
         'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_132821_create_messages_table.php',
+        'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_11_115416_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRevenueStreamsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_30_150136_create_revenue_streams_table.php',
         'CreateTasksTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_132509_create_tasks_table.php',

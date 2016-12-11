@@ -23,7 +23,6 @@
 				<table id="myTableData" class="table table-responsive table-bordered table-striped">
 					<thead>
 						<tr role="row">
-							<th>#ID</th>
 							<th >Name</th>
 							<th >Email</th>
 							<th >phoneNo</th>
@@ -36,8 +35,7 @@
 					<tbody  id="team">
 						@foreach ($members as $member)
 							<tr role="row">
-								<td data-id="{{ $member->id }}">{{ $member->id }}</td>
-								<td data-name="{{ $member->name }}">{{ $member->name }}</td>
+								<td data-name="{{ $member->name }}" data-id="{{ $member->id }}">{{ $member->name }}</td>
 								<td data-email="{{ $member->email }}">{{ $member->email }}</td>
 								<td data-phoneNo="{{ $member->phoneNo }}">{{ $member->phoneNo }}</td>
 								<td data-job="{{ $member->job }}">{{ $member->job }}</td>
