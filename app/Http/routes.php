@@ -115,12 +115,6 @@ Route::group(['middleware' => 'admin'], function () {
     'as' => 'create.member'
     ]);
 
-    // teamworks edit
-    Route::post('/teamworks/view/update', [
-    'uses' => 'TeamWorks\AuthController@editMember',
-    'as' => 'edit.member'
-    ]);
-
     // teamworks delete
     Route::get('/teamworks/view/delete/', [
     'uses' => 'TeamWorks\AuthController@getTeamWorkDelete',

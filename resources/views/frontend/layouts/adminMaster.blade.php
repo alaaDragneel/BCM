@@ -420,6 +420,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('teamworks') }}"><i class="fa fa-users"></i> View Team Work</a></li>
+            <li><a href="#" class="addMember"><i class="fa fa-plus"></i> Add New Member</a></li>
             <li><a href="#"><i class="fa fa-arrow-down"></i> members Attendance</a></li>
             <li><a href="#"><i class="fa fa-clock-o"></i> members Active/Lazy</a></li>
           </ul>
@@ -508,6 +509,7 @@ var token = '{{ csrf_token() }}';
 var notificationNoty = '{{ asset('src/frontend/notification/demonstrative') }}';
 var urlLinkTeamWork = '{{route('teamworks')}}';
 var urlLinkBMC = '{{route('create.projects')}}';
+var urlLinkBMCProject = '{{route('projects')}}';
 var AuthName = '{{ Auth::user()->name }}';
 var AuthId = '{{ Auth::user()->id }}';
 </script>
@@ -545,7 +547,13 @@ var AuthId = '{{ Auth::user()->id }}';
   var token = '{{ csrf_token() }}';
 </script> --}}
 
-
+@include('frontend.includes.teamWorksModels')
+	{!! Html::script('src/frontend/usersFiles/js/teamwork.js') !!}
+	<script>
+		var url = '{{ route('create.member') }}';
+		var deleteUrl = '{{route('delete.member')}}';
+		var token = '{{ Session::token() }}';
+	</script>
 @yield('scripts')
 </body>
 </html>

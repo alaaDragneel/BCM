@@ -1,6 +1,7 @@
 $(document).ready(function() {
+
 	// show the add member model
-	$('#addMember').on('click', function () {
+	$('.addMember').on('click', function () {
 		$('#addMemberModal').modal();
 	});
 
@@ -26,12 +27,81 @@ $(document).ready(function() {
 			email.val('');
 			password.val('');
 			$('#team').prepend(msg['user']);
-			$('.information').slideDown();
-			$('.information').html(msg['success']);
 			$('#addMemberModal').modal('hide');
-			$('.information').delay(2000).slideUp();
 			$('#AddNotyMember').remove();
 			memberEdition();
+			/*start notification section*/
+
+		    var action = 'Hallo ' + AuthName + ' You add A new Member To your Team Work';
+		    var type = 'users';
+		    $.ajax({
+		      method: 'POST',
+		      url: notyInsertUrl,
+		      data:{action: action, type: type, urlLink: urlLinkTeamWork, AuthId: AuthId, _token: token},
+		    }).done(function(msg) {
+
+		      $('.menu').prepend(msg['noty']);
+
+		      $.playSound(notificationNoty); // play notification
+
+		      $('#countLable').html('');
+		      $('#countHeader').html('');
+
+		      $('#countLable').html(msg['counter']);
+		      $('#countHeader').html('You have ' + msg['counter'] + ' notifications unreaded');
+
+		      $('#boxAlertTitle').html(msg['boxTitle']);
+		      $('#boxAlertDesc').html(msg['boxDesc']);
+
+		      $('#infoBox').attr('href', msg['url']);
+
+		      $('#infoBox').slideDown(500);
+		      $('#infoBox').delay(5000).slideUp(500);
+
+		      noty();
+		    });
+
+
+		  function noty(){
+		    $('.Noty').on('click', function () {
+		      elm = $(this);
+		      var id = $(this).children().children('.notyInfo').data('id'); // get the id
+		      var from = $(this).children().children('.notyInfo'); // get the sender
+		      var date = $(this).children().children('.notyInfo').children('.notyDate'); // get the date
+		      var action = $(this).children().children('.notyAction'); // get the action
+		      $('#notifyTitle').text('From ' + from.children('.notiyFrom').text()); // put the values in the modal
+		      $('#notyDate').text('on ' + date.text()); // put the values in the modal
+		      $('#notifyAction').text(action.text()); // put the values in the modal
+		      $('#notifyModal').modal(); // open the modal
+		      // update the read status
+		      $.ajax({
+		        method: 'POST',
+		        url: notyUpdateUrl,
+		        data:{id: id, _token: token},
+		      }).done(function(msg) {
+		        if (elm.hasClass('unReadNoty')) {
+		            elm.removeClass('unReadNoty').addClass(msg['readNoty']);
+		        }
+		        // check on the notification status for the action
+		        if(action.hasClass('unReadNotyAction')) {
+		          action.removeClass('unReadNotyAction').addClass(msg['readAction']);
+		        }
+		        // check on the notification status for the seender
+		        if(from.hasClass('notyUnReadInfo')) {
+		          from.removeClass('notyUnReadInfo').addClass(msg['readFrom']);
+		        }
+
+		        $('#countLable').html('');
+		        $('#countHeader').html('');
+		        $('#countLable').html(msg['counterUpdate']);
+		        $('#countHeader').html('You have ' + msg['counterUpdate'] + ' notifications unreaded');
+
+		      });
+
+		    });
+		  }
+
+			/*end notification section*/
 		}).fail(function (xhr){
 			var errors = xhr.responseJSON;
 			$.each(errors ,function(key, value) {
@@ -40,9 +110,13 @@ $(document).ready(function() {
 		});
 	});
 	function memberEdition(){
+		$('.userContainer').on('mouseenter mouseleave', function() {
+			$(this).children('.patern').fadeToggle(500);
+		});
+
 		$('.deleteMember').on('click', function() {
-			id = $(this).parents().parents().children('td[data-id]').data('id');
-			$(this).parents().parents('tr').hide(500, function() {
+			id = $(this).parents('.patern').siblings('.users-list-name').data('id');
+			$(this).parents('.patern').parents('.userContainer').slideUp(500, function() {
 				$(this).remove();
 			});
 			$.ajax({
@@ -61,58 +135,6 @@ $(document).ready(function() {
 				$('.information').delay(2000).slideUp(500);
 			});
 		});
-
-		$('.editTeam').on('click', function () {
-			$('#editMemberModal').modal();
-		});
-
-		$('.editTeam').on('click', function() {
-			id = $(this).parents().siblings('td[data-id]').data('id');
-			var name = $(this).parents().siblings('td[data-name]');
-			var email = $(this).parents().siblings('td[data-email]');
-			var phoneNo = $(this).parents().parents().children().eq(3);
-			var job = $(this).parents().parents().children().eq(4);
-
-			nameView = $(this).parents().siblings('td[data-name]');
-			emailView = $(this).parents().siblings('td[data-email]');
-			phoneNoView = $(this).parents().parents().children().eq(3);
-			jobView = $(this).parents().parents().children().eq(4);
-
-			newName = $('#nameEdit').val(name.text())
-			newEmail = $('#emailEdit').val(email.text())
-			newPhone = $('#phoneNoEdit').val(phoneNo.text())
-			newJob = $('#jobEdit').val(job.text())
-
-
-		});
-		newpass = $('#passwordEdit');
-		$('#editMemberBtn').on('click', function() {
-			if(newpass.val() !== ''){
-				newpass.val()
-			}
-			$.ajax({
-				method:'post',
-				url: editUrl ,
-				data:{id: id, name: newName.val(), phoneNo: newPhone.val(), job: newJob.val(), email: newEmail.val(), password: newpass.val(), _token: token },
-			}).done(function(msg) {
-				nameView.text(newName.val());
-				emailView.text(newEmail.val());
-				phoneNoView.text(newPhone.val());
-				jobView.text(newJob.val());
-				$('.information').slideDown();
-				if(msg['successEdit']){
-					$('.information').html(msg['successEdit']);
-				}
-				if(msg['fail']){
-					$('.information').html(msg['fail']);
-				}
-				$('#editMemberModal').modal('hide');
-				$('.information').delay(2000).slideUp();
-
-			});
-
-		});
-
 	}
 	memberEdition();
 

@@ -80,7 +80,6 @@ class AuthController extends Controller
     ]);
 
     $success = '';
-    $td = '';
     $member = new TeamWork();
     $member->name = $request->name.'@'.Auth::user()->name.'.gudi';
     $member->job = $request->job;
@@ -92,24 +91,27 @@ class AuthController extends Controller
     $member->user_id = Auth::user()->id;
     $memberSave = $member->save();
     // $this->userDirs($user); // run the userrs directiry function
-    if($memberSave){
-      $success .= '<div class="alert alert-success">';
-      $success .= '<button type="button" aria-hidden="true" class="close">×</button>';
-      $success .= '<span><b> Success - </b> the Member Successfully Join To Your Team A message Will Arrive o Him Mail Soon</span>';
-      $success .= '</div>';
-      //add the new record
-      $td .= '<td data-name="'.$member->name.'" data-id="'.$member->id.'">'.$member->name.'</td>';
-      $td .= '<td data-email="'.$member->email.'">'.$member->email.'</td>';
-      $td .= '<td data-phoneNo="'. $member->phoneNo .'">'. $member->phoneNo .'</td>';
-      $td .= '<td data-job="'. $member->job .'">'. $member->job .'</td>';
-      $td .= '<td>'. Html::image($member->image) .'</td>';
-      $td .= ' <td>'. $member->created_at->format("Y.m.d") .'</td>';
-      $td .= '<td>';
-      $td .= '<span class="btn btn-info btn-block editTeam"><i class="fa fa-edit"></i>Edit</span>';
-      $td .= '<span class="btn btn-danger btn-block deleteMember"><i class="fa fa-close"></i>delete</span>';
-      $td .= '</td>';
 
-      return response()->json(['success' => $success, 'user' => $td], 200);
+    /*
+
+
+
+
+
+
+    */
+    if($memberSave){
+      $success .= '<li class="userContainer">';
+      $success .= '<div class="patern">';
+      $success .= '<i class="fa fa-close deleteMember"></i>';
+      $success .= '  </div>';
+      $success .= '<img src="'.asset($member->image).'" width="128" alt="User Image">';
+      $success .= '<a class="users-list-name" href="#" data-id="'.$member->id.'">'.$member->name.'</a>';
+      $success .= '<span class="users-list-date">'.$member->job.'</span>';
+      $success .= '</li>';
+
+
+      return response()->json(['user' => $success], 200);
     }
   }
 

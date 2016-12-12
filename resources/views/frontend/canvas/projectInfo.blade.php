@@ -45,7 +45,7 @@
                       </div>
                       <div class="form-group">
                           <div class="col-md-6">
-                              <button type="submit" class="btn btn-info">
+                              <button type="submit" class="btn btn-info" id="canvasInfo">
                                   <i class="fa fa-plus" aria-hidden="true"></i> Add Canvas
                               </button>
                           </div>
