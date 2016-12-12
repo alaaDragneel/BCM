@@ -40,21 +40,72 @@ class HomeController extends Controller
     return view('frontend.noty.notyTimeLine', compact('userNoty'));
   }
   /**
+  * insert the new notification.
+  **/
+  public function notificationInsert(Request $request)
+  {
+    $notification = '';
+    // get the data
+    $action = $request->action;
+    $type = $request->type;
+    $AuthId = $request->AuthId;
+    $url = '#';
+
+    // insert new notification
+    $noty = New noty();
+    $noty->action = $action;
+    $noty->type = $type;
+    if ($request->urlLink) {
+      $noty->url = $request->urlLink;
+      $url = $noty->url;
+    }
+    $noty->added_by = 'Gudi';
+    $noty->user_id = $AuthId;
+
+    $notySave = $noty->save();
+    $notyCounter = Auth::user()->Notifications()->where('read', 0)->count();
+    if ($notySave) {
+      $notification .= '<li class="Noty unReadNoty">';
+      $notification .=   '<a href="#" class="notyPlace">';
+      $notification .=   '<div class="pull-left">';
+      $notification .=   '<img src="http://localhost:8000/src/frontend/dist/img/user2-160x160.jpg" class="img-circle Notyimg" alt="User Image">';
+        $notification .=   '</div>';
+        $notification .=   '<h4 class="notyInfo notyUnReadInfo" data-id="'. $noty->id .'">';
+        $notification .=   '<span class="notiyFrom">Gudi</span>';
+        $notification .=   '<small class="notyDate"><i class="fa fa-clock-o"></i> '.$noty->created_at->format('h:i A').'</small>';
+        $notification .= '</h4>';
+        $notification .=   '<p class="notyAction unReadNotyAction">';
+        $notification .=   '<i class="fa fa-'.$noty->type.' text-aqua"></i> '.$noty->action.'</p>';
+        $notification .=   '</a>';
+        $notification .=   '</li>';
+      }
+    return response()->json(
+    [
+      'noty' => $notification,
+      'counter' => $notyCounter,
+      'boxTitle' => $noty->added_by,
+      'boxDesc' => $noty->action,
+      'url' => $url,
+    ], 200);
+  }
+  /**
   * update the notification status.
   **/
-  public function notification(Request $request)
+  public function notificationUpdate(Request $request)
   {
     $this->id = $request->id;
     $noty = noty::findOrFail($this->id);
     $noty->read = 1;
     $noty->update();
 
+    $notyCounter = Auth::user()->Notifications()->where('read', '=', 0)->count();
     return response()->json(
-      [
-        'readNoty' => 'readNoty',
-        'readAction' => 'notyReadAction',
-        'readFrom' => 'notyReadInfo',
-      ], 200);
+    [
+      'readNoty' => 'readNoty',
+      'readAction' => 'notyReadAction',
+      'readFrom' => 'notyReadInfo',
+      'counterUpdate' => $notyCounter,
+    ], 200);
   }
 
   /**
@@ -99,16 +150,16 @@ class HomeController extends Controller
   public function postCanvasStore(Request $request)
   {
     $this->validate($request, [
-      'name' => 'required|min:4|max:255',
-      'description' => 'required|min:4|max:500',
+    'name' => 'required|min:4|max:255',
+    'description' => 'required|min:4|max:500',
     ]);
     $success = '';
     $fail = '';
     $userId = \Auth::user()->id;
     $saveCanvas = DB::table('BMCS')->insertGetId([
-      'name'        =>  $request->name,
-      'description' =>  $request->description,
-      'user_id'     =>  $userId
+    'name'        =>  $request->name,
+    'description' =>  $request->description,
+    'user_id'     =>  $userId
     ]);
 
     if($saveCanvas){
@@ -124,8 +175,8 @@ class HomeController extends Controller
   public function postCanvasUpdate(Request $request)
   {
     $this->validate($request, [
-      'name' => 'required|min:4|max:255',
-      'desc' => 'required|min:4|max:500',
+    'name' => 'required|min:4|max:255',
+    'desc' => 'required|min:4|max:500',
     ]);
     $success = '';
     $fail = '';
@@ -231,15 +282,15 @@ class HomeController extends Controller
     }
 
     $this->validate($request, [
-      'name' => 'required|min:4|max:255',
-      'firstName' => 'required|min:4|max:255',
-      'lastName' => 'required|min:4|max:255',
-      'email' => 'required|email|max:255',
-      'userType'  =>  'required|numeric',
-      'phoneNo'   =>  'required|numeric',
-      'job' => 'max:255',
-      'companyStartFrom' => 'date',
-      'description' => 'min:4',
+    'name' => 'required|min:4|max:255',
+    'firstName' => 'required|min:4|max:255',
+    'lastName' => 'required|min:4|max:255',
+    'email' => 'required|email|max:255',
+    'userType'  =>  'required|numeric',
+    'phoneNo'   =>  'required|numeric',
+    'job' => 'max:255',
+    'companyStartFrom' => 'date',
+    'description' => 'min:4',
     ]);
 
 

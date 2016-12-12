@@ -120,7 +120,13 @@
             </div>
        </div>
      </div> --}}
+     <!-- inner menu: contains the actual data -->
   <div class="wrapper">
+      <a href="#" class="alert alert-info" id="infoBox">
+        <h4 id="boxAlertTitle"></h4>
+        <hr>
+        <p id="boxAlertDesc"></p>
+      </a>
     <header class="main-header">
       <!-- Logo -->
       <a href="{{ route('dashboard') }}" class="logo">
@@ -223,14 +229,17 @@
                 <?php $countNotify = Auth::user()->Notifications()->where('read', '0')->count();?>
                 @if ($countNotify > 0)
                   <span class="label label-warning" id="countLable">{{ $countNotify }}</span>
+                  @else
+                    <span class="label label-warning" id="countLable">0</span>
                 @endif
               </a>
               <ul class="dropdown-menu">
                 @if ($countNotify > 0)
-                  <li class="header" id="countHeader">You have {{ $countNotify }} notifications unreaded</li>
+                  <li class="header" id="countHeader">You have {{ $countNotify }} unreaded notifications </li>
+                  @else
+                  <li class="header" id="countHeader">You have no unreaded notifications </li>
                 @endif
                 <li>
-                  <!-- inner menu: contains the actual data -->
                   <ul class="menu">
                   @foreach (Auth::user()->Notifications()->orderBy('created_at', 'DESC')->get() as $notify)
                     <!-- start message -->
@@ -239,37 +248,17 @@
                         <div class="pull-left">
                           <img src="{{asset('src/frontend/dist/img/user2-160x160.jpg')}}" class="img-circle Notyimg" alt="User Image">
                         </div>
-                        <h4 class="notyInfo {{ $notify->read === 0 ? 'notyUnReadInfo' : 'notyReadInfo' }}" data-id="{{ $notify->id }}">
+                        <h4 class="notyInfo {{ $notify->read === 0 ? 'notyUnReadInfo' : 'notyReadInfo' }}" data-id="{{ $notify->id }}" data-url="{{ $notify->url }}">
                           <span class="notiyFrom">{{ $notify->added_by }}</span>
                           <small class="notyDate"><i class="fa fa-clock-o"></i> {{ $notify->created_at->format('h:i A') }}</small>
                         </h4>
                         <p class="notyAction {{ $notify->read === 0 ? 'unReadNotyAction' : 'notyReadAction' }}">
-                          <i class="fa fa-{{ $notify->type }} text-aqua"></i> {{ $notify->action }}</p>
+                          <i class="fa fa-{{ $notify->type }} text-aqua"></i> {{ $notify->action }}
+                        </p>
                       </a>
                     </li>
                     <!-- end message -->
                   @endforeach
-                    {{-- <li>
-                      <a href="#">
-                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                        page and may cause design problems
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-users text-red"></i> 5 new members joined
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="fa fa-user text-red"></i> You changed your username
-                      </a>
-                    </li> --}}
                   </ul>
                 </li>
                 <li class="footer"><a href="{{ route('all.noty') }}">View all</a></li>
@@ -513,8 +502,14 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script>
+var notyInsertUrl = '{{ route('noty.insert') }}';
 var notyUpdateUrl = '{{ route('noty.update') }}';
 var token = '{{ csrf_token() }}';
+var notificationNoty = '{{ asset('src/frontend/notification/demonstrative') }}';
+var urlLinkTeamWork = '{{route('teamworks')}}';
+var urlLinkBMC = '{{route('create.projects')}}';
+var AuthName = '{{ Auth::user()->name }}';
+var AuthId = '{{ Auth::user()->id }}';
 </script>
 <!-- jQuery 2.2.3 -->
 <script src="{{asset('src/frontend/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
@@ -523,8 +518,17 @@ var token = '{{ csrf_token() }}';
 <!-- FastClick -->
 <script src="{{asset('src/frontend/plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
+<script src="{{asset('src/frontend/dist/js/jquery.playSound.js')}}"></script>
 <script src="{{asset('src/frontend/dist/js/app.js')}}"></script>
 <script src="{{asset('src/frontend/dist/js/noty.js')}}"></script>
+@if (Auth::check())
+  @if (Auth::user()->TeamWorks()->count() === 0)
+    <script src="{{asset('src/frontend/dist/js/AddNotyMember.js')}}" id="AddNotyMember"></script>
+  @endif
+  @if (Auth::user()->BMC()->count() === 0)
+    <script src="{{asset('src/frontend/dist/js/AddNotyBMC.js')}}" id="AddNotyBMC"></script>
+  @endif
+@endif
 <script src="{{asset('src/frontend/dist/js/mainInfo.js')}}"></script>
 <!-- Sparkline -->
 <script src="{{asset('src/frontend/plugins/sparkline/jquery.sparkline.min.js')}}"></script>

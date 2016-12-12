@@ -30,6 +30,7 @@ $(document).ready(function() {
 			$('.information').html(msg['success']);
 			$('#addMemberModal').modal('hide');
 			$('.information').delay(2000).slideUp();
+			$('#AddNotyMember').remove();
 			memberEdition();
 		}).fail(function (xhr){
 			var errors = xhr.responseJSON;

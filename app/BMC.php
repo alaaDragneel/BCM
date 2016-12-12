@@ -11,7 +11,7 @@ class BMC extends Model
   ];
   protected $table = 'BMCS';
 
-  public function Users()
+  public function User()
   {
     return $this->belongsTo('App\User');
   }

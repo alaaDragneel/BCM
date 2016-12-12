@@ -29,7 +29,7 @@
               <h3 class="timeline-header"><a href="#">{{ $noty->added_by }}</a></h3>
 
               <div class="timeline-body">
-              {{ $noty->action }}
+              {{ $noty->action }} <a href="{{ $noty->url }}" class="btn btn-primary btn-sm">Go Now</a>
               </div>
             </div>
           </li>

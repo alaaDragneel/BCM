@@ -30,6 +30,11 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
+  public function BMC()
+  {
+    return $this->hasMany('App\BMC');
+  }
+
   public function TeamWorks()
   {
     return $this->hasMany('App\TeamWork');

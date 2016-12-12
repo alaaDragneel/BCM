@@ -10,7 +10,6 @@ use App\entrance_logs as Entrance;
 use App\login_hours as logHours;
 use Carbon\Carbon;
 use App\Notification;
-use App\notyDate;
 class LogSuccessfulLogout
 {
   /**
@@ -75,10 +74,6 @@ class LogSuccessfulLogout
         'user_id' =>$event->user->id,
         'action' => 'You Logged Out on ' . $time,
         'type' => 'user',
-      ]);
-      notyDate::create([
-        'add_at' => $time,
-        'notification_id' => $noty->id,
       ]);
     }
   }

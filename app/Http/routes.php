@@ -75,9 +75,15 @@ Route::group(['middleware' => 'admin'], function () {
       'as' => 'all.noty'
     ]);
 
+    // noty insert
+    Route::post('/notification/insert', [
+      'uses' => 'HomeController@notificationInsert',
+      'as' => 'noty.insert'
+    ]);
+
     // noty update
     Route::post('/notification/readed', [
-      'uses' => 'HomeController@notification',
+      'uses' => 'HomeController@notificationUpdate',
       'as' => 'noty.update'
     ]);
 

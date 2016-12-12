@@ -18,6 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->string('added_by')->default('Gudi');
             $table->string('type');
             $table->boolean('read')->default(0);
+            $table->text('url')->nullable();
             // user relation
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
