@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
-use Html;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,18 +27,16 @@ class AuthController extends Controller
 
   use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-  protected $guard = 'teamWorks';
+  protected $guard = 'teamWork';
 
   protected $loginView = 'teamWork.auth.login';
-
-  protected $registerView = 'teamWork.auth.register';
 
   /**
   * Where to redirect users after login / registration.
   *
   * @var string
   */
-  protected $redirectTo = '/teamWork/dashboard';
+  protected $redirectTo = '/teamwork/dashboard';
 
   /**
   * Create a new authentication controller instance.
@@ -59,9 +56,9 @@ class AuthController extends Controller
   */
   protected function validator(array $data)
   {
-    return Validator::make($data, [
-
-    ]);
+    // return Validator::make($data, [
+    //
+    // ]);
   }
 
   /**
@@ -81,25 +78,19 @@ class AuthController extends Controller
 
     $success = '';
     $member = new TeamWork();
-    $member->name = $request->name.'@'.Auth::user()->name.'.gudi';
+    $member->email = $request->name.'@'.Auth::user()->name.'.gudi';
     $member->job = $request->job;
     $member->phoneNo = $request->phoneNo;
-    $member->email = $request->email;
+    $member->emailAddress = $request->email;
     $member->password = bcrypt($request->password);
     $member->image = 'src/frontend/dist/img/avatar'.rand(1,5).'.png';
     $member->back_image = 'src/frontend/dist/img/photo'.rand(1,2).'.png';
     $member->user_id = Auth::user()->id;
     $memberSave = $member->save();
-    // $this->userDirs($user); // run the userrs directiry function
 
-    /*
-
+    $this->userDirs($memberSave, Auth::user()->id, $member->id); // run the userrs directiry function
 
 
-
-
-
-    */
     if($memberSave){
       $success .= '<li class="userContainer">';
       $success .= '<div class="patern">';
@@ -176,33 +167,34 @@ class AuthController extends Controller
   * @var files directory => contain all the files
   * @var img directory => contain all the image files
   */
-  // protected function userDirs($user)
-  // {
-  //   if ($user) {
-  //     // main directory path
-  //     $path = public_path() . '/src/users/user@'.$user->id;
-  //     // files directory path
-  //     $pathFiles = public_path() . '/src/users/user@'.$user->id.'/files';
-  //     // image directory path
-  //     $pathImg = public_path() . '/src/users/user@'.$user->id.'/img';
-  //     if (!file_exists($path)) {
-  //       // create the main directory
-  //       $oldmask = umask(0);
-  //       $dir = mkdir($path, 0777);
-  //       umask($oldmask);
-  //     }
-  //     if (!file_exists($pathFiles)) {
-  //       // make the files directory
-  //       $oldmask = umask(0);
-  //       $file = mkdir($pathFiles, 0777);
-  //       umask($oldmask);
-  //     }
-  //     if (!file_exists($pathImg)) {
-  //       // make the img directory
-  //       $oldmask = umask(0);
-  //       $img = mkdir($pathImg, 0777);
-  //       umask($oldmask);
-  //     }
-  //   }
-  // }
+  protected function userDirs($user, $AuthId, $member_id)
+  {
+    if ($user) {
+      // member directory path
+      $pathMember = public_path() . '/src/users/user@'.$AuthId.'/members/member@'.$member_id.'';
+      // file directory path
+      $pathMemberFiles = public_path() . '/src/users/user@'.$AuthId.'/members/member@'.$member_id.'/files';
+      // image directory path
+      $pathMemberImg = public_path() . '/src/users/user@'.$AuthId.'/members/member@'.$member_id.'/img';
+
+      if (!file_exists($pathMember)) {
+        // create the member directory
+        $oldmask = umask(0);
+        $dir = mkdir($pathMember, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathMemberFiles)) {
+        // create the member files directory
+        $oldmask = umask(0);
+        $dir = mkdir($pathMemberFiles, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathMemberImg)) {
+        // create the member image directory
+        $oldmask = umask(0);
+        $dir = mkdir($pathMemberImg, 0777);
+        umask($oldmask);
+      }
+    }
+  }
 }

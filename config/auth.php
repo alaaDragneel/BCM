@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
 
-        'teamWorks' => [
+        'teamWork' => [
             'driver' => 'session',
             'provider' => 'teamWorks',
         ],

@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('#notifyTitle').text('From ' + from.children('.notiyFrom').text()); // put the values in the modal
     $('#notyDate').text('on ' + date.text()); // put the values in the modal
     $('#notifyAction').text(action.text()); // put the values in the modal
-    $('#notifyAction').after('<a href='+url+' class="btn btn-primary btn-sm">Go Now</a>');
+    $('#notifyAction').after('<a href="'+url+'" class="btn btn-primary btn-sm">Go Now</a>');
     $('#notifyModal').modal(); // open the modal
     // update the read status
     $.ajax({

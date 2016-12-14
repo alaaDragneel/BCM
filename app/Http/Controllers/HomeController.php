@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
   public $id;
   /**
-  * Show the application dashboard.
+  * @return the application dashboard.
   **/
   public function index()
   {
@@ -260,6 +260,20 @@ class HomeController extends Controller
   }
   public function profile_update(Request $request)
   {
+
+    $this->validate($request, [
+    'name' => 'required|min:4|max:255',
+    'firstName' => 'required|min:4|max:255',
+    'lastName' => 'required|min:4|max:255',
+    'email' => 'required|email|max:255',
+    'userType'  =>  'required|numeric',
+    'phoneNo'   =>  'required|numeric',
+    'job' => 'max:255',
+    'companyStartFrom' => 'date',
+    'description' => 'min:4',
+    'image' => 'image|mimes:jpeg,jpg,png',
+    'back_image' => 'image|mimes:jpeg,jpg,png',
+    ]);
     // define the fields
     $name              = $request->name;
     $email             = $request->email;
@@ -280,18 +294,6 @@ class HomeController extends Controller
     if (isset($request->back_image)) {
       $back_image = $this->upload($request->back_image);
     }
-
-    $this->validate($request, [
-    'name' => 'required|min:4|max:255',
-    'firstName' => 'required|min:4|max:255',
-    'lastName' => 'required|min:4|max:255',
-    'email' => 'required|email|max:255',
-    'userType'  =>  'required|numeric',
-    'phoneNo'   =>  'required|numeric',
-    'job' => 'max:255',
-    'companyStartFrom' => 'date',
-    'description' => 'min:4',
-    ]);
 
 
     $user = User::findOrFail(\Auth::user()->id);
@@ -383,7 +385,8 @@ class HomeController extends Controller
     } else {
       return redirect()->route('profile')->with(['fail' => 'there are some problem try again later']);
     }
-  }  public function info_update(Request $request)
+  }
+  public function info_update(Request $request)
   {
     $user = User::findOrFail(\Auth::user()->id);
     $user->cPanelInfo = 1;

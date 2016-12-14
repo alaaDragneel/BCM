@@ -1,48 +1,18 @@
 @extends('layouts.registers')
+@section('title')
+teamwork login
+@endsection
 @section('content')
+  <h2>Signin with gudi account</h2>
 
-  <div class="social-icons">
-    <div class="row">
-      {{-- facebook --}}
-      <div class="col-md-6">
-        <a href="{{ url('/redirect/facebook') }}" class="btn btn-block btn-lg btn-social btn-facebook">
-          <span class="fa fa-facebook"></span> Sign in with Facebook
-        </a>
-      </div>
-      {{-- twitter --}}
-      <div class="col-md-6">
-        <a href="{{ url('/redirect/twitter') }}" class="btn btn-block btn-lg btn-social btn-twitter">
-          <span class="fa fa-twitter"></span> Sign in with Twitter
-        </a>
-      </div>
-      <div style="height: 36px; clear: both;"></div>
-      {{-- linkedin --}}
-      <div class="col-md-6">
-        <a href="{{ url('/redirect/linkedin') }}" class="btn btn-block btn-lg btn-social btn-linkedin">
-          <span class="fa fa-linkedin"></span> Sign in with Linkedin
-        </a>
-      </div>
-      {{-- google --}}
-      <div class="col-md-6">
-        <a href="{{ url('/redirect/google') }}" class="btn btn-block btn-lg btn-social btn-google">
-          <span class="fa fa-google"></span> Sign in with Google
-        </a>
-      </div>
-
-
-    <div class="clear"> </div>
-  </div>
-
-  <h2>Or Signin with gudi account</h2>
-
-  <form method="POST" action="{{ url('/login') }}">
+  <form method="POST" action="{{ url('teamwork/login') }}">
     {{ csrf_field() }}
     <div class="lable-2">
       <div>
       <input
         type="email"
         class="text{{ $errors->has('email') ? ' error' : '' }}"
-        placeholder="your@email.com "
+        placeholder="your@companyname.gudi"
         name="email"
         value="{{ old('email') }}"
         onfocus="this.placeholder = '';"

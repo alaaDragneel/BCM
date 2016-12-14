@@ -34,92 +34,6 @@
   @yield('styles')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-  <?php //$cPanelInfo = Auth::user()->cPanelInfo; ?>
-  {{-- @if ($cPanelInfo === 0)
-     <div class="main-info">
-          <div class="row">
-               <div class="col-md-4">
-                    <div class="col-md-12 profile-imgHid" id="profile-img" data-name="profile-img"></div>
-                    <div class="col-md-12 dashboardHid" id="dashboard" data-name="dashboard"></div>
-                    <div class="col-md-12 projectsHid" id="projects" data-name="projects"></div>
-                    <div class="col-md-12 projectsInfoHid" id="projectsInfo" data-name="projectsInfo"></div>
-                    <div class="col-md-12 teamworkHid" id="teamwork" data-name="teamwork"></div>
-                    <div class="col-md-12 teamworkInfoHid" id="teamworkInfo" data-name="teamworkInfo"></div>
-                    <div class="col-md-12 rateMemberHid" id="rateMember" data-name="rateMember"></div>
-                    <div class="col-md-12 rateMemberInfoHid" id="rateMemberInfo" data-name="rateMemberInfo"></div>
-                    <div class="col-md-12 quickHid" id="quick" data-name="quick"></div>
-                    <div class="col-md-12 quickInfoHid" id="quickInfo" data-name="quickInfo"></div>
-                    <div class="col-md-12 back-div" id="back-div" data-name="back"></div>
-               </div>
-               <div class="col-md-8">
-                 <div class="col-md-12 home" id="home" data-name="home">
-                   <h1 class="conHeading">Welcome TO Ilgudi</h1>
-                   <h2 class="conHeading2">Welcome To Our Website for bussniss</h2>
-                   <p class="conParph">This Will Be the gide that will help you for Know What You Need To Know</p>
-                   <p class="conBtn">Just Click Next TO contaniue Or Finish If You Are Not Enteristed</p>
-                   <button type='button' class='btn btn-lg btn-default ' id="startInfo" style="position: absolute;left: 67%;">Start</button>
-                 </div>
-                 <div class="col-md-12 profile-imgConHid" id="profile-imgCon" data-name="profile-imgCon">
-                   <h1 class="conHeading">Welcome TO profile</h1>
-                 </div>
-                 <div class="col-md-12 dashboardConHid" id="dashboardCon" data-name="dashboardCon">
-                   <h1 class="conHeading">Welcome TO dashboard</h1>
-                 </div>
-                 <div class="col-md-12 projectsConHid" id="projectsCon" data-name="projectsCon">
-                   <h1 class="conHeading">Welcome TO projects</h1>
-                 </div>
-                 <div class="col-md-12 projectsInfoConHid" id="projectsInfoCon" data-name="projectsInfoCon">
-                   <h1 class="conHeading">Welcome TO projectsInfo</h1>
-                 </div>
-                 <div class="col-md-12 teamworkConHid" id="teamworkCon" data-name="teamworkCon">
-                   <h1 class="conHeading">Welcome TO teamwork</h1>
-                 </div>
-                 <div class="col-md-12 teamworkInfoConHid" id="teamworkInfoCon" data-name="teamworkInfoCon">
-                   <h1 class="conHeading">Welcome TO teamworkInfo</h1>
-                 </div>
-                 <div class="col-md-12 rateMemberConHid" id="rateMemberCon" data-name="rateMemberCon">
-                   <h1 class="conHeading">Welcome TO rateMember</h1>
-                 </div>
-                 <div class="col-md-12 rateMemberInfoConHid" id="rateMemberInfoCon" data-name="rateMemberInfoCon">
-                   <h1 class="conHeading">Welcome TO rateMemberInfo</h1>
-                 </div>
-                 <div class="col-md-12 quickConHid" id="quickCon" data-name="quickCon">
-                   <h1 class="conHeading">Welcome TO quick</h1>
-                 </div>
-                 <div class="col-md-12 quickInfoConHid" id="quickInfoCon" data-name="quickInfoCon">
-                   <h1 class="conHeading">Welcome TO quickInfo</h1>
-                 </div>
-                 <div class="col-md-12 back-Condiv" id="back-Condiv" data-name="backCon"></div>
-               </div>
-               <div class="col-md-12" id="btns">
-                 <button type='button' class='btn btn-lg btn-primary ' id="nextInfo">Next</button>
-                 <button type='button' class='btn btn-lg btn-danger ' id="finishInfo"> Finish</button>
-
-               </div>
-          </div>
-        </div>
-  @endif --}}
-  {{-- <div class="projects-info">
-       <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-              <div class="col-md-12">
-                <div id="homeProject">
-                  <h1>Welcome to the Create Projects Page</h1>
-                  <button type='button' class='btn btn-lg btn-default ' id="startInfoProject" style="position: absolute;left: 67%;top: 5%;">Start</button>
-                </div>
-                <div id="bmcCon">
-                  <h1>Welcome to the BMC</h1>
-                </div>
-              </div>
-              <div class="col-md-12 bmc"></div>
-            </div>
-            <div class="col-md-12" id="btnsProject">
-              <button type='button' class='btn btn-lg btn-primary ' id="nextInfoProject">Next</button>
-              <button type='button' class='btn btn-lg btn-danger ' id="finishInfoProject"> Finish</button>
-            </div>
-       </div>
-     </div> --}}
      <!-- inner menu: contains the actual data -->
   <div class="wrapper">
       <a href="#" class="alert alert-info" id="infoBox">
@@ -226,42 +140,31 @@
             <li class="dropdown notifications-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell-o"></i> {{-- get the notification --}}
-                <?php $countNotify = Auth::user()->Notifications()->where('read', '0')->count();?>
-                @if ($countNotify > 0)
-                  <span class="label label-warning" id="countLable">{{ $countNotify }}</span>
-                  @else
-                    <span class="label label-warning" id="countLable">0</span>
-                @endif
+                  <span class="label label-warning" id="countLable">6</span>
               </a>
               <ul class="dropdown-menu">
-                @if ($countNotify > 0)
-                  <li class="header" id="countHeader">You have {{ $countNotify }} unreaded notifications </li>
-                  @else
-                  <li class="header" id="countHeader">You have no unreaded notifications </li>
-                @endif
+                  <li class="header" id="countHeader">You have 3 unreaded notifications </li>
                 <li>
                   <ul class="menu">
-                  @foreach (Auth::user()->Notifications()->orderBy('created_at', 'DESC')->get() as $notify)
                     <!-- start message -->
-                    <li class="Noty {{ $notify->read === 0 ? 'unReadNoty' : 'readNoty' }}">
+                    <li class="Noty">
                       <a href="#" class="notyPlace">
                         <div class="pull-left">
                           <img src="{{asset('src/frontend/dist/img/user2-160x160.jpg')}}" class="img-circle Notyimg" alt="User Image">
                         </div>
-                        <h4 class="notyInfo {{ $notify->read === 0 ? 'notyUnReadInfo' : 'notyReadInfo' }}" data-id="{{ $notify->id }}" data-url="{{ $notify->url }}">
-                          <span class="notiyFrom">{{ $notify->added_by }}</span>
-                          <small class="notyDate"><i class="fa fa-clock-o"></i> {{ $notify->created_at->format('h:i A') }}</small>
+                        <h4 class="notyInfo" data-id="" data-url="">
+                          <span class="notiyFrom">gudi</span>
+                          <small class="notyDate"><i class="fa fa-clock-o"></i> 3:20 PM</small>
                         </h4>
-                        <p class="notyAction {{ $notify->read === 0 ? 'unReadNotyAction' : 'notyReadAction' }}">
-                          <i class="fa fa-{{ $notify->type }} text-aqua"></i> {{ $notify->action }}
+                        <p class="notyAction ">
+                          <i class="fa fa-users text-aqua"></i> welcome
                         </p>
                       </a>
                     </li>
                     <!-- end message -->
-                  @endforeach
                   </ul>
                 </li>
-                <li class="footer"><a href="{{ route('all.noty') }}">View all</a></li>
+                <li class="footer"><a href="#">View all</a></li>
               </ul>
             </li>
             <!-- Tasks: style can be found in dropdown.less -->

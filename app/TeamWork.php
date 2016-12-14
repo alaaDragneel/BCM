@@ -34,4 +34,5 @@ class TeamWork extends Authenticatable
   {
     return $this->belongsTo('App\User');
   }
+
 }

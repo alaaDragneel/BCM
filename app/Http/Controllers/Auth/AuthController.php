@@ -89,12 +89,22 @@ class AuthController extends Controller
   protected function userDirs($user)
   {
     if ($user) {
+      $mainPath = public_path() . '/src/users';
       // main directory path
       $path = public_path() . '/src/users/user@'.$user->id;
       // files directory path
       $pathFiles = public_path() . '/src/users/user@'.$user->id.'/files';
       // image directory path
       $pathImg = public_path() . '/src/users/user@'.$user->id.'/img';
+      // image directory path
+      $pathMember = public_path() . '/src/users/user@'.$user->id.'/members';
+
+      if (!file_exists($mainPath)) {
+        // create the users directory
+        $oldmask = umask(0);
+        $dir = mkdir($mainPath, 0777);
+        umask($oldmask);
+      }
       if (!file_exists($path)) {
         // create the main directory
         $oldmask = umask(0);
@@ -111,6 +121,12 @@ class AuthController extends Controller
         // make the img directory
         $oldmask = umask(0);
         $img = mkdir($pathImg, 0777);
+        umask($oldmask);
+      }
+      if (!file_exists($pathMember)) {
+        // make the member directory
+        $oldmask = umask(0);
+        $img = mkdir($pathMember, 0777);
         umask($oldmask);
       }
     }

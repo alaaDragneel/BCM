@@ -41,6 +41,10 @@ class Kernel extends HttpKernel
              \App\Http\Middleware\UsersCheck::class,
         ],
 
+        'teamWorks' => [
+             \App\Http\Middleware\teamWorks::class,
+        ],
+
         'isGuest' => [
              \App\Http\Middleware\isGuest::class,
         ],
