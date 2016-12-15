@@ -10,3 +10,6 @@
 @if (Session::has('fail'))
   <div class="alert alert-danger">{{Session::get('fail')}}</div>
 @endif
+@if (Session::has('status'))
+  <div class="alert alert-info">{{Session::get('status')}}</div>
+@endif

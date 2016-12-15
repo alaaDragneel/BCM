@@ -7,7 +7,11 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Illuminate\Http\Request;
+Use Auth;
+// get the register mail event
+use App\Events\mailForRegister;
+Use Event;
 class AuthController extends Controller
 {
   /*
@@ -73,8 +77,41 @@ class AuthController extends Controller
     'back_image' => 'src/frontend/dist/img/photo'.rand(1,2).'.png',
     'password' => bcrypt($data['password']),
     ]);
+
     $this->userDirs($user); // run the userrs directiry function
     return $user;
+  }
+
+
+  /**
+  * Handle a registration request for the application.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function register(Request $request)
+  {
+    $validator = $this->validator($request->all());
+
+    if ($validator->fails()) {
+      $this->throwValidationException(
+      $request, $validator
+      );
+    }
+
+    $user = $this->create($request->all());
+
+    Event::fire(new mailForRegister($user));
+
+    return redirect()->back()->with('status', 'Please Confirm Your Email Address It Will Be Send Soon');
+
+  }
+
+  public function confirmEmail($token)
+  {
+    User::where('token', '=', $token)->first()->hasVerfied();
+
+    return redirect('/login')->with(['status' => 'You Are Now Confirmed. Please Login.']);
   }
 
   /**

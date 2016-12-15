@@ -12,6 +12,7 @@ use DB;
 use Auth;
 use App\entrance_logs;
 use App\Notification as noty;
+use Flashy;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,7 @@ class HomeController extends Controller
   **/
   public function index()
   {
+    Flashy::message('You have been logged out.', 'http://your-awesome-link.com');
     return view('frontend.users.index');
   }
   /**

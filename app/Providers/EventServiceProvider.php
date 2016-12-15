@@ -15,11 +15,15 @@ class EventServiceProvider extends ServiceProvider
   protected $listen = [
 
     'Illuminate\Auth\Events\Login' => [
-        'App\Listeners\LogSuccessfulLogin',
+      'App\Listeners\LogSuccessfulLogin',
     ],
 
     'Illuminate\Auth\Events\Logout' => [
-        'App\Listeners\LogSuccessfulLogout',
+      'App\Listeners\LogSuccessfulLogout',
+    ],
+
+    'App\Events\mailForRegister' => [
+      'App\Listeners\mailLisner',
     ],
 
   ];

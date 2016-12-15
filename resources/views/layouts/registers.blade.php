@@ -15,6 +15,7 @@
 </head>
 <body>
   <div class="main">
+       @include('frontend.includes.boxs')
     @yield('content')
   </div>  <!---//end-main---->
   <script src="{{asset('src/frontend/global/js/jquery.min.js')}}"></script>

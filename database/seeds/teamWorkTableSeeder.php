@@ -17,6 +17,7 @@ class teamWorkTableSeeder extends Seeder
        $teamWork = [
          [
            'id'           => 1,
+           'name'     => 'alaa_dragneel',
            'email'     => 'alaa_dragneel@moaalaa.gudi',
            'emailAddress'    => 'alaa_dragneel@yahoo.com',
            'phoneNo'     => '01093901954',
@@ -28,6 +29,7 @@ class teamWorkTableSeeder extends Seeder
          ],
          [
            'id'           => 2,
+           'name'     => 'mohamed alaa',
            'email'     => 'mohamed alaa@moaalaa.gudi',
            'emailAddress'    => 'moaalaa@yahoo.com',
            'phoneNo'     => '01196901594',
@@ -39,6 +41,7 @@ class teamWorkTableSeeder extends Seeder
          ],
          [
            'id'           => 3,
+           'name'     => 'ali',
            'email'     => 'ali@moaalaa.gudi',
            'emailAddress'    => 'ali@yahoo.com',
            'phoneNo'     => '01296901954',
@@ -50,6 +53,7 @@ class teamWorkTableSeeder extends Seeder
          ],
          [
            'id'           => 4,
+           'name'     => 'Ahmed tellzm',
            'email'     => 'ahmad tellzem@moaalaa.gudi',
            'emailAddress'    => 'ahmad.tellzem@yahoo.com',
            'phoneNo'     => '01096901954',
@@ -61,6 +65,7 @@ class teamWorkTableSeeder extends Seeder
          ],
          [
            'id'           => 5,
+           'name'     => 'sasuke_alaa',
            'email'     => 'sasuke_alaa@moaalaa.gudi',
            'emailAddress'    => 'sasuke_alaa@yahoo.com',
            'phoneNo'     => '013901954',
@@ -72,6 +77,7 @@ class teamWorkTableSeeder extends Seeder
          ],
          [
            'id'           => 6,
+           'name'     => 'moa_alaa',
            'email'     => 'moa_alaa@moaalaa.gudi',
            'emailAddress'    => 'moa_alaa@yahoo.com',
            'phoneNo'     => '01094901954',

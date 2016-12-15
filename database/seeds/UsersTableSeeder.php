@@ -29,6 +29,7 @@ class UsersTableSeeder extends Seeder
         'back_image'    => 'src/frontend/dist/img/photo1.png',
         'userType'      => 1,
         'description'   => 'i\'am a web development',
+        'verified'   => 1,
         'password'      => bcrypt('666666'),
       ],
       [ // userType == 2 => startup
@@ -42,6 +43,7 @@ class UsersTableSeeder extends Seeder
         'back_image'    => 'src/frontend/dist/img/photo2.png',
         'userType'      => 2,
         'description'   => 'i\'am a web design',
+        'verified'   => 1,
         'password'      => bcrypt('666666'),
       ],
       [ // userType == 3 => company
@@ -55,6 +57,7 @@ class UsersTableSeeder extends Seeder
         'back_image'    => 'src/frontend/dist/img/photo4.jpg',
         'userType'      => 3,
         'description'   => 'i\'am a SEO',
+        'verified'   => 1,
         'password'      => bcrypt('666666'),
       ],
     ];

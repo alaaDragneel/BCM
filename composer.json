@@ -10,7 +10,8 @@
         "laravelcollective/html": "^5.2.0",
         "barryvdh/laravel-debugbar": "^2.3",
         "yajra/laravel-datatables-oracle": "^6.21",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "mercuryseries/flashy": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -158,7 +158,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        MercurySeries\Flashy\FlashyServiceProvider::class,
     ],
 
     /*
@@ -209,6 +209,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
     ],
 
 ];

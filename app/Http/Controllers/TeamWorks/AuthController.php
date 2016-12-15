@@ -78,6 +78,7 @@ class AuthController extends Controller
 
     $success = '';
     $member = new TeamWork();
+    $member->name = $request->name;
     $member->email = $request->name.'@'.Auth::user()->name.'.gudi';
     $member->job = $request->job;
     $member->phoneNo = $request->phoneNo;

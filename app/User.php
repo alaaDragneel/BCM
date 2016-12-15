@@ -30,6 +30,32 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
+  /**
+  *
+  * Boot the Model
+  *
+  *
+  */
+  public static function boot()
+  {
+    parent::boot();
+
+    static::creating(function($user) {
+      $user->token = str_random(40);
+    });
+  }
+
+  /**
+  * update the database to confirm
+  */
+  public function hasVerfied($value='')
+  {
+    $this->verified = 1;
+    $this->token = null;
+
+    $this->save();
+  }
+
   public function BMC()
   {
     return $this->hasMany('App\BMC');
